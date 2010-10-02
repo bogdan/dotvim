@@ -1,4 +1,0 @@
-Fast Debugger (ruby-debug-ide 0.4.9) listens on :39767
-Loading development environment (Rails 2.3.5)
-/home/bogdan/makabu/railsware/peroozal/repository/config/../vendor/rails/railties/lib/rails/gem_dependency.rb:119:Warning: Gem::Dependency#version_requirements is deprecated and will be removed on or after August 2010.  Use #requirement
->> 
