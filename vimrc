@@ -378,6 +378,9 @@ autocmd FileType eruby vmap <buffer> ss _$<ESC>o<% end %><ESC>gv_^<ESC>O<%  %><E
 autocmd FileType eruby vmap <buffer> sif _$<ESC>o<% end %><ESC>gv_^<ESC>O<% if  %><ESC>gv_$j=gi<ESC>2hi
 autocmd FileType eruby set isk+=-,?,!
 
+
+autocmd  BufNewFile,BufRead *.mustache set syntax=mustache
+
 " My keys
 
 map <Leader>a :Align

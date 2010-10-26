@@ -23,7 +23,7 @@ class VimRubyDebugger
       rescue Errno::ECONNREFUSED => msg
         attempts += 1
         # If socket wasn't be opened for 20 seconds, exit
-        if attempts < 400
+        if attempts < 100
           sleep 0.05
           retry
         else
