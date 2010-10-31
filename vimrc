@@ -380,6 +380,7 @@ autocmd FileType eruby set isk+=-,?,!
 
 
 autocmd  BufNewFile,BufRead *.mustache set syntax=mustache
+autocmd  BufNewFile,BufRead *.treetop set syntax=treetop
 
 " My keys
 
