@@ -9,13 +9,13 @@ endif
 " General
 "
 
-Abolish crt create
+iab crt create
+iab Tr Traits
 Abolish req{,s} request{,s}
 Abolish er{,s} error{,s}
 Abolish impl{,s} implementation{,s}
 Abolish bhvr{,s} behavior{,s}
 Abolish assoc{,s} associations{,s}
-Abolish tr{,s} trait{,s}
 Abolish ele{,s} element{,s}
 Abolish aru{,s} argument{,s}
 
@@ -24,24 +24,24 @@ Abolish aru{,s} argument{,s}
 " Ruby
 "
 
-Abolish prot protected
-Abolish priv private
-Abolish publ public
-Abolish inc{,s} include{,s}
-Abolish ts to_s
+iab prot protected
+iab priv private
+iab publ public
+iab inc include
+iab ts to_s
 
 
 
 " ActiveRecord
 
-Abolish dpds :dependent => :destroy
+iab dpds :dependent => :destroy
 
 Abolish v{p,s,u,n,i,e,f}o validates_{presence,size,uniqueness,numericality,inclusion,existence,format}_of 
-Abolish int integer
-Abolish str string
+iab int integer
+iab str string
 
 
-Abolish cond{,s} condition{,s}
+iab cond conditions
 
 
 " Rspec
@@ -59,14 +59,14 @@ Abolish obj{,s} object{,s}
 " ActionController
 
 Abolish cont{,s} controller{,s}
-Abolish pgnt paginate
-Abolish ppp :page => params[:page]
-Abolish pppp paginate(:page => params[:page])
+iab pgnt paginate
+iab ppp :page => params[:page]
+iab pppp paginate(:page => params[:page])
 
-Abolish pid params[:id]
-Abolish fpid find(params[:id])
+iab pid params[:id]
+iab fpid find(params[:id])
 
 " ActiveSupport
 
-Abolish bl blank?
+iab bl blank?
 
