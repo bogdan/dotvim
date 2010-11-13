@@ -82,4 +82,4 @@ if main_syntax == 'eruby'
   unlet main_syntax
 endif
 
-set nowrap sw=2 sts=2 ts=8 ff=unix
+set wrap sw=2 sts=2 ts=8 ff=unix
