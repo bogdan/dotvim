@@ -383,6 +383,8 @@ autocmd  BufNewFile,BufRead *.mustache set syntax=mustache
 
 " My keys
 
+" stub default
+map <F1> j 
 map <Leader>a :Align
 map <Leader># o#<cr> <cr><cr><bs><bs><esc>kkA
 inoremap <C-U> <C-G>u<C-U>
