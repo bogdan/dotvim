@@ -1,15 +1,15 @@
 " Init section - set mappings, default values, highlight colors
 
-map <Leader>b  :call g:RubyDebugger.toggle_breakpoint()<CR>
-map <Leader>v  :call g:RubyDebugger.open_variables()<CR>
-map <Leader>m  :call g:RubyDebugger.open_breakpoints()<CR>
-map <Leader>t  :call g:RubyDebugger.open_frames()<CR>
-map <Leader>s  :call g:RubyDebugger.step()<CR>
-map <Leader>f  :call g:RubyDebugger.finish()<CR>
-map <Leader>n  :call g:RubyDebugger.next()<CR>
-map <Leader>c  :call g:RubyDebugger.continue()<CR>
-map <Leader>e  :call g:RubyDebugger.exit()<CR>
-map <Leader>d  :call g:RubyDebugger.remove_breakpoints()<CR>
+"map <Leader>b  :call g:RubyDebugger.toggle_breakpoint()<CR>
+"map <Leader>v  :call g:RubyDebugger.open_variables()<CR>
+"map <Leader>m  :call g:RubyDebugger.open_breakpoints()<CR>
+"map <Leader>t  :call g:RubyDebugger.open_frames()<CR>
+"map <Leader>s  :call g:RubyDebugger.step()<CR>
+"map <Leader>f  :call g:RubyDebugger.finish()<CR>
+"map <Leader>n  :call g:RubyDebugger.next()<CR>
+"map <Leader>c  :call g:RubyDebugger.continue()<CR>
+"map <Leader>e  :call g:RubyDebugger.exit()<CR>
+"map <Leader>d  :call g:RubyDebugger.remove_breakpoints()<CR>
 
 command! -nargs=? -complete=file Rdebugger :call g:RubyDebugger.start(<q-args>) 
 command! -nargs=0 RdbStop :call g:RubyDebugger.stop() 
