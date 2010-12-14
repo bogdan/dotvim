@@ -406,6 +406,7 @@ map ,g :Grep -riw
 map <Leader>g :Grep -riw 
 vmap <F3> <ESC>:Ggrep! -w <S-Ins>
 vmap <C-F3> <ESC>:Grep -rw <S-Ins>
+map <F11> :Rrefresh<CR>
 
 map <F12> :set encoding=utf8<CR>
 
