@@ -363,7 +363,12 @@ map <Leader>sr :DBResultsRefresh<CR>
 " custom surrounds
 
 vmap ss s}gvs"a#<ESC>
-vmap sf s)i
+"vmap sf s)i
+
+let g:surround_{char2nr('-')} = "<% \r %>"
+let g:surround_{char2nr('=')} = "<%= \r %>"
+let g:surround_{char2nr('f')} = "\1function: \r..*\r&\1(\r)"
+
 
 nmap csf lF(hciw
 nmap dsf F(hdiwlds)
@@ -385,6 +390,9 @@ autocmd  BufNewFile,BufRead *.mustache set syntax=mustache
 autocmd  BufNewFile,BufRead *.treetop set syntax=treetop
 
 " My keys
+
+cmap w!! %!sudo tee > /dev/null %
+
 
 " stub default
 map <F1> j 
@@ -408,6 +416,7 @@ map ,g :Grep -riw
 map <Leader>g :Grep -riw 
 vmap <F3> <ESC>:Ggrep! -w <S-Ins>
 vmap <C-F3> <ESC>:Grep -rw <S-Ins>
+
 map <F11> :Rrefresh<CR>
 
 map <F12> :set encoding=utf8<CR>
