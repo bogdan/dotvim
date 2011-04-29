@@ -19,3 +19,5 @@ Rnavcommand trait app/traits -suffix=.rb
 Rnavcommand notifier app/notifiers -suffix=.rb
 Rnavcommand worker app/workers -suffix=.rb
 Rnavcommand util app/utils -suffix=.rb
+Rnavcommand aggregator app/aggregators -suffix=.rb
+Rnavcommand yml config -suffix=.yml

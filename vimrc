@@ -285,8 +285,8 @@ map <F10> :cprevious<CR>
 "let treeexplvertical=1
 
 
-set langmap=ÊÃÕËÅÎÇÛÝÚÈ‗ÆÙ×ÁÐÒÏÌÄÖÜÑÞÓÍÉÔØÂÀ/ךדץכוHחû‎תטÿזשקבנעןלהצüס‏ףםיפרגא/;qwertyuiop[]asdfghjkl;'zxcvbnm,./QWERTYUIOP[]ASDFGHJKL:'ZXCVBNM,./
-set langmap=יצףךוםדרשחץתפûגאןנמכהז‎ÿקסלטעüב‏/ÉÖÓÊÅHÃØÙÇÕÚÔÛÂÀÏÐÎËÄÆÝ‗×ÑÌÈÒÜÁÞ/;qwertyuiop[]asdfghjkl;'zxcvbnm,./QWERTYUIOP[]ASDFGHJKL:'ZXCVBNM,./
+"set langmap=ÊÃÕËÅÎÇÛÝÚÈ‗ÆÙ×ÁÐÒÏÌÄÖÜÑÞÓÍÉÔØÂÀ/ךדץכוHחû‎תטÿזשקבנעןלהצüס‏ףםיפרגא/;qwertyuiop[]asdfghjkl;'zxcvbnm,./QWERTYUIOP[]ASDFGHJKL:'ZXCVBNM,./
+"set langmap=יצףךוםדרשחץתפûגאןנמכהז‎ÿקסלטעüב‏/ÉÖÓÊÅHÃØÙÇÕÚÔÛÂÀÏÐÎËÄÆÝ‗×ÑÌÈÒÜÁÞ/;qwertyuiop[]asdfghjkl;'zxcvbnm,./QWERTYUIOP[]ASDFGHJKL:'ZXCVBNM,./
 
 let g:netrw_ftp_cmd           = 'ftp -p'
 
@@ -406,6 +406,8 @@ imap <F2> <ESC>:wa<CR>a
 vmap <C-c> "+y<ESC>
 map <C-v> "+gP
 imap <C-v> <ESC>"+gP
+
+map <F6> vi)s<CR>gv:s/,/,\r/g<CR>gv=
 
 " Grep
 nmap <F3> <ESC>viw<ESC>:Ggrep! -w <cword> 
