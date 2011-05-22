@@ -1,3 +1,6 @@
 [submodule "snippets"]
 	path = snippets
 	url = git@github.com:bogdan/snipmate-snippets.git
+[submodule "bundle/dbext"]
+	path = bundle/dbext
+	url = gh:/bogdan/dbext
