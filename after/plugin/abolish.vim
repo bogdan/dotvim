@@ -8,7 +8,7 @@ Abolish jo{,s,id,ids,p,sp,c} job_opportunit{y,ies,y_id,y_ids,_controller}
 
 Abolish sg{,s,id,ids,p,sp,c} suggestion{,s,_id,_ids,_controller}
 Abolish ct{,s,id,ids,p,sp,c} comment{,s,_id,_ids,_controller}
-Abolish cs{,s,id,ids,p,sp,c} customer{,s,_id,_ids,_controller}
+Abolish cs{,id,ids,p,sp,c} customer{,_id,_ids,_controller}
 Abolish rj{,s,id,ids,p,sp,c} recommended_job{,s,_id,_ids,_controller}
 Abolish zc{,s,id,ids,p,sp,c} zip_code{,s,_id,_ids,_controller}
 "Abolish rp{,s,id,ids,p,sp,c} report{,s,_id,_ids,_controller}
