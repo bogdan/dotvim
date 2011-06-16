@@ -332,6 +332,12 @@ map ,T :wa<CR>:.Rake<CR>:bot cwindow<CR>
 
 source ~/.vim/snippets/support_functions.vim
 
+let g:snipMate = {}
+ let g:snipMate['snippet_dirs'] = funcref#Function('return ["/home/bogdan/.vim"]')
+ let g:snipMate['snippets_dirs'] = funcref#Function('return ["/home/bogdan/.vim"]')
+"let g:snipMateSources={'default': funcref#Function('return ["~/.vim/snippets"]')}
+"let g:snipMate['snippet_dirs']=['~/.vim/snippets']
+
 " delimitMate
 
 
