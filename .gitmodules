@@ -67,3 +67,6 @@
 [submodule "bundle/mustache"]
 	path = bundle/mustache
 	url = https://github.com/juvenn/mustache.vim.git
+[submodule "bundle/textile"]
+	path = bundle/textile
+	url = https://github.com/timcharper/textile.vim.git
