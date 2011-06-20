@@ -310,7 +310,7 @@ set guioptions-=m
 set ruler
 
 " Make star command stay on current word
-map * :norm! *<CR>N
+nmap <silent> * :let @/='\<'.expand('<cword>').'\>'<CR>
 
 command! Re :source ~/.vimrc
 
@@ -331,7 +331,6 @@ map ,T :wa<CR>:.Rake<CR>:bot cwindow<CR>
 " snipMate
 
 source ~/.vim/snippets/support_functions.vim
-
 let g:snipMate = {}
  let g:snipMate['snippet_dirs'] = funcref#Function('return ["/home/bogdan/.vim"]')
  let g:snipMate['snippets_dirs'] = funcref#Function('return ["/home/bogdan/.vim"]')
