@@ -76,3 +76,6 @@
 [submodule "bundle/treetop"]
 	path = bundle/treetop
 	url = https://github.com/nanki/treetop.vim.git
+[submodule "bundle/repeat"]
+	path = bundle/repeat
+	url = https://github.com/tpope/vim-repeat.git
