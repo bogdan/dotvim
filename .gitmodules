@@ -73,3 +73,6 @@
 [submodule "bundle/markdown"]
 	path = bundle/markdown
 	url = https://github.com/tpope/vim-markdown.git
+[submodule "bundle/treetop"]
+	path = bundle/treetop
+	url = https://github.com/nanki/treetop.vim.git
