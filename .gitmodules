@@ -82,3 +82,6 @@
 [submodule "bundle/git"]
 	path = bundle/git
 	url = https://github.com/tpope/vim-git.git
+[submodule "bundle/vcscommand"]
+	path = bundle/vcscommand
+	url = git://repo.or.cz/vcscommand.git
