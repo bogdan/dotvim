@@ -309,8 +309,6 @@ set guioptions-=L
 set guioptions-=m
 set ruler
 
-" Make star command stay on current word
-map * :norm! *<CR>N
 
 command! Re :source ~/.vimrc
 
@@ -401,6 +399,7 @@ autocmd  BufNewFile,BufRead *.treetop set syntax=treetop
 
 cmap w!! %!sudo tee > /dev/null %
 
+nmap <silent> <M-l> :set hlsearch<CR>:let @/='\<'.expand('<cword>').'\>'<CR>
 
 " stub default
 map <F1> j 
