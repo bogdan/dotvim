@@ -94,3 +94,6 @@
 [submodule "bundle/align"]
 	path = bundle/align
 	url = https://github.com/vim-scripts/Align.git
+[submodule "bundle/bufexplorer"]
+	path = bundle/bufexplorer
+	url = https://github.com/vim-scripts/bufexplorer.zip.git
