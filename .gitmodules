@@ -85,3 +85,6 @@
 [submodule "bundle/vcscommand"]
 	path = bundle/vcscommand
 	url = git://repo.or.cz/vcscommand.git
+[submodule "bundle/camelcasemotion"]
+	path = bundle/camelcasemotion
+	url = https://github.com/bkad/CamelCaseMotion.git

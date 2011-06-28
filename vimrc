@@ -371,9 +371,6 @@ autocmd FileType eruby vmap <buffer> sif _$<ESC>o<% end %><ESC>gv_^<ESC>O<% if  
 autocmd FileType eruby set isk+=-,?,!
 
 
-autocmd  BufNewFile,BufRead *.mustache set syntax=mustache
-autocmd  BufNewFile,BufRead *.treetop set syntax=treetop
-
 " My keys
 
 cmap w!! %!sudo tee > /dev/null %
@@ -415,4 +412,6 @@ map <C-l> :noh<CR>
 imap <C-l> <space><ESC>,b<ESC>i <ESC>lvi,ec<s-ins><esc>bX,els_
 imap <C-k> <space><ESC>,b<ESC>i <ESC>lvi,ec<s-ins><esc>bX,els
 
-
+map <M-w> <Plug>CamelCaseMotion_w
+map <M-b> <Plug>CamelCaseMotion_b
+map <M-e> <Plug>CamelCaseMotion_e
