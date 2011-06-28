@@ -118,6 +118,7 @@ set sidescrolloff=7
 set sidescroll=1
 
 "load ftplugins and indent files
+filetype off
 filetype on
 filetype indent on
 filetype plugin on
