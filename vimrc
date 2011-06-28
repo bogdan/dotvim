@@ -191,16 +191,6 @@ nnoremap Y y$
 
 
 
-"visual search mappings
-"function! s:VSetSearch()
-"let temp = @@
-"norm! gvy
-"let @/ = '\V' . substitute(escape(@@, '\'), '\n', '\\n', 'g')
-"let @@ = temp
-"endfunction
-"vnoremap * :<C-u>call <SID>VSetSearch()<CR>//<CR>
-"vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR>
-
 
 "jump to last cursor position when opening a file
 "dont do it when writing a commit log entry
@@ -262,17 +252,6 @@ let word = s:sub(word,'ersons$','eople')
 return word
 endfunction
 
-" toggles the quickfix window.
-command! -bang -nargs=? QFix call QFixToggle(<bang>0)
-function! QFixToggle(forced)
-if exists("g:qfix_win") && a:forced == 0
-    cclose
-    unlet g:qfix_win
-else
-    bot copen 10
-    let g:qfix_win = bufnr("$")
-endif
-endfunction
 
 map <silent> <F8> :QFix<CR>
 map <F9> :cnext<CR>
