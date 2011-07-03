@@ -106,11 +106,7 @@ set wildmode=list:longest   "make cmdline tab completion similar to bash
 set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
 set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
 
-"display tabs and trailing spaces
-"set list
-"set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
 
-set formatoptions-=o "dont continue comments when pushing o/O
 
 "vertical/horizontal scroll off settings
 set scrolloff=3
@@ -119,11 +115,10 @@ set sidescroll=1
 
 "load ftplugins and indent files
 filetype off
-filetype on
-filetype indent on
-filetype plugin on
 filetype plugin indent on
 
+set sw=2
+set ts=2
 "turn on syntax highlighting
 syntax on
 
@@ -181,7 +176,7 @@ inoremap <C-L> <C-O>:nohls<CR>
 nnoremap <C-B> :BufExplorer<cr>
 
 "map to fuzzy finder text mate stylez
-nnoremap <c-f> :FuzzyFinderTextMate<CR>
+"nnoremap <c-f> :FuzzyFinderTextMate<CR>
 
 "map Q to something useful
 noremap Q gq
@@ -309,9 +304,9 @@ map ,T :wa<CR>:.Rake<CR>:bot cwindow<CR>
 " snipMate
 
 source ~/.vim/snippets/support_functions.vim
-let g:snipMate = {}
- let g:snipMate['snippet_dirs'] = funcref#Function('return ["/home/bogdan/.vim"]')
- let g:snipMate['snippets_dirs'] = funcref#Function('return ["/home/bogdan/.vim"]')
+"let g:snipMate = {}
+"let g:snipMate['snippet_dirs'] = funcref#Function('return ["/home/bogdan/.vim"]')
+"let g:snipMate['snippets_dirs'] = funcref#Function('return ["/home/bogdan/.vim"]')
 "let g:snipMateSources={'default': funcref#Function('return ["~/.vim/snippets"]')}
 "let g:snipMate['snippet_dirs']=['~/.vim/snippets']
 
@@ -378,7 +373,10 @@ cmap w!! %!sudo tee > /dev/null %
 nmap <silent> <M-l> :set hlsearch<CR>:let @/='\<'.expand('<cword>').'\>'<CR>
 
 " stub default
+map K k
+
 map <F1> :call NERDComment(0, 'toggle')<CR>
+
 map <Leader>a :Align
 map <Leader># o#<cr> <cr><cr><bs><bs><esc>kkA
 inoremap <C-U> <C-G>u<C-U>
