@@ -378,7 +378,7 @@ cmap w!! %!sudo tee > /dev/null %
 nmap <silent> <M-l> :set hlsearch<CR>:let @/='\<'.expand('<cword>').'\>'<CR>
 
 " stub default
-map <F1> j 
+map <F1> :call NERDComment(0, 'toggle')<CR>
 map <Leader>a :Align
 map <Leader># o#<cr> <cr><cr><bs><bs><esc>kkA
 inoremap <C-U> <C-G>u<C-U>
@@ -392,15 +392,15 @@ imap <C-v> <ESC>"+gP
 
 map <F6> vi)s<CR>gv:s/,/,\r/g<CR>gv=
 
-" Grep
+" git grep and ack
+
+let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 nmap <F3> <ESC>viw<ESC>:Ggrep! -w <cword> 
-nmap <C-F3> <ESC>viw<ESC>:Grep -rw <cword> 
+nmap <C-F3> <ESC>viw<ESC>:Ack! -w <cword> 
 nmap <F4> <ESC>viw<ESC>:Ggrep! -w 
-nmap <C-F4> <ESC>viw<ESC>:Grep -rwi 
-map ,g :Grep -riw
-map <Leader>g :Grep -riw 
+nmap <C-F4> <ESC>viw<ESC>:Ack! -wi 
 vmap <F3> <ESC>:Ggrep! -w <S-Ins>
-vmap <C-F3> <ESC>:Grep -rw <S-Ins>
+vmap <C-F3> <ESC>:Ack! -w <S-Ins>
 
 map <F11> :Rrefresh<CR>
 
@@ -415,3 +415,9 @@ imap <C-k> <space><ESC>,b<ESC>i <ESC>lvi,ec<s-ins><esc>bX,els
 map <M-w> <Plug>CamelCaseMotion_w
 map <M-b> <Plug>CamelCaseMotion_b
 map <M-e> <Plug>CamelCaseMotion_e
+
+
+
+
+nmap <Leader>j :SplitjoinJoin<cr>
+nmap <Leader>s :SplitjoinSplit<cr>
