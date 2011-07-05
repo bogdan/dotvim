@@ -90,8 +90,8 @@ endfunction
 
 
 "indent settings
-set shiftwidth=4
-set softtabstop=4
+set shiftwidth=2
+set softtabstop=2
 set tabstop=2
 set expandtab
 set autoindent
@@ -393,6 +393,7 @@ map <F6> vi)s<CR>gv:s/,/,\r/g<CR>gv=
 " git grep and ack
 
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+
 nmap <F3> <ESC>viw<ESC>:Ggrep! -w <cword> 
 nmap <C-F3> <ESC>viw<ESC>:Ack! -w <cword> 
 nmap <F4> <ESC>viw<ESC>:Ggrep! -w 
@@ -400,7 +401,7 @@ nmap <C-F4> <ESC>viw<ESC>:Ack! -wi
 vmap <F3> <ESC>:Ggrep! -w <S-Ins>
 vmap <C-F3> <ESC>:Ack! -w <S-Ins>
 
-map <F11> :Rrefresh<CR>
+map <F11> :normal :set ft=&ft<CR>:Rrefresh<CR>
 
 map <F12> :set encoding=utf8<CR>
 
