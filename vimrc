@@ -372,6 +372,10 @@ cmap w!! %!sudo tee > /dev/null %
 
 nmap <silent> <M-l> :set hlsearch<CR>:let @/='\<'.expand('<cword>').'\>'<CR>
 
+" swap words
+vnoremap <M-s> <Esc>`.``gvP``P
+
+
 " stub default
 map K k
 
@@ -414,9 +418,12 @@ imap <C-k> <space><ESC>,b<ESC>i <ESC>lvi,ec<s-ins><esc>bX,els
 map <M-w> <Plug>CamelCaseMotion_w
 map <M-b> <Plug>CamelCaseMotion_b
 map <M-e> <Plug>CamelCaseMotion_e
+map ,w <Plug>CamelCaseMotion_w
+map ,b <Plug>CamelCaseMotion_b
+map ,e <Plug>CamelCaseMotion_e
 
 
 
-
+let g:splitjoin_ruby_curly_braces = 0
 nmap <Leader>j :SplitjoinJoin<cr>
 nmap <Leader>s :SplitjoinSplit<cr>
