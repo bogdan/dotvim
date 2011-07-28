@@ -1,8 +1,6 @@
+set nocompatible
 call pathogen#runtime_append_all_bundles() 
 
-"Use Vim settings, rather then Vi settings (much better!).
-"This must be first, because it changes other options as a side effect.
-set nocompatible
 
 "allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -116,11 +114,8 @@ set sidescroll=1
 "load ftplugins and indent files
 filetype off
 filetype plugin indent on
-
-set sw=2
-set ts=2
-"turn on syntax highlighting
 syntax on
+
 
 "some stuff to get the mouse going in term
 if has('mouse')
@@ -173,7 +168,8 @@ nnoremap <C-L> :nohls<CR><C-L>
 inoremap <C-L> <C-O>:nohls<CR>
 
 "map to bufexplorer
-nnoremap <C-B> :BufExplorer<cr>
+nnoremap <C-B> :BufExplorerHorizontalSplit<CR>
+
 
 "map to fuzzy finder text mate stylez
 "nnoremap <c-f> :FuzzyFinderTextMate<CR>
@@ -210,42 +206,6 @@ autocmd BufReadPost *
             \ if line("'\"") > 1 && line("'\"") <= line("$") |
             \   exe "normal! g`\"" |
             \ endif
-
-function! s:sub(str,pat,rep)
-return substitute(a:str,'\v\C'.a:pat,a:rep,'')
-endfunction
-
-function! Singularize(word)
-" Probably not worth it to be as comprehensive as Rails but we can
-" still hit the common cases.
-let word = a:word
-if word =~? '\.js$' || word == ''
-    return word
-endif
-let word = s:sub(word,'eople$','ersons')
-let word = s:sub(word,'[aeio]@<!ies$','ys')
-let word = s:sub(word,'xe[ns]$','xs')
-let word = s:sub(word,'ves$','fs')
-let word = s:sub(word,'ss%(es)=$','sss')
-let word = s:sub(word,'s$','')
-let word = s:sub(word,'%([nrt]ch|tatus|lias)\zse$','')
-let word = s:sub(word,'%(nd|rt)\zsice$','ex')
-return word
-endfunction
-
-function! Pluralize(word)
-let word = Singularize(a:word)
-if word == ''
-    return word
-endif
-let word = s:sub(word,'[aeio]@<!y$','ie')
-let word = s:sub(word,'%(nd|rt)@<=ex$','ice')
-let word = s:sub(word,'%([osxz]|[cs]h)$','&e')
-let word = s:sub(word,'f@<!f$','ve')
-let word .= 's'
-let word = s:sub(word,'ersons$','eople')
-return word
-endfunction
 
 
 map <silent> <F8> :QFix<CR>
