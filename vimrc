@@ -348,6 +348,7 @@ vmap ss s}gvs"a#<ESC>
 let g:surround_{char2nr('-')} = "<% \r %>"
 let g:surround_{char2nr('=')} = "<%= \r %>"
 let g:surround_{char2nr('f')} = "\1function: \r..*\r&\1(\r)"
+let g:surround_{char2nr("y")} = "try(:\r)"
 
 
 nmap csf lF(hciw
