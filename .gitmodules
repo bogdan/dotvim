@@ -112,3 +112,6 @@
 [submodule "bundle/jade"]
 	path = bundle/jade
 	url = https://github.com/digitaltoad/vim-jade.git
+[submodule "bundle/bundler"]
+	path = bundle/bundler
+	url = https://github.com/tpope/vim-bundler.git
