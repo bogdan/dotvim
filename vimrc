@@ -302,6 +302,8 @@ map <Leader>sr :DBResultsRefresh<CR>
 
 " custom surrounds
 
+xmap s   <Plug>VSurround
+
 vmap ss s}gvs"a#<ESC>
 "vmap sf s)i
 
