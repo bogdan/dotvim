@@ -368,7 +368,7 @@ nmap <C-F4> <ESC>viw<ESC>:Ack! -wi
 vmap <F3> <ESC>:Ggrep! -w <S-Ins>
 vmap <C-F3> <ESC>:Ack! -w <S-Ins>
 
-map <F11> :normal :set ft=&ft<CR>:Rrefresh<CR>
+map <F11> :diffoff!<CR>:Re<CR>
 
 map <F12> :set encoding=utf8<CR>
 
