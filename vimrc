@@ -370,7 +370,7 @@ vmap <C-F3> <ESC>:Ack! -w <S-Ins>
 
 map <F11> :diffoff!<CR>:Re<CR>
 
-map <F12> :set encoding=utf8<CR>
+map <F12> :VCSCommit<CR>
 
 map <C-a> <ESC>ggVG
 map + mmgg=G:%s#\s*$##<CR>'m:noh<CR>
