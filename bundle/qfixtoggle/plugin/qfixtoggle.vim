@@ -24,7 +24,7 @@ function! QFixToggle(forced)
   if exists("g:QFixToggle_Bufnr") && a:forced == 0
     cclose
   else
-    execute "copen " . g:QFixToggle_Height
+    execute "bot copen " . g:QFixToggle_Height
   endif
 endfunction
 
