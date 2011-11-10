@@ -390,3 +390,6 @@ map ,e <Plug>CamelCaseMotion_e
 let g:splitjoin_ruby_curly_braces = 0
 nmap <Leader>j :SplitjoinJoin<cr>
 nmap <Leader>s :SplitjoinSplit<cr>
+
+
+map <M-v> :AV<cr>
