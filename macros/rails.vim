@@ -9,7 +9,6 @@ command! -nargs=0 RVschema :RVfind db/schema.rb
 
 
 Rnavcommand sass app/stylesheets/ -suffix=.sass
-Rnavcommand resouce app/resouces/ -suffix=.rb
 Rnavcommand jade app/jades/ -suffix=.jade
 Rnavcommand factory spec/factories/ -suffix=.rb
 Rnavcommand task lib/tasks -suffix=.rake
@@ -21,3 +20,4 @@ Rnavcommand trait app/traits -suffix=.rb
 Rnavcommand worker app/workers -suffix=.rb
 Rnavcommand util app/utils -suffix=.rb
 Rnavcommand yml config -suffix=.yml
+Rnavcommand normalizer app/normalizer

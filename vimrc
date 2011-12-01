@@ -264,11 +264,6 @@ map ,T :wa<CR>:.Rake<CR>:bot cwindow<CR>
 " snipMate
 
 source ~/.vim/snippets/support_functions.vim
-"let g:snipMate = {}
-"let g:snipMate['snippet_dirs'] = funcref#Function('return ["/home/bogdan/.vim"]')
-"let g:snipMate['snippets_dirs'] = funcref#Function('return ["/home/bogdan/.vim"]')
-"let g:snipMateSources={'default': funcref#Function('return ["~/.vim/snippets"]')}
-"let g:snipMate['snippet_dirs']=['~/.vim/snippets']
 
 " delimitMate
 
@@ -279,8 +274,6 @@ let g:delimitMate_apostrophes = ''
 let g:syntastic_enable_signs=1
 
 
-" Allml
-"let g:allml_global_maps = 1
 
 " NERD tree
 map <F5> :NERDTreeToggle<CR>
@@ -299,6 +292,9 @@ let g:dbext_table_names_number = 2
 let g:dbext_table_names_case = 2
 map <Leader>sc :DBResultsClose<CR>
 map <Leader>sr :DBResultsRefresh<CR>
+
+" hammer
+let g:HammerQuiet = 1
 
 " custom surrounds
 
@@ -392,4 +388,6 @@ nmap <Leader>j :SplitjoinJoin<cr>
 nmap <Leader>s :SplitjoinSplit<cr>
 
 
+map <M-r> :RV<cr>
 map <M-v> :AV<cr>
+map <M-o> <C-w><C-o>
