@@ -259,6 +259,8 @@ command! Re :source ~/.vimrc
 map ,t :wa<CR>:Rake<CR>:bot cwindow<CR>
 map ,r :wa<CR>:Rake -<CR>:bot cwindow<CR>
 map ,T :wa<CR>:.Rake<CR>:bot cwindow<CR>
+let g:rails_ctags_arguments='--exclude public/system --languages=-javascript --langdef=coffee --langmap=coffee:.coffee --regex-coffee="/^class ([A-Za-z.]+)( extends [A-Za-z.]+)?$/\1/c,class/" --regex-coffee="/^[ \t]*@?([A-Za-z.]+):.*[-=]>.*$/\1/f,function/" --regex-coffee="/^[ \t]*([A-Za-z.]+)[ \t]+=.*[-=]>.*$/\1/f,function/" --regex-coffee="/^[ \t]*([A-Za-z.]+)[ \t]+=[^->\n]*$/\1/v,variable/" --regex-ruby="/^[ \t]*(has_many|belongs_to|has_one)[ \t(]+:([A-Za-z_]+).*$/\2/f,function/"'
+
 
 
 " snipMate
