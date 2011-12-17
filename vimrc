@@ -259,16 +259,13 @@ command! Re :source ~/.vimrc
 map ,t :wa<CR>:Rake<CR>:bot cwindow<CR>
 map ,r :wa<CR>:Rake -<CR>:bot cwindow<CR>
 map ,T :wa<CR>:.Rake<CR>:bot cwindow<CR>
+let g:rails_ctags_arguments='--exclude='.RailsRoot().'/public/system --languages=-javascript --langdef=coffee --langmap=coffee:.coffee --regex-coffee="/^class ([A-Za-z.]+)( extends [A-Za-z.]+)?$/\1/c,class/" --regex-coffee="/^[ \t]*@?([A-Za-z.]+):.*[-=]>.*$/\1/f,function/" --regex-coffee="/^[ \t]*([A-Za-z.]+)[ \t]+=.*[-=]>.*$/\1/f,function/" --regex-coffee="/^[ \t]*([A-Za-z.]+)[ \t]+=[^->\n]*$/\1/v,variable/" --regex-ruby="/^[ \t]*(has_many|belongs_to|has_one)[ \t(]+:([A-Za-z_]+).*$/\2/f,function/"'
+
 
 
 " snipMate
 
 source ~/.vim/snippets/support_functions.vim
-"let g:snipMate = {}
-"let g:snipMate['snippet_dirs'] = funcref#Function('return ["/home/bogdan/.vim"]')
-"let g:snipMate['snippets_dirs'] = funcref#Function('return ["/home/bogdan/.vim"]')
-"let g:snipMateSources={'default': funcref#Function('return ["~/.vim/snippets"]')}
-"let g:snipMate['snippet_dirs']=['~/.vim/snippets']
 
 " delimitMate
 
@@ -279,8 +276,6 @@ let g:delimitMate_apostrophes = ''
 let g:syntastic_enable_signs=1
 
 
-" Allml
-"let g:allml_global_maps = 1
 
 " NERD tree
 map <F5> :NERDTreeToggle<CR>
@@ -299,6 +294,9 @@ let g:dbext_table_names_number = 2
 let g:dbext_table_names_case = 2
 map <Leader>sc :DBResultsClose<CR>
 map <Leader>sr :DBResultsRefresh<CR>
+
+" hammer
+let g:HammerQuiet = 1
 
 " custom surrounds
 
@@ -391,6 +389,9 @@ let g:splitjoin_ruby_curly_braces = 0
 nmap <Leader>j :SplitjoinJoin<cr>
 nmap <Leader>s :SplitjoinSplit<cr>
 
+map <M-r> :RV<cr>
+map <M-v> :AV<cr>
+map <M-o> <C-w><C-o>
 
 command! -range -nargs=1 SendToCommand <line1>,<line2>call SendToCommand(<q-args>) 
 
