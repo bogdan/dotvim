@@ -390,7 +390,19 @@ let g:splitjoin_ruby_curly_braces = 0
 nmap <Leader>j :SplitjoinJoin<cr>
 nmap <Leader>s :SplitjoinSplit<cr>
 
-
 map <M-r> :RV<cr>
 map <M-v> :AV<cr>
 map <M-o> <C-w><C-o>
+
+command! -range -nargs=1 SendToCommand <line1>,<line2>call SendToCommand(<q-args>) 
+
+function! SendToCommand(UserCommand) range
+    " Get a list of lines containing the selected range
+    let SelectedLines = getline(a:firstline,a:lastline)
+    " Convert to a single string suitable for passing to the command
+    let ScriptInput = join(SelectedLines, "\n") . "\n"
+    " Run the command
+    let result = system(a:UserCommand, ScriptInput)
+    " Echo the result (could just do "echo system(....)")
+    echo result
+endfunction
