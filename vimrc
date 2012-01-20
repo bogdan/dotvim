@@ -1,6 +1,10 @@
 set nocompatible
 call pathogen#infect() 
 
+"load ftplugins and indent files
+filetype plugin indent on
+syntax on
+
 
 "allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -85,10 +89,6 @@ set scrolloff=3
 set sidescrolloff=7
 set sidescroll=1
 
-"load ftplugins and indent files
-filetype off
-filetype plugin indent on
-syntax on
 
 
 "some stuff to get the mouse going in term
@@ -341,7 +341,15 @@ nmap <C-F4> <ESC>viw<ESC>:Ack! -wi
 vmap <F3> <ESC>:Ggrep! -w <S-Ins>
 vmap <C-F3> <ESC>:Ack! -w <S-Ins>
 
-map <F11> :diffoff!<CR>:Re<CR>
+function! ResetVim()
+  let ft=&ft
+  set ft=""
+  let &ft=ft
+  diffoff!
+endfunction
+
+map <F11> :call ResetVim()<CR>
+
 
 map <F12> :VCSCommit<CR>
 
