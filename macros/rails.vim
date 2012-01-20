@@ -21,3 +21,4 @@ Rnavcommand worker app/workers -suffix=.rb
 Rnavcommand util app/utils -suffix=.rb
 Rnavcommand yml config -suffix=.yml
 Rnavcommand normalizer app/normalizer
+Rnavcommand logic app/logics
