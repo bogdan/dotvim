@@ -210,6 +210,7 @@ set selection=inclusive
 set isk+=!
 set isk+=?
 autocmd BufReadPost * set isk+=-
+autocmd BufReadPost * set isk-=#
 
 set guifont=Inconsolata\ Medium\ 12
 set guioptions-=r
