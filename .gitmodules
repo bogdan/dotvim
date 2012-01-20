@@ -121,3 +121,6 @@
 [submodule "bundle/vimoutliner"]
 	path = bundle/vimoutliner
 	url = https://github.com/vimoutliner/vimoutliner.git
+[submodule "bundle/inkpot"]
+	path = bundle/inkpot
+	url = https://github.com/ciaranm/inkpot.git
