@@ -1,5 +1,5 @@
 set nocompatible
-call pathogen#runtime_append_all_bundles() 
+call pathogen#infect() 
 
 
 "allow backspacing over everything in insert mode
@@ -7,6 +7,7 @@ set backspace=indent,eol,start
 
 "store lots of :cmdline history
 set history=1000
+
 
 set showcmd     "show incomplete cmds down the bottom
 set showmode    "show current mode down the bottom
@@ -40,7 +41,6 @@ set statusline+=%m      "modified flag
 
 "display a warning if &et is wrong, or we have mixed-indenting
 set statusline+=%#error#
-set statusline+=%{StatuslineTabWarning()}
 set statusline+=%*
 
 "set statusline+=%{StatuslineTrailingSpaceWarning()}
@@ -61,42 +61,16 @@ set statusline+=\ %P    "percent through file
 set laststatus=2
 
 
-
-
-"recalculate the tab warning flag when idle and after writing
-autocmd cursorhold,bufwritepost * unlet! b:statusline_tab_warning
-
-"return '[&et]' if &et is set wrong
-"return '[mixed-indenting]' if spaces and tabs are used to indent
-"return an empty string if everything is fine
-function! StatuslineTabWarning()
-if !exists("b:statusline_tab_warning")
-    let tabs = search('^\t', 'nw') != 0
-    let spaces = search('^ ', 'nw') != 0
-
-    if tabs && spaces
-        let b:statusline_tab_warning =  '[mixed-indenting]'
-    elseif (spaces && !&et) || (tabs && &et)
-        let b:statusline_tab_warning = '[&et]'
-    else
-        let b:statusline_tab_warning = ''
-    endif
-endif
-return b:statusline_tab_warning
-endfunction
-
-
-
 "indent settings
-set shiftwidth=2
-set softtabstop=2
-set tabstop=2
-set expandtab
+"set shiftwidth=2
+"set softtabstop=2
+"set tabstop=2
+"set expandtab
 set autoindent
 set smartindent
 
 "folding settings
-set foldmethod=indent   "fold based on indent
+set foldmethod=manual   "don't use fold
 set foldnestmax=3       "deepest fold is 3 levels
 set nofoldenable        "dont fold by default
 
@@ -124,7 +98,7 @@ endif
 set ttymouse=xterm2
 
 "tell the term has 256 colors
-set t_Co=256
+"set t_Co=256
 
 "do not hide buffers when not displayed
 set nohidden
