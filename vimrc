@@ -66,10 +66,10 @@ set laststatus=2
 
 
 "indent settings
-"set shiftwidth=2
-"set softtabstop=2
-"set tabstop=2
-"set expandtab
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
+set expandtab
 set autoindent
 set smartindent
 
@@ -388,4 +388,5 @@ function! SendToCommand(UserCommand) range
     let result = system(a:UserCommand, ScriptInput)
     " Echo the result (could just do "echo system(....)")
     echo result
+
 endfunction
