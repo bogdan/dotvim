@@ -112,9 +112,6 @@
 [submodule "bundle/rvm"]
 	path = bundle/rvm
 	url = gh:tpope/vim-rvm
-[submodule "bundle/hammer"]
-	path = bundle/hammer
-	url = https://github.com/robgleeson/hammer.vim.git
 [submodule "bundle/ansiesc"]
 	path = bundle/ansiesc
 	url = https://github.com/vim-scripts/AnsiEsc.vim.git
