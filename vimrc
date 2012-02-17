@@ -25,6 +25,9 @@ autocmd Bufread * set wrap
 set wrap
 
 
+set virtualedit=all
+
+
 set backupext=.bak
 set backupdir="~/tmp"
 set nobackup
