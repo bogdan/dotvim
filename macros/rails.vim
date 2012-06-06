@@ -8,17 +8,14 @@ command! -nargs=0 RVschema :RVfind db/schema.rb
 
 
 
-Rnavcommand sass app/stylesheets/ -suffix=.sass
 Rnavcommand jade app/jades/ -suffix=.jade
+Rnavcommand service app/services/ -suffix=.rb
 Rnavcommand factory spec/factories/ -suffix=.rb
 Rnavcommand task lib/tasks -suffix=.rake
 Rnavcommand shared spec/traits -suffix=.rb
-Rnavcommand feature features -suffix=.feature
 Rnavcommand report app/reports -suffix=.rb
-Rnavcommand steps features/step_definitions -suffix=_steps.rb
 Rnavcommand trait app/traits -suffix=.rb
-Rnavcommand worker app/workers -suffix=.rb
-Rnavcommand util app/utils -suffix=.rb
 Rnavcommand yml config -suffix=.yml
-Rnavcommand normalizer app/normalizer
-Rnavcommand logic app/logics
+Rnavcommand acceptance spec/acceptance -suffix=.rb
+
+let g:rails_ctags_arguments='--exclude='.RailsRoot().'/public/system --exclude='.RailsRoot().'/public/uploads --languages=-javascript --langdef=coffee --langmap=coffee:.coffee --regex-coffee="/^class ([A-Za-z.]+)( extends [A-Za-z.]+)?$/\1/c,class/" --regex-coffee="/^[ \t]*@?([A-Za-z.]+):.*[-=]>.*$/\1/f,function/" --regex-coffee="/^[ \t]*([A-Za-z.]+)[ \t]+=.*[-=]>.*$/\1/f,function/" --regex-coffee="/^[ \t]*([A-Za-z.]+)[ \t]+=[^->\n]*$/\1/v,variable/" --regex-ruby="/^[ \t]*(attr_accessor|has_many|belongs_to|has_one)[ \t(]+:([A-Za-z_]+).*$/\2/f,function/"'

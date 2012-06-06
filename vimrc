@@ -187,7 +187,9 @@ autocmd BufReadPost *
 
 map <silent> <F8> :QFix<CR>
 map <F9> :cnext<CR>
+map <C-F9> :cfirst<CR>
 map <F10> :cprevious<CR>
+map <C-F10> :clast<CR>
 
 
 
@@ -237,9 +239,6 @@ command! Re :source ~/.vimrc
 map ,t :wa<CR>:Rake<CR>:bot cwindow<CR>
 map ,r :wa<CR>:Rake -<CR>:bot cwindow<CR>
 map ,T :wa<CR>:.Rake<CR>:bot cwindow<CR>
-if exists("RailsRoot")
-  let g:rails_ctags_arguments='--exclude='.RailsRoot().'/public/system --languages=-javascript --langdef=coffee --langmap=coffee:.coffee --regex-coffee="/^class ([A-Za-z.]+)( extends [A-Za-z.]+)?$/\1/c,class/" --regex-coffee="/^[ \t]*@?([A-Za-z.]+):.*[-=]>.*$/\1/f,function/" --regex-coffee="/^[ \t]*([A-Za-z.]+)[ \t]+=.*[-=]>.*$/\1/f,function/" --regex-coffee="/^[ \t]*([A-Za-z.]+)[ \t]+=[^->\n]*$/\1/v,variable/" --regex-ruby="/^[ \t]*(has_many|belongs_to|has_one)[ \t(]+:([A-Za-z_]+).*$/\2/f,function/"'
-endif
 
 
 " snipMate
@@ -329,8 +328,8 @@ map <F2> :wa<CR>
 imap <F2> <ESC>:wa<CR>a
 
 vmap <C-c> "+y<ESC>
-map <C-v> "+gP
-imap <C-v> <ESC>"+gP
+map <C-v> "+gp
+imap <C-v> <ESC>"+gp
 
 map <F6> vi)s<CR>gv:s/,/,\r/g<CR>gv=
 
@@ -393,3 +392,5 @@ function! SendToCommand(UserCommand) range
     echo result
 
 endfunction
+
+au BufRead,BufNewFile *.hamlc set ft=haml
