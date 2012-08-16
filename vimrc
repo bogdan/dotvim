@@ -186,10 +186,11 @@ autocmd BufReadPost *
 
 
 map <silent> <F8> :QFix<CR>
+map <silent> <s-F8> :bot copen<CR>
 map <F9> :cnext<CR>
-map <C-F9> :cfirst<CR>
+map <s-F9> :cfirst<CR>
 map <F10> :cprevious<CR>
-map <C-F10> :clast<CR>
+map <s-F10> :clast<CR>
 
 
 
