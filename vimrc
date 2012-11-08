@@ -66,7 +66,7 @@ set statusline+=%c,     "cursor column
 set statusline+=%l/%L   "cursor line/total lines
 set statusline+=\ %P    "percent through file
 set laststatus=2
-
+set shell=zsh\ -i
 
 "indent settings
 set shiftwidth=2
@@ -146,6 +146,10 @@ inoremap <C-L> <C-O>:nohls<CR>
 
 "map to bufexplorer
 nnoremap <C-B> :BufExplorerHorizontalSplit<CR>
+nnoremap <Leader>b :BufExplorer<CR>
+nnoremap <Leader>bs :BufExplorerHorizontalSplit<CR>
+nnoremap <Leader>bv :BufExplorerVerticalSplit<CR>
+
 
 
 "map to fuzzy finder text mate stylez
@@ -218,11 +222,6 @@ set isk+=?
 autocmd BufReadPost * set isk+=-
 autocmd BufReadPost * set isk-=#
 
-set guifont=Inconsolata\ Medium\ 12
-set guioptions-=r
-set guioptions-=T
-set guioptions-=L
-set guioptions-=m
 set ruler
 
 
@@ -263,6 +262,7 @@ imap <F5> <ESC>:NERDTreeToggle<CR>a
 " Yank ring
 
 let g:yankring_history_dir = '~/.vim/'
+let g:yankring_manual_clipboard_check = 0
 
 " Bufexplorer
 let g:bufExplorerShowRelativePath=1
@@ -336,7 +336,7 @@ map <F6> vi)s<CR>gv:s/,/,\r/g<CR>gv=
 
 " git grep and ack
 
-let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+let g:ackprg="ack -H --nocolor --nogroup --column"
 
 nmap <F3> <ESC>viw<ESC>:Ggrep! -w <cword> 
 nmap <S-F3> <ESC>viw<ESC>:Ack! -w <cword> 
@@ -395,3 +395,4 @@ function! SendToCommand(UserCommand) range
 endfunction
 
 au BufRead,BufNewFile *.hamlc set ft=haml
+
