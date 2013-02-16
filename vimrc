@@ -66,7 +66,9 @@ set statusline+=%c,     "cursor column
 set statusline+=%l/%L   "cursor line/total lines
 set statusline+=\ %P    "percent through file
 set laststatus=2
-set shell=zsh\ -i
+if has("gui_macvim")
+  set shell=zsh\ -i
+endif
 
 "indent settings
 set shiftwidth=2
@@ -152,8 +154,6 @@ nnoremap <Leader>bv :BufExplorerVerticalSplit<CR>
 
 
 
-"map to fuzzy finder text mate stylez
-"nnoremap <c-f> :FuzzyFinderTextMate<CR>
 
 "map Q to something useful
 noremap Q gq
@@ -336,7 +336,11 @@ map <F6> vi)s<CR>gv:s/,/,\r/g<CR>gv=
 
 " git grep and ack
 
-let g:ackprg="ack -H --nocolor --nogroup --column"
+if executable("ack-grep")
+  let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+else
+  let g:ackprg="ack -H --nocolor --nogroup --column"
+endif
 
 nmap <F3> <ESC>viw<ESC>:Ggrep! -w <cword> 
 nmap <S-F3> <ESC>viw<ESC>:Ack! -w <cword> 

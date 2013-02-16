@@ -1,10 +1,10 @@
 colorscheme inkpot
-macm Tools.List\ Errors key=<nop>
 if has("gui_macvim")
+  macm Tools.List\ Errors key=<nop>
   set macmeta
+  set guifont=Inconsolata:h14
+else
+  set guifont="Inconsolate Medium 12"
 endif
-set guifont=Inconsolata:h14
-set guioptions-=r
-set guioptions-=T
-set guioptions-=L
-set guioptions-=m
+set guioptions=aegitc
+set guipty
