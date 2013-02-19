@@ -342,8 +342,8 @@ else
   let g:ackprg="ack -H --nocolor --nogroup --column"
 endif
 
-nmap <F3> <ESC>viw<ESC>:Ggrep! -w <cword> 
-nmap <S-F3> <ESC>viw<ESC>:Ack! -w <cword> 
+nmap <F3> <ESC>viw<ESC>:Ggrep! -w "<cword>" 
+nmap <S-F3> <ESC>viw<ESC>:Ack! -w "<cword>" 
 nmap <F4> <ESC>viw<ESC>:Ggrep! -w 
 nmap <S-F4> <ESC>viw<ESC>:Ack! -wi 
 vmap <F3> <ESC>:Ggrep! -w <S-Ins>
