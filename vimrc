@@ -241,21 +241,24 @@ map ,r :wa<CR>:Rake -<CR>:bot cwindow<CR>
 map ,T :wa<CR>:.Rake<CR>:bot cwindow<CR>
 
 
-" snipMate
+" Ultisnips
 
 source ~/.vim/snippets/support_functions.vim
 let g:UltiSnipsSnippetDirectories=["snippets"]
 let g:UltiSnipsEditSplit='horizontal'
 
-" delimitMate
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+" DelimitMate
 
 
 let g:delimitMate_apostrophes = ''
 
 " Syntatic
+
 let g:syntastic_enable_signs=1
-
-
 
 " NERD tree
 map <F5> :NERDTreeToggle<CR>
