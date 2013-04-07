@@ -1,0 +1,117 @@
+snippet conf "conf"
+- content_for :${1:yield_label_in_layout} do
+  ${2}
+  
+endsnippet
+snippet cs "cs"
+= collection_select :${1:object}, :${2:method}, :${3:collection}, :${4:value_method}, :${5:text_method} ${6:, [options]} ${7:, [html_options]}
+endsnippet
+snippet ea "ea"
+each do |${1:item}|
+endsnippet
+snippet ff "ff"
+= form_for @${1:model} do |f|
+  ${2}
+endsnippet
+snippet ffcb "ffcb"
+=f.check_box :${1:attribute}
+endsnippet
+snippet ffe "ffe"
+= error_messages_for :${0:model}
+
+- form_for @${2:model} do |f|
+  ${3}
+endsnippet
+snippet ffff "ffff"
+= f.file_field :${1:attribute}
+endsnippet
+snippet ffhf "ffhf"
+= f.hidden_field :${1:attribute}
+endsnippet
+snippet ffl "ffl"
+= f.label :${1:attribute}
+endsnippet
+snippet fflt "fflt"
+= f.label :${1:attribute}, "${2}"
+= f.text_field :$1
+
+endsnippet
+snippet ffpf "ffpf"
+= f.password_field :${1:attribute}
+endsnippet
+snippet ffrb "ffrb"
+= f.radio_button :${1:attribute}, :${2:tag_value}
+endsnippet
+snippet ffs "ffs"
+= f.submit "${1:submit}"
+endsnippet
+snippet ffta "ffta"
+= f.text_area :${1:attribute}
+endsnippet
+snippet fftf "fftf"
+= f.text_field :${1:attribute}
+endsnippet
+snippet fields "fields"
+- fields_for :${1:model}, @$1 do |${2:f}|
+  ${3}
+endsnippet
+snippet for "for"
+- if ${1:}.any?
+  - $1.each do |${2:item}|
+    ${3}
+- else
+  ${4}
+
+endsnippet
+snippet ft "ft"
+- form_tag(<+:action => "<+update+>"+><+, {:<+class+> => "<+form+>"}+>) do
+  <++>
+endsnippet
+snippet if "if"
+- if ${1}
+  ${2}
+endsnippet
+snippet ife "ife"
+- if ${1}
+  ${2}
+- else
+  ${3}
+endsnippet
+snippet it "it"
+= image_tag "${1}"
+endsnippet
+snippet jit "jit"
+= javascript_include_tag "${1}"
+endsnippet
+snippet jsit "jsit"
+= javascript_include_tag "${1}"
+endsnippet
+snippet k "k"
+:${1} => ${2}
+endsnippet
+snippet lt "lt"
+= link_to ${1}, ${2}_path(${3})
+endsnippet
+snippet ltm "ltm"
+= link_to ${1:}.${2}, ${3}$1_path(${3}$1)
+endsnippet
+snippet ltms "ltms"
+= link_to "${1}", ${2}s_path(${3})
+endsnippet
+snippet lts "lts"
+= link_to "${1}", ${2}_path(${3})
+endsnippet
+snippet rf "rf"
+= render :file => "${1:file}"${2}
+endsnippet
+snippet rp "rp"
+= render partial: "${1:file}"${2}
+endsnippet
+snippet rpo "rpo"
+= render partial: "${1:file}", object: ${2}
+endsnippet
+snippet unl "unl"
+- unless ${1}
+  ${2}
+
+endsnippet
