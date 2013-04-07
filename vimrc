@@ -245,6 +245,7 @@ map ,T :wa<CR>:.Rake<CR>:bot cwindow<CR>
 
 source ~/.vim/snippets/support_functions.vim
 let g:UltiSnipsSnippetDirectories=["snippets"]
+let g:UltiSnipsEditSplit='horizontal'
 
 " delimitMate
 
