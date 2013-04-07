@@ -189,6 +189,8 @@ autocmd BufReadPost *
             \ endif
 
 
+let g:toggle_list_no_mappings=1
+let g:toggle_list_copen_command="bot copen"
 nmap <script> <silent> <F8> :call ToggleQuickfixList()<CR>
 map <silent> <s-F8> :bot copen<CR>
 map <F9> :cnext<CR>

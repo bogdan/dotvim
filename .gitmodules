@@ -118,3 +118,6 @@
 [submodule "bundle/togglelist"]
 	path = bundle/togglelist
 	url = https://github.com/milkypostman/vim-togglelist.git
+[submodule "bundle/dispatch"]
+	path = bundle/dispatch
+	url = gh:tpope/vim-dispatch
