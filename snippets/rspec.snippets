@@ -370,7 +370,7 @@ subject { ${1:Factory.build(described_class.to_s.underscore)} }
 endsnippet
 snippet task "task"
 desc "${1:Task description}"
-task :${2:task_name}${3: => [:dependent, :tasks]} do
-	${4}
+task :${2:task_name}${3: => ["${4:dependent}"]} do
+	${5}
 end
 endsnippet
