@@ -189,7 +189,7 @@ autocmd BufReadPost *
             \ endif
 
 
-map <silent> <F8> :QFix<CR>
+nmap <script> <silent> <F8> :call ToggleQuickfixList()<CR>
 map <silent> <s-F8> :bot copen<CR>
 map <F9> :cnext<CR>
 map <s-F9> :cfirst<CR>
