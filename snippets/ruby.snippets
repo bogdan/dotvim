@@ -168,11 +168,13 @@ else
 end
 endsnippet
 snippet class "class"
-class ${1:`Snippet_RubyClassNameFromFilename()`}${2}
+class ${1:`!v Snippet_RubyClassNameFromFilename()`}
+  $2
 end
 endsnippet
 snippet classe "classe"
-class ${1:ErrorClassName} < ${2:StandardError}; end${3}
+class ${1:`!v Snippet_RubyClassNameFromFilename()`} < ${2:}
+end
 endsnippet
 snippet clm "clm"
 #
