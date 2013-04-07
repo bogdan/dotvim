@@ -1,0 +1,8 @@
+def update
+  if @${1:model_instance_name}.update_attributes(params[:$1])
+  	flash[:notice] = '${2} was successfully updated.'
+  	redirect_to(@$1) 
+  else
+  	render :action => :edit 
+  end
+end

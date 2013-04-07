@@ -1,0 +1,13 @@
+amount = 1000
+Benchmark.bmbm do |x|
+  x.report do
+    amount.times do
+      ${1} 
+    end
+  end
+  x.report do
+    amount.times do
+  	  ${2}
+    end
+  end
+end

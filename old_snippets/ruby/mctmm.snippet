@@ -1,0 +1,11 @@
+create_table :${1:}, :id => false do |t|
+	t.integer :${2:}_id, :null => false
+	t.integer :${3:}_id, :null => false
+end
+
+
+add_index :$1, :$2_id
+add_index :$1, [:$3_id, :$2_id], :unique => true
+
+add_foreign_key :$1, :$2_id, :references => :$2s, :on_delete => :cascade
+add_foreign_key :$1, :$3_id, :references => :$3s, :on_delete => :cascade

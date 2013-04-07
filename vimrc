@@ -244,6 +244,7 @@ map ,T :wa<CR>:.Rake<CR>:bot cwindow<CR>
 " snipMate
 
 source ~/.vim/snippets/support_functions.vim
+let g:UltiSnipsSnippetDirectories=["snippets"]
 
 " delimitMate
 
@@ -331,7 +332,7 @@ imap <F2> <ESC>:wa<CR>a
 vmap <C-c> "+y<ESC>
 map <C-v> "+gp
 imap <C-v> <ESC>"+gp
-
+                                                                                              
 map <F6> vi)s<CR>gv:s/,/,\r/g<CR>gv=
 
 " git grep and ack
