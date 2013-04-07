@@ -1,0 +1,40 @@
+snippet ife "ife"
+if(${1}){
+	${2}
+}else{
+}
+endsnippet
+snippet if "if"
+if(${1}){
+	${2}
+}
+endsnippet
+snippet gs "gs"
+//getter for $3
+public ${2:variable_type} get${1:VariableName}() {
+    return ${3:variableName};
+}
+
+//setter for $3
+public void set$1($2 $3) {
+   this.$3 = $3;
+}${4}
+endsnippet
+snippet log "log"
+System.${1:out}.println(${2});
+endsnippet
+snippet m "m"
+/**
+ * ${7:Method Description}
+ * ${5}
+ * @return ${6}
+ */
+${1:public} ${2:void} ${3:methodName}(${4}) {
+	${8}
+}
+endsnippet
+snippet for "for"
+for(${1:int i=0}; ${2:condition}; ${3:i++}){
+	${4}
+}
+endsnippet

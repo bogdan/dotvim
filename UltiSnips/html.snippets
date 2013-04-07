@@ -1,0 +1,80 @@
+snippet inputl "inputl"
+<label for="${1:input_id}">${2}</label>
+<input type="${3:text/submit/hidden/button}" name="${4:$1}" value="${5:value}" id="${6:$1}"/>${7}
+endsnippet
+snippet form "form"
+<form action="${1:action}" method="${2:post}" accept-charset="utf-8">
+  ${3}
+
+  <p><input type="submit" value="Continue &rarr;"/></p>
+</form>
+endsnippet
+snippet mailto "mailto"
+<a href="mailto:<+email+><+?subject=<+feedback+>+>"><+email me+></a>
+endsnippet
+snippet input "input"
+<input type="${1:text/submit/hidden/button}" name="${2}" value="${3:value}" id="${4:$2}"/>${5}
+endsnippet
+snippet t "t"
+<${1:div}${2}>
+  ${3}
+</$1>${4}
+endsnippet
+snippet style "style"
+<style type="text/css" media="screen">
+  ${1}
+</style>
+endsnippet
+snippet textarea "textarea"
+<textarea name="${1:Name}" rows="${2:8}" cols="${2:40}">${3}</textarea>
+endsnippet
+snippet head "head"
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+  <title>${1:Page Title}</title>
+  ${2}
+</head>
+endsnippet
+snippet href "href"
+<a href="${1}">${2}</a>
+endsnippet
+snippet base "base"
+<base href="<++>"<+ target="<++>"+>/>
+endsnippet
+snippet select "select"
+<select name="${1}" id="${2}">
+	${3}
+</select>
+endsnippet
+snippet img "img"
+<img src="${1}"${2} />
+endsnippet
+snippet label "label"
+<label for="${1:id}">${2:label_text}</label>
+endsnippet
+snippet doctype "doctype"
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">${1}
+endsnippet
+snippet body "body"
+<body id="${1}">
+	${2}
+</body>
+endsnippet
+snippet meta "meta"
+<meta name="${1:name}" content="${2:content}"/>
+endsnippet
+snippet option "option"
+<option value="${1}">${2}</option>
+endsnippet
+snippet ifie "ifie"
+<!--[if IE ${1:6}]>${2}<![endif]-->${3}
+endsnippet
+snippet link "link"
+<link rel="${1:stylesheet}" href="${2:path-to-stylesheet}.css" type="text/css" media="${3:screen}" charset="${4:utf-8}"/>${5}
+endsnippet
+snippet h1 "h1"
+<h1 id="${1}">${2}</h1>
+endsnippet
+snippet clr "clr"
+<div class="clear"></div>
+endsnippet

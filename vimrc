@@ -354,6 +354,7 @@ function! ResetVim()
   set ft=""
   let &ft=ft
   diffoff!
+  Rrefresh!
 endfunction
 
 map <F11> :call ResetVim()<CR>
