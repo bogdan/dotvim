@@ -1,0 +1,6 @@
+describe "${1:get} ${2:show}" do
+  subject { $1 :${3:$2} }
+
+  it { should be_${4:success} }
+
+end

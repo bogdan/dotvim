@@ -189,7 +189,9 @@ autocmd BufReadPost *
             \ endif
 
 
-map <silent> <F8> :QFix<CR>
+let g:toggle_list_no_mappings=1
+let g:toggle_list_copen_command="bot copen"
+nmap <script> <silent> <F8> :call ToggleQuickfixList()<CR>
 map <silent> <s-F8> :bot copen<CR>
 map <F9> :cprevious<CR>
 map <s-F9> :cfirst<CR>
@@ -245,19 +247,24 @@ map ,r :wa<CR>:Rake -<CR>:bot cwindow<CR>
 map ,T :wa<CR>:.Rake<CR>:bot cwindow<CR>
 
 
-" snipMate
+" Ultisnips
 
 source ~/.vim/snippets/support_functions.vim
+let g:UltiSnipsSnippetDirectories=["snippets"]
+let g:UltiSnipsEditSplit='horizontal'
 
-" delimitMate
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+" DelimitMate
 
 
 let g:delimitMate_apostrophes = ''
 
 " Syntatic
+
 let g:syntastic_enable_signs=1
-
-
 
 " NERD tree
 map <F5> :NERDTreeToggle<CR>
@@ -335,7 +342,7 @@ imap <F2> <ESC>:wa<CR>a
 vmap <C-c> "+y<ESC>
 map <C-v> "+gp
 imap <C-v> <ESC>"+gp
-
+                                                                                              
 map <F6> vi)s<CR>gv:s/,/,\r/g<CR>gv=
 
 " git grep and ack
@@ -358,6 +365,7 @@ function! ResetVim()
   set ft=""
   let &ft=ft
   diffoff!
+  Rrefresh!
 endfunction
 
 map <F11> :call ResetVim()<CR>

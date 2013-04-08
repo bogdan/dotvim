@@ -1,0 +1,294 @@
+snippet Yd "Yd"
+YAML.dump(${1})
+endsnippet
+snippet Yl "Yl"
+YAML.load(${1})
+endsnippet
+snippet am "am"
+alias_method :${1:new_name}, :${2:old_name}
+endsnippet
+snippet api "api"
+#
+# API
+#
+
+endsnippet
+snippet as "as"
+assert ${1:test}, "${2:failure_message}"
+endsnippet
+snippet ase "ase"
+assert_equal ${1:expected}, ${2:actual}
+endsnippet
+snippet asid "asid"
+assert_in_delta ${1:expected_float}, ${2:actual_float}, ${3:delta_float}
+endsnippet
+snippet asio "asio"
+assert_instance_of ${1:ExpectedClass}, ${2:actual_instance}
+endsnippet
+snippet asko "asko"
+assert_kind_of ${1:ExpectedKind}, ${2:actual_instance}
+endsnippet
+snippet asm "asm"
+assert_match /${1:expected_pattern}/, ${2:actual_string}
+endsnippet
+snippet asn "asn"
+assert_nil ${1:instance}
+endsnippet
+snippet asne "asne"
+assert_not_equal ${1:unexpected}, ${2:actual}
+endsnippet
+snippet asnm "asnm"
+assert_no_match /${1:unexpected_pattern}/, ${2:actual_string}
+endsnippet
+snippet asnn "asnn"
+assert_not_nil ${1:instance}
+endsnippet
+snippet asns "asns"
+assert_not_same ${1:unexpected}, ${2:actual}
+endsnippet
+snippet asnt "asnt"
+assert_nothing_thrown { ${1} }
+endsnippet
+snippet aso "aso"
+assert_operator ${1:left}, :${2:operator}, ${3:right}
+endsnippet
+snippet asr "asr"
+assert_raise(${1:Exception}) { ${2} }
+endsnippet
+snippet asrt "asrt"
+assert_respond_to ${1:object}, :${2:method}
+endsnippet
+snippet ast "ast"
+assert_throws(:${1:expected}) { ${2} }
+endsnippet
+snippet atr "atr"
+#
+# Attributes
+#
+
+endsnippet
+snippet bhv "bhv"
+#
+# Behaviors
+#
+
+endsnippet
+snippet bm "bm"
+amount = 1000
+Benchmark.bmbm do |x|
+  x.report do
+    amount.times do
+      ${1} 
+    end
+  end
+  x.report do
+    amount.times do
+  	  ${2}
+    end
+  end
+end
+endsnippet
+snippet case "case"
+case ${1}
+when ${2}
+else
+	${3}
+end
+endsnippet
+snippet class "class"
+class ${1:`!v Snippet_RubyClassNameFromFilename()`}
+  $2
+end
+endsnippet
+snippet classe "classe"
+class ${1:`!v Snippet_RubyClassNameFromFilename()`} < ${2:}
+end
+endsnippet
+snippet clm "srv"
+#
+# Services
+#
+
+endsnippet
+snippet df "df"
+def ${1:name}
+	${2}
+end # $1
+
+endsnippet
+snippet dfa "dfa"
+def ${1:}
+  raise NotImplementedError, "#{self.class}#$1 suppose to be overwritten"
+end
+endsnippet
+snippet dfi "dfi"
+def initialize${1}
+end
+endsnippet
+snippet dfmm "dfmm"
+def method_missing(meth, *args, &blk)
+	${1}
+end
+endsnippet
+snippet dfs "dfs"
+def self.${1:class_method_name}
+end
+endsnippet
+snippet dft "dft"
+def test_${1:case_name}
+	${2}
+end
+endsnippet
+snippet dop "dop"
+do |${1:param}|
+	${2}
+end
+endsnippet
+snippet dp "dp"
+do |${1}|
+endsnippet
+snippet ea "ea"
+each { |${1:element}| ${2:body} }
+endsnippet
+snippet each "each"
+each do |${1:element}|
+	${2:body}
+end
+endsnippet
+snippet eado "eado"
+each do |${1:element}|
+	${2:body}
+end
+endsnippet
+snippet eawi "eawi"
+each_with_index do |${1:element},${2:i}|
+	${3:body}
+end
+endsnippet
+snippet fopen "fop"
+File.open(${1:path}, "${2:w}") do |${3:file}| 
+  ${4} 
+end
+endsnippet
+snippet fread "frd"
+File.read(${1})
+endsnippet
+snippet i18 "i18"
+I18n.t('${1:type.key}')${2}
+endsnippet
+snippet imp "imp"
+#
+# Implementation
+#
+
+endsnippet
+snippet inj "inj"
+inject(${1:init}) do |${2:total}, ${3:next}|
+	${4:body}
+end
+endsnippet
+snippet job "job"
+class ${1:`!v Snippet_RubyClassNameFromFilename()`}${2}
+
+  @queue = :${3:low}
+
+  def self.perform${4}
+
+end
+endsnippet
+snippet k "k"
+:${1:} => ${2:}
+endsnippet
+snippet la "la"
+lambda { |${1:id}| ${2}}
+endsnippet
+snippet map "map"
+map { |${1:element}| ${2:body} }
+endsnippet
+snippet mapdo "mapdo"
+map do |${1:element}|
+	${2:body}
+end
+endsnippet
+snippet mapo "mapo"
+map do |${1:element}|
+	${2:body}
+end
+endsnippet
+snippet mod "mod"
+module ${1:`!v Snippet_RubyClassNameFromFilename()`}
+	${2}
+end
+endsnippet
+snippet module "module"
+module ${1:`!v Snippet_RubyClassNameFromFilename()`}
+
+	def self.included(base)
+		base.extend         ClassMethods
+		base.class_eval do
+		  ${2}
+		end
+	end # self.included
+
+	module ClassMethods
+
+	end # ClassMethods
+
+end
+endsnippet
+snippet mp "mp"
+map(&:${1:id})
+endsnippet
+snippet mrw "mrw"
+mattr_accessor :${1:attr_names}
+endsnippet
+snippet nam "nam"
+namespace :${1:namespace} do
+	${2}
+end
+endsnippet
+snippet ope "ope"
+open(${1:path}, "${2:rwab}") { |${3:io}| ${4} }
+endsnippet
+snippet pathhere "pathhere"
+File.join(File.dirname(__FILE__), *%w[${1:rel_path_here}])
+endsnippet
+snippet r "r"
+attr_reader :${1:attr_names}
+endsnippet
+snippet rejecto "rejecto"
+reject do |${1:element}|
+	${2:body}
+end
+endsnippet
+snippet req "req"
+require "${1}"
+endsnippet
+snippet rw "rw"
+attr_accessor :${1:attr_names}
+endsnippet
+snippet s "s"
+self.$0
+endsnippet
+snippet select "select"
+select { |${1:element}| ${2:body} }
+endsnippet
+snippet selecto "selecto"
+select do |${1:element}|
+	${2:body}
+end
+endsnippet
+snippet sha1 "sha1"
+Digest::SHA1.hexdigest(${1:string})
+endsnippet
+snippet sinc "sinc"
+class << self; self end
+endsnippet
+snippet sort "sort"
+sort do |${1:x},${2:y}|
+	${3:body}
+end
+endsnippet
+snippet w "w"
+attr_writer :${1:attr_names}
+endsnippet
