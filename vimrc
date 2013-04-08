@@ -257,6 +257,10 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
+" Gist
+
+let g:gist_clip_command = 'pbcopy'
+
 " DelimitMate
 
 
@@ -371,7 +375,6 @@ endfunction
 map <F11> :call ResetVim()<CR>
 
 
-map <F12> :VCSCommit<CR>
 
 map <C-a> <ESC>ggVG
 map + mmgg=G:%s#\s*$##<CR>'m:noh<CR>
