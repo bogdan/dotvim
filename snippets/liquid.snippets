@@ -3,3 +3,23 @@ snippet hl "hl"
 ${2}
 {% endhighlight %}
 endsnippet
+
+snippet a "[text](link)"
+[$1](${2:$1})
+endsnippet
+
+
+snippet more "<!--more-->" !b
+<!--more-->
+endsnippet
+
+snippet head "post head" !b
+---
+layout: post
+title: "$1"
+#published: false
+tags: 
+- ${2:one}
+- ${3:two}
+---
+endsnippet
