@@ -208,8 +208,6 @@ map <M-L> <C-w>l
 "set patchmode=on
 
 
-" indenting
-"let treeexplvertical=1
 
 
 "set langmap=ÊÃÕËÅÎÇÛİÚÈßÆÙ×ÁĞÒÏÌÄÖÜÑŞÓÍÉÔØÂÀ/êãõëåHçûıúèÿæù÷áğòïìäöüñşóíéôøâà/;qwertyuiop[]asdfghjkl;'zxcvbnm,./QWERTYUIOP[]ASDFGHJKL:'ZXCVBNM,./
@@ -323,6 +321,11 @@ autocmd FileType eruby set isk+=-,?,!
 
 " My keys
 
+" No Right Controll on mac
+nmap <M-t> <C-t>
+nmap <M-6> <C-6>
+nmap <M-w> <C-w>
+
 cmap w!! %!sudo tee > /dev/null %
 
 nmap <silent> <M-l> :set hlsearch<CR>:let @/='\<'.expand('<cword>').'\>'<CR>
@@ -337,8 +340,8 @@ map K k
 map <F1> :call NERDComment(0, 'toggle')<CR>
 
 map <Leader>a :Align
-map <Leader># o#<cr> <cr><cr><bs><bs><esc>kkA
 inoremap <C-U> <C-G>u<C-U>
+    
 
 map <F2> :wa<CR>
 imap <F2> <ESC>:wa<CR>a
@@ -369,10 +372,13 @@ function! ResetVim()
   set ft=""
   let &ft=ft
   diffoff!
-  Rrefresh!
+  if exists('b:rails_root')
+    Rrefresh
+  endif
+   
 endfunction
 
-map <F11> :call ResetVim()<CR>
+map <F11> :call ResetVim()<CR>:source ~/.vimrc<CR>
 
 
 
