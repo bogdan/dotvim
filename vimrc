@@ -277,6 +277,15 @@ imap <F5> <ESC>:NERDTreeToggle<CR>a
 let g:yankring_history_dir = '~/.vim/'
 let g:yankring_manual_clipboard_check = 0
 
+"let g:yankstack_map_keys = 0
+
+"nmap <C-p> <Plug>yankstack_substitute_older_paste
+"xmap <C-p> <Plug>yankstack_substitute_older_paste
+"imap <C-p> <Plug>yankstack_substitute_older_paste
+"nmap <C-n> <Plug>yankstack_substitute_newer_paste
+"xmap <C-n> <Plug>yankstack_substitute_newer_paste
+"imap <C-n> <Plug>yankstack_substitute_newer_paste
+
 " Bufexplorer
 let g:bufExplorerShowRelativePath=1
 
@@ -360,9 +369,18 @@ else
   let g:ackprg="ack -H --nocolor --nogroup --column"
 endif
 
-nmap <F3> <ESC>viw<ESC>:Ggrep! -w "<cword>" 
+function! MyGrep(ending)
+  if exists("b:git_dir")
+    let cmd = ":Ggrep! -w"
+  else
+    let cmd = ":Ack! -w"
+  endif
+  call feedkeys(cmd.' '.a:ending)
+endfunction
+
+nmap <F3> :call MyGrep('"<cword>" ')<CR>
 nmap <S-F3> <ESC>viw<ESC>:Ack! -w "<cword>" 
-nmap <F4> <ESC>viw<ESC>:Ggrep! -w 
+nmap <F4> :call MyGrep("")<CR>
 nmap <S-F4> <ESC>viw<ESC>:Ack! -wi 
 vmap <F3> <ESC>:Ggrep! -w <S-Ins>
 vmap <S-F3> <ESC>:Ack! -w <S-Ins>
