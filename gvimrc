@@ -7,5 +7,5 @@ if has("gui_macvim")
 else
   set guifont="Inconsolate Medium 12"
 endif
-set guioptions=aegitc
+set guioptions=egitc
 set guipty

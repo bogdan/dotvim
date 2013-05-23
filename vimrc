@@ -244,6 +244,30 @@ map ,t :wa<CR>:Rake<CR>:bot copen<CR>
 map ,r :wa<CR>:Rake -<CR>:bot copen<CR>
 map ,T :wa<CR>:.Rake<CR>:bot copen<CR>
 
+let g:rails_projections = {
+    \ "config/*.yml": {
+    \   "command": "yml"
+    \ },
+    \ "app/services/*.rb": {
+    \   "command": "service"
+    \ },
+    \ "app/grids/*.rb": {
+    \   "command": "grid",
+    \   "affinity": "model"
+    \ },
+    \ "app/uploaders/*_uploader.rb": {
+    \   "command": "uploader",
+    \   "template":
+    \     "class %SUploader < CarrierWave::Uploader::Base\nend",
+    \   "test": [
+    \     "test/unit/%s_uploader_test.rb",
+    \     "spec/models/%s_uploader_spec.rb"
+    \   ],
+    \   "keywords": "process version"
+    \ },
+    \ "features/support/*.rb": {"command": "support"},
+    \ "features/support/env.rb": {"command": "support"}}
+
 
 " Ultisnips
 

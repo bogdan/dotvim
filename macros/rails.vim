@@ -5,15 +5,14 @@ command! -nargs=0 RVschema :RVfind db/schema.rb
 
 
 
-Rnavcommand jade app/jades/ -suffix=.jade
-Rnavcommand service app/services/ -suffix=.rb
+"Rnavcommand service app/services/ -suffix=.rb
 Rnavcommand worker app/workers/ -suffix=.rb
 Rnavcommand factory spec/factories/ -suffix=.rb
-Rnavcommand task lib/tasks -suffix=.rake
+"Rnavcommand task lib/tasks -suffix=.rake
 Rnavcommand shared spec/traits -suffix=.rb
-Rnavcommand grid app/grids -suffix=.rb
+"Rnavcommand grid app/grids -suffix=.rb
 Rnavcommand trait app/traits -suffix=.rb
-Rnavcommand yml config -suffix=.yml
+"Rnavcommand yml config -suffix=.yml
 Rnavcommand acceptance spec/acceptance -suffix=.rb
 
 let g:rake_ctags_arguments='--regex-ruby="/^[ \t]*(attr_accessor|has_many|belongs_to|has_one|scope|alias|alias_method|named_scope)[ \t(]+:([A-Za-z_]+).*$/\2/f,function/"'
