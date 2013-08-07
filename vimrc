@@ -203,6 +203,9 @@ map <M-H> <C-w>h
 map <M-J> <C-w>j
 map <M-K> <C-w>k
 map <M-L> <C-w>l
+map <M-O> <C-w>o
+map <M-{> <C-w>[
+map <M-}> <C-w>]
 
 
 "set patchmode=on
@@ -462,4 +465,16 @@ function! SendToCommand(UserCommand) range
 endfunction
 
 au BufRead,BufNewFile *.hamlc set ft=haml
+
+autocmd FileType cucumber compiler cucumber | setl makeprg=cucumber\ \"%:p\"
+autocmd FileType ruby
+      \ if expand('%') =~# '_test\.rb$' |
+      \   compiler rubyunit | setl makeprg=testrb\ \"%:p\" |
+      \ elseif expand('%') =~# '_spec\.rb$' |
+      \   compiler rspec | setl makeprg=zeus\ rspec\ \"%:p\" |
+      \ else |
+      \   compiler ruby | setl makeprg=ruby\ -wc\ \"%:p\" |
+      \ endif
+"autocmd User Bundler
+      "\ if &makeprg !~# 'bundle' | setl makeprg^=bundle\ exec\  | endif
 

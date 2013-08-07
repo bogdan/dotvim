@@ -116,12 +116,9 @@ snippet attrm "attrm"
 ${1:obj}.attr({'${2:attr1}': '${3:value1}', '${4:attr2}': '${5:value2}'})${6}
 endsnippet
 snippet bef "bef"
-before_each(function(){
+beforeEach(function(){
 	${1}	
 });${2}
-endsnippet
-snippet before "before"
-${1:obj}.before('${2:Some text <b>and bold!</b>}')${3}
 endsnippet
 snippet bind "bind"
 ${1:obj}.bind('${2:event name}', function(${3:event}) {
@@ -239,8 +236,8 @@ focus(function() {
 });
 endsnippet
 snippet for "for"
-for (var <+i+>=0; <+i+> < <+<+Things+>.length+>; <+i+>++) {
-<+<+Things+>[<+i+>]+>
+for (var ${1}=0; $1 < ${2}.length; $1++) {
+	${3}
 };
 endsnippet
 snippet get "get"

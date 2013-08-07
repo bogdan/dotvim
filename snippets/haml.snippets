@@ -1,3 +1,7 @@
+snippet dbg "dbg"
+- require 'debugger'
+- debugger
+endsnippet
 snippet conf "conf"
 - content_for :${1:yield_label_in_layout} do
   ${2}
@@ -113,5 +117,7 @@ endsnippet
 snippet unl "unl"
 - unless ${1}
   ${2}
-
+endsnippet
+snippet img "img"
+%img{src: "${1}"}
 endsnippet
