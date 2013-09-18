@@ -254,9 +254,21 @@ let g:rails_projections = {
     \ "app/services/*.rb": {
     \   "command": "service"
     \ },
+    \ "app/views/public/themes/*": {
+    \   "command": "theme"
+    \ },
     \ "app/grids/*.rb": {
     \   "command": "grid",
-    \   "affinity": "model"
+    \   "affinity": "model",
+    \   "related": 'app/models/%i.rb'
+    \ },
+    \ "spec/features/*_spec.rb": {
+    \   "command": "feature",
+    \ },
+    \ "spec/factories/*.rb": {
+    \   "command": "factory",
+    \   "affinity": "model",
+    \   "related": "app/models/%i.rb",
     \ },
     \ "app/uploaders/*_uploader.rb": {
     \   "command": "uploader",
@@ -405,12 +417,12 @@ function! MyGrep(ending)
   call feedkeys(cmd.' '.a:ending)
 endfunction
 
-nmap <F3> :call MyGrep('"<cword>" ')<CR>
+nmap <F3> :call MyGrep('"'.expand('<cword>').'" ')<CR>
 nmap <S-F3> <ESC>viw<ESC>:Ack! -w "<cword>" 
 nmap <F4> :call MyGrep("")<CR>
 nmap <S-F4> <ESC>viw<ESC>:Ack! -wi 
-vmap <F3> <ESC>:Ggrep! -w <S-Ins>
-vmap <S-F3> <ESC>:Ack! -w <S-Ins>
+"vmap <F3> <ESC>:Ggrep! -w <S-Ins>
+"vmap <S-F3> <ESC>:Ack! -w <S-Ins>
 
 function! ResetVim()
   let ft=&ft

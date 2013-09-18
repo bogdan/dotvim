@@ -23,3 +23,40 @@ tags:
 - ${3:two}
 ---
 endsnippet
+
+snippet ct "{% ct '' %}" w
+{% ct '${1:title}' %}
+endsnippet
+
+snippet - "{% _ %}" i
+{% ${1} %}
+endsnippet
+
+snippet = "{{  }}" i
+{{ ${1} }}
+endsnippet
+
+snippet p "p=''" w
+${1:class}="${2}"
+endsnippet
+
+snippet f "function() {}" w
+function(${1}) {
+	${2}
+}
+endsnippet
+
+snippet	if "if" w
+{% if ${1} %}
+{% endif %}
+endsnippet
+snippet	ife "if else" w
+{% if ${1} %}
+	${2}
+{% else %}
+	${3}
+{% endif %}
+endsnippet
+snippet el "else" w
+{% else %}
+endsnippet
