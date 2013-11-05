@@ -124,3 +124,6 @@
 [submodule "bundle/dispatch"]
 	path = bundle/dispatch
 	url = gh:tpope/vim-dispatch
+[submodule "bundle/file-line"]
+	path = bundle/file-line
+	url = https://github.com/bogado/file-line.git

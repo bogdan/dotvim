@@ -203,6 +203,9 @@ map <M-H> <C-w>h
 map <M-J> <C-w>j
 map <M-K> <C-w>k
 map <M-L> <C-w>l
+map <M-O> <C-w>o
+map <M-{> <C-w>[
+map <M-}> <C-w>]
 
 
 "set patchmode=on
@@ -243,6 +246,42 @@ command! Re :source ~/.vimrc
 map ,t :wa<CR>:Rake<CR>:bot copen<CR>
 map ,r :wa<CR>:Rake -<CR>:bot copen<CR>
 map ,T :wa<CR>:.Rake<CR>:bot copen<CR>
+
+let g:rails_projections = {
+    \ "config/*.yml": {
+    \   "command": "yml"
+    \ },
+    \ "app/services/*.rb": {
+    \   "command": "service"
+    \ },
+    \ "app/views/public/themes/*": {
+    \   "command": "theme"
+    \ },
+    \ "app/grids/*.rb": {
+    \   "command": "grid",
+    \   "affinity": "model",
+    \   "related": 'app/models/%i.rb'
+    \ },
+    \ "spec/features/*_spec.rb": {
+    \   "command": "feature",
+    \ },
+    \ "spec/factories/*.rb": {
+    \   "command": "factory",
+    \   "affinity": "model",
+    \   "related": "app/models/%i.rb",
+    \ },
+    \ "app/uploaders/*_uploader.rb": {
+    \   "command": "uploader",
+    \   "template":
+    \     "class %SUploader < CarrierWave::Uploader::Base\nend",
+    \   "test": [
+    \     "test/unit/%s_uploader_test.rb",
+    \     "spec/models/%s_uploader_spec.rb"
+    \   ],
+    \   "keywords": "process version"
+    \ },
+    \ "features/support/*.rb": {"command": "support"},
+    \ "features/support/env.rb": {"command": "support"}}
 
 
 " Ultisnips
@@ -378,12 +417,12 @@ function! MyGrep(ending)
   call feedkeys(cmd.' '.a:ending)
 endfunction
 
-nmap <F3> :call MyGrep('"<cword>" ')<CR>
+nmap <F3> :call MyGrep('"'.expand('<cword>').'" ')<CR>
 nmap <S-F3> <ESC>viw<ESC>:Ack! -w "<cword>" 
 nmap <F4> :call MyGrep("")<CR>
 nmap <S-F4> <ESC>viw<ESC>:Ack! -wi 
-vmap <F3> <ESC>:Ggrep! -w <S-Ins>
-vmap <S-F3> <ESC>:Ack! -w <S-Ins>
+"vmap <F3> <ESC>:Ggrep! -w <S-Ins>
+"vmap <S-F3> <ESC>:Ack! -w <S-Ins>
 
 function! ResetVim()
   let ft=&ft
@@ -438,4 +477,16 @@ function! SendToCommand(UserCommand) range
 endfunction
 
 au BufRead,BufNewFile *.hamlc set ft=haml
+
+autocmd FileType cucumber compiler cucumber | setl makeprg=cucumber\ \"%:p\"
+autocmd FileType ruby
+      \ if expand('%') =~# '_test\.rb$' |
+      \   compiler rubyunit | setl makeprg=testrb\ \"%:p\" |
+      \ elseif expand('%') =~# '_spec\.rb$' |
+      \   compiler rspec | setl makeprg=zeus\ rspec\ \"%:p\" |
+      \ else |
+      \   compiler ruby | setl makeprg=ruby\ -wc\ \"%:p\" |
+      \ endif
+"autocmd User Bundler
+      "\ if &makeprg !~# 'bundle' | setl makeprg^=bundle\ exec\  | endif
 
