@@ -1,7 +1,7 @@
-snippet Yd "Yd"
+snippet Yd "YAML.dump()"
 YAML.dump(${1})
 endsnippet
-snippet Yl "Yl"
+snippet Yl "YAML.load()"
 YAML.load(${1})
 endsnippet
 snippet am "am"
@@ -10,6 +10,12 @@ endsnippet
 snippet api "api"
 #
 # API
+#
+
+endsnippet
+snippet clb "callbacks"
+#
+# Callbacks
 #
 
 endsnippet
@@ -113,7 +119,7 @@ endsnippet
 snippet df "df"
 def ${1:name}
 	${2}
-end # $1
+end
 
 endsnippet
 snippet dfa "dfa"
@@ -295,6 +301,10 @@ endsnippet
 snippet dbg "debugger" w
 require 'debugger'
 debugger
+endsnippet
+snippet bb "byebug" w
+require 'byebug'
+byebug
 endsnippet
 
 snippet pa "params[:id]" w
@@ -591,9 +601,6 @@ endsnippet
 snippet vuo "vuo"
 validates_uniqueness_of :${1:attribute}${2:, :scope => [:${3}]}
 endsnippet
-snippet mrc "mrc"
-remove_column :${1:column}
-endsnippet
 snippet mrmc "mrmc"
 remove_column :${1:table}, :${2:column}
 endsnippet
@@ -708,9 +715,6 @@ context "after #${1:save!}" do
 	end
 	${2}
 end
-endsnippet
-snippet ex "ex"
-exactly(${1:n}).times
 endsnippet
 snippet fc "fc"
 FactoryGirl.create(:${1:`!v Snippet_RubyFactoryNameFromFilename()`}, ${2})
@@ -923,14 +927,6 @@ snippet shnrt "shnrt"
 ${1:target}.should_not respond_to(:${2:sym})
 ${3}
 endsnippet
-snippet shns "shns"
-${1:target}.should_not satisfy { |${2:obj}| ${3} }
-${4}
-endsnippet
-snippet shnt "shnt"
-lambda { ${1} }.should_not throw_symbol(:${2:symbol})
-${3}
-endsnippet
 snippet shp "shp"
 ${1:target}.should be_${2:predicate}
 endsnippet
@@ -950,27 +946,44 @@ snippet shrt "shrt"
 ${1:target}.should respond_to(:${2:sym})
 ${3}
 endsnippet
-snippet shs "shs"
-${1:target}.should satisfy { |${2:obj}| ${3} }
-${4}
-endsnippet
-snippet sht "sht"
-${1:target}.should throw_symble(:${2:symbol})
-${3}
-endsnippet
-snippet shtemp "shtemp"
-response.should render_template(:${1:template})
-${2}
-endsnippet
 snippet st "st"
 stubs(:${1}).returns(${2})
 endsnippet
 snippet subj "subj"
-subject { ${1:Factory.build(described_class.to_s.underscore)} }
+subject { ${1:build(${2:described_class.to_s.underscore})} }
+endsnippet
+
+snippet ff "focused: true" w
+, focused: true
 endsnippet
 snippet task "task"
 desc "${1:Task description}"
 task :${2:task_name}${3: => ["${4:dependent}"]} do
 	${5}
 end
+endsnippet
+
+snippet e "expect to"
+expect(${1}).to ${2}
+endsnippet
+snippet ee "expect to equal"
+expect(${1}).to eq(${2})
+endsnippet
+snippet trb "find_in_batches transaction" i
+find_in_batches do |batch|
+	ActiveRecord::Base.transaction do
+		batch.each do |${1}|
+			${2}
+		end
+	end
+end
+endsnippet
+
+snippet lhm "Lhm.change_table" !b
+Lhm.change_table :${1}, stride: 10_000 do |t|
+	t.${2:add_column}
+end
+endsnippet
+snippet	ex "expect() to eq()"
+expect($1).to ${2:eq($3)}
 endsnippet

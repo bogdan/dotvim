@@ -208,8 +208,17 @@ map <M-{> <C-w>[
 map <M-}> <C-w>]
 
 
+nmap <M->> >>
+nmap <M-<> <<
+vmap <M->> >gv
+vmap <M-<> <gv
+
 "set patchmode=on
 
+function! OpenFile()
+  call feedkeys(':e '.@+."\<cr>")
+endfunction
+map <M-q> :call OpenFile()<cr>
 
 
 
@@ -286,8 +295,8 @@ let g:rails_projections = {
 
 " Ultisnips
 
-source ~/.vim/snippets/support_functions.vim
-let g:UltiSnipsSnippetDirectories=["snippets"]
+source ~/.vim/UltiSnips/support_functions.vim
+"let g:UltiSnipsSnippetDirectories=["snippets"]
 let g:UltiSnipsEditSplit='horizontal'
 
 let g:UltiSnipsExpandTrigger="<tab>"
