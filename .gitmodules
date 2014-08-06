@@ -127,3 +127,6 @@
 [submodule "bundle/file-line"]
 	path = bundle/file-line
 	url = https://github.com/bogado/file-line.git
+[submodule "bundle/editqf"]
+	path = bundle/editqf
+	url = https://github.com/jceb/vim-editqf.git

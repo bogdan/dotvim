@@ -9,3 +9,6 @@ else
 endif
 set guioptions=egitc
 set guipty
+
+"let g:loaded_dispatch=1
+"let g:autoloaded_dispatch=1

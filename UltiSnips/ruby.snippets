@@ -202,7 +202,7 @@ class ${1:`!v Snippet_RubyClassNameFromFilename()`}${2}
 
 end
 endsnippet
-snippet k "k"
+snippet k "k" i
 :${1:} => ${2:}
 endsnippet
 snippet la "la"
@@ -303,8 +303,7 @@ require 'debugger'
 debugger
 endsnippet
 snippet bb "byebug" w
-require 'byebug'
-byebug
+require 'byebug'; byebug
 endsnippet
 
 snippet pa "params[:id]" w
@@ -394,13 +393,13 @@ snippet habtm "habtm"
 has_and_belongs_to_many :${1:object}, :join_table => "${2:table_name}", :foreign_key => "${3}_id"${4}
 endsnippet
 snippet hm "hm"
-has_many :${1}, :dependent => :destroy$0
+has_many :${1}, dependent: :destroy$0
 endsnippet
 snippet hmt "hmt"
-has_many :${1:object}, :through => :${2:object}
+has_many :${1:object}, through: :${2:object}
 endsnippet
 snippet ho "ho"
-has_one :${1:object}, :dependent => :destroy$0
+has_one :${1:object}, dependent: :destroy$0
 endsnippet
 snippet mac "mac"
 add_column :${1:table}, :${2:column}, :${3:string}
@@ -428,21 +427,21 @@ create_table :${1} do |t|
 end
 endsnippet
 snippet mctmm "mctmm"
-create_table :${1:}, :id => false do |t|
-	t.integer :${2:}_id, :null => false
-	t.integer :${3:}_id, :null => false
+create_table :${1:}, id: false do |t|
+	t.integer :${2:}_id, null: false
+	t.integer :${3:}_id, null: false
 end
 
 
 add_index :$1, :$2_id
-add_index :$1, [:$3_id, :$2_id], :unique => true
+add_index :$1, [:$3_id, :$2_id], unique: true
 
-add_foreign_key :$1, :$2_id, :references => :$2s, :on_delete => :cascade
-add_foreign_key :$1, :$3_id, :references => :$3s, :on_delete => :cascade
+add_foreign_key :$1, :$2_id, references: :$2s, on_delete: :cascade
+add_foreign_key :$1, :$3_id, references: :$3s, on_delete: :cascade
 endsnippet
 snippet mfk "mfk"
 add_index :${1:}, :${2:}_id
-add_foreign_key :$1, :$2_id, :references => :${3:$2}s, :on_delete => :${4:restrict}
+add_foreign_key :$1, :$2_id, references: :${3:$2}s, on_delete: :${4:restrict}
 
 endsnippet
 snippet migration "migration"
@@ -455,16 +454,6 @@ class ${1:`!v Snippet_MigrationNameFromFilename()`} < ActiveRecord::Migration
 	end
 end
 endsnippet
-snippet ns "ns"
-named_scope :${1}, :${2:conditions} => ${3}
-endsnippet
-snippet nsp "nsp"
-named_scope :${1}, lambda { |${2}| 
-  { 
-    :${3:conditions} => ${4},
-  } 
-}
-endsnippet
 snippet pid "pid"
 params[:${1}id]
 endsnippet
@@ -472,7 +461,7 @@ snippet rest "rest"
 respond_to do |f|
 	f.html { ${1} }
 	f.json do
-		render :json => {${2}}
+		render json: {${2}}
 	end
 end
 endsnippet
@@ -511,11 +500,8 @@ endsnippet
 snippet tcb "tcb"
 t.boolean :${1:truthly}
 endsnippet
-snippet tcbi "tcbi"
-t.binary :${1}, :limit => ${2:2.megabytes}
-endsnippet
 snippet tcd "tcd"
-t.decimal :${1:value}, :precision => ${2:2}, :scale => ${3:10}
+t.decimal :${1:value}, precision: ${2:2}, scale: ${3:10}
 endsnippet
 snippet tcda "tcda"
 t.date :${1:date}
@@ -531,12 +517,6 @@ t.change :${1}, :${2:string}
 endsnippet
 snippet tci "tci"
 t.integer :${1:id}
-endsnippet
-snippet tcl "tcl"
-t.integer :lock_version, :null => false, :default => 0
-endsnippet
-snippet tcr "tcr"
-t.references :${1}, :polymorphic = { :default => '${2}' }
 endsnippet
 snippet tcs "tcs"
 t.string :${1:title}
@@ -986,4 +966,7 @@ end
 endsnippet
 snippet	ex "expect() to eq()"
 expect($1).to ${2:eq($3)}
+endsnippet
+snippet pry "binding.pry" !b
+binding.pry
 endsnippet

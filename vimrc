@@ -252,9 +252,10 @@ command! Re :source ~/.vimrc
 
 " Rails
 
-map ,t :wa<CR>:Rake<CR>:bot copen<CR>
-map ,r :wa<CR>:Rake -<CR>:bot copen<CR>
-map ,T :wa<CR>:.Rake<CR>:bot copen<CR>
+ 
+map ,t :wa<CR>:call setqflist(['Working...'])<CR>:Rake<CR>:bot cwindow<CR>
+map ,r :wa<CR>:call setqflist(['Working...'])<CR>:Rake -<CR>:bot cwindow<CR>
+map ,T :wa<CR>:call setqflist(['Working...'])<CR>:.Rake<CR>:bot cwindow<CR>
 
 let g:rails_projections = {
     \ "config/*.yml": {
