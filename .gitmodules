@@ -130,3 +130,9 @@
 [submodule "bundle/editqf"]
 	path = bundle/editqf
 	url = https://github.com/jceb/vim-editqf.git
+[submodule "bundle/cjsx"]
+	path = bundle/cjsx
+	url = https://github.com/mtscout6/vim-cjsx.git
+[submodule "bundle/projectionist"]
+	path = bundle/projectionist
+	url = https://github.com/tpope/vim-projectionist.git
