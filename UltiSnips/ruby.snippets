@@ -311,7 +311,7 @@ params[:${1:id}]
 endsnippet
 
 snippet anaf "accepts_nested_attributes_for"
-accepts_nested_attributes_for :${1:association_name}${2:${3:, :allow_destroy => true}${4:, :reject_if => proc \{ |obj| ${5:obj.blank?} \}}}
+accepts_nested_attributes_for :${1:association_name}${2:${3:, allow_destroy: true}${4:, reject_if: proc \{ |obj| ${5:obj.blank?} \}}}
 endsnippet
 snippet asc "asc"
 #
@@ -340,7 +340,7 @@ def create
 		flash[:notice] = '$2 was successfully created.'
 		redirect_to(@$1) 
 	else
-		render :action => "new" 
+		render action: "new" 
 	end
 end
 endsnippet
@@ -376,12 +376,12 @@ def update
   	flash[:notice] = '${2} was successfully updated.'
   	redirect_to(@$1) 
   else
-  	render :action => :edit 
+  	render action: :edit 
   end
 end
 endsnippet
 snippet dso "dso"
-default_scope :order => "${1:created_at desc}"
+default_scope order: "${1:created_at desc}"
 endsnippet
 snippet fl "fl"
 flash[:${1:notice}] = "${2}"
@@ -390,7 +390,7 @@ snippet fpid "fpid"
 find(params[:${1}id])
 endsnippet
 snippet habtm "habtm"
-has_and_belongs_to_many :${1:object}, :join_table => "${2:table_name}", :foreign_key => "${3}_id"${4}
+has_and_belongs_to_many :${1:object}, join_table: "${2:table_name}", foreign_key: "${3}_id"${4}
 endsnippet
 snippet hm "hm"
 has_many :${1}, dependent: :destroy$0
@@ -403,6 +403,9 @@ has_one :${1:object}, dependent: :destroy$0
 endsnippet
 snippet mac "mac"
 add_column :${1:table}, :${2:column}, :${3:string}
+endsnippet
+snippet mai "mai"
+add_index :${1:table}, [:${2:column}]${3:, unique: true}
 endsnippet
 snippet mbs "mbs"
 before_save :${1:method}
@@ -555,16 +558,16 @@ snippet vco "vco"
 validates_confirmation_of :${1:attribute}
 endsnippet
 snippet veo "veo"
-validates_exclusion_of :${1:attribute}, :in => ${2:%w( mov avi )}
+validates_exclusion_of :${1:attribute}, in: ${2:%w( mov avi )}
 endsnippet
 snippet vfo "vfo"
-validates_format_of :${1:attribute}, :with => /${2:regex}/
+validates_format_of :${1:attribute}, with: /${2:regex}/
 endsnippet
 snippet vio "vio"
-validates_inclusion_of :${1:attribute}, :in => ${2}
+validates_inclusion_of :${1:attribute}, in: ${2}
 endsnippet
 snippet vlo "vlo"
-validates_length_of :${1:attribute}, :within => ${2:3}..${3:20}
+validates_length_of :${1:attribute}, within: ${2:3}..${3:20}
 endsnippet
 snippet vld "vld"
 #
@@ -579,7 +582,7 @@ snippet vpo "vpo"
 validates_presence_of :${1:attribute}
 endsnippet
 snippet vuo "vuo"
-validates_uniqueness_of :${1:attribute}${2:, :scope => [:${3}]}
+validates_uniqueness_of :${1:attribute}${2:, scope: [:${3}]}
 endsnippet
 snippet mrmc "mrmc"
 remove_column :${1:table}, :${2:column}
@@ -615,7 +618,7 @@ snippet avfn "avfn"
 it {should_not accept_values_for(:${1}, ${2:nil})}
 endsnippet
 snippet bef "bef"
-before(:each) do
+before do
 	${1}
 end
 endsnippet
@@ -810,10 +813,15 @@ snippet shbs "shbs"
 response.should be_success
 ${1}
 endsnippet
-snippet shc "shc"
-lambda do
+snippet exc "exc"
+expect(->{
 	${1}
-end.should change(${2:described_class}, :${3:count}).by(${4:1})
+}).to change(${2:described_class}, :${3:count}).by(${4:1})
+endsnippet
+snippet exr "exr"
+expect(->{
+	${1}
+}).to raise_error(${2:StandardError})
 endsnippet
 snippet shdm "shdm"
 ${1:target}.should match(/${2:regexp}/)
@@ -943,12 +951,6 @@ task :${2:task_name}${3: => ["${4:dependent}"]} do
 end
 endsnippet
 
-snippet e "expect to"
-expect(${1}).to ${2}
-endsnippet
-snippet ee "expect to equal"
-expect(${1}).to eq(${2})
-endsnippet
 snippet trb "find_in_batches transaction" i
 find_in_batches do |batch|
 	ActiveRecord::Base.transaction do

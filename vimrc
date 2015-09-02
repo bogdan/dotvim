@@ -272,6 +272,10 @@ let g:rails_projections = {
     \   "affinity": "model",
     \   "related": 'app/models/%i.rb'
     \ },
+    \ "app/workers/*.rb": {
+    \   "command": "worker",
+    \   "affinity": "model",
+    \ },
     \ "spec/features/*_spec.rb": {
     \   "command": "feature",
     \ },
@@ -290,7 +294,7 @@ let g:rails_projections = {
     \   ],
     \   "keywords": "process version"
     \ },
-    \ "features/support/*.rb": {"command": "support"},
+    \ "script/support/*.rb": {"command": "support"},
     \ "features/support/env.rb": {"command": "support"}}
 
 
@@ -321,10 +325,19 @@ let g:syntastic_enable_signs=1
 map <F5> :NERDTreeToggle<CR>
 imap <F5> <ESC>:NERDTreeToggle<CR>a
 
+let NERDTreeMinimalUI=1 
 " Yank ring
 
 let g:yankring_history_dir = '~/.vim/'
 let g:yankring_manual_clipboard_check = 0
+
+" Vim tag
+
+let g:vim_tags_auto_generate=0
+let g:vim_tags_ignore_files = ['.gitignore', '.svnignore', '.cvsignore', 'tmp']
+let g:custom_ctag_options =  '--regex-ruby="/^[ \t]*(trait|attr_accessor|has_many|belongs_to|has_one|metric|scope|alias|alias_method|named_scope|factory|define_method|class_attribute)[ \t(]+:([A-Za-z_]+).*$/\2/f,function/"'
+let g:vim_tags_project_tags_command = "{CTAGS} -R ".custom_ctag_options." {OPTIONS} {DIRECTORY} 2>/dev/null"
+
 
 "let g:yankstack_map_keys = 0
 
