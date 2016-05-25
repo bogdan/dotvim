@@ -136,3 +136,6 @@
 [submodule "bundle/projectionist"]
 	path = bundle/projectionist
 	url = https://github.com/tpope/vim-projectionist.git
+[submodule "bundle/vim-tags"]
+	path = bundle/vim-tags
+	url = gh:szw/vim-tags
