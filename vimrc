@@ -341,6 +341,8 @@ let g:vim_tags_ignore_files = ['.gitignore', '.svnignore', '.cvsignore', 'tmp']
 let g:custom_ctag_options =  '--regex-ruby="/^[ \t]*(trait|attr_accessor|has_many|belongs_to|has_one|metric|scope|alias|alias_method|named_scope|factory|define_method|class_attribute)[ \t(]+:([A-Za-z_]+).*$/\2/f,function/"'
 let g:vim_tags_project_tags_command = "{CTAGS} -R ".custom_ctag_options." {OPTIONS} {DIRECTORY} 2>/dev/null"
 
+map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+
 
 "let g:yankstack_map_keys = 0
 
@@ -358,6 +360,7 @@ let g:bufExplorerShowRelativePath=1
 let g:dbext_default_history_file = 'tmp/dbext_sql_history.sql'
 let g:dbext_table_names_number = 2
 let g:dbext_table_names_case = 2
+let g:dbext_default_prompt_for_parameters=0
 map <Leader>sc :DBResultsClose<CR>
 map <Leader>sr :DBResultsRefresh<CR>
 
@@ -418,6 +421,7 @@ inoremap <C-U> <C-G>u<C-U>
     
 
 map <F2> :wa<CR>
+vmap <F2> <ESC>:wa<CR>gv
 imap <F2> <ESC>:wa<CR>a
 
 vmap <C-c> "+y<ESC>
@@ -515,4 +519,15 @@ autocmd FileType ruby
       \ endif
 "autocmd User Bundler
       "\ if &makeprg !~# 'bundle' | setl makeprg^=bundle\ exec\  | endif
+
+
+" Trim whitespace
+fun! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+
+autocmd FileType c,cpp,java,php,ruby,python autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 

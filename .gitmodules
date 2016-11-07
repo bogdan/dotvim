@@ -139,3 +139,9 @@
 [submodule "bundle/vim-tags"]
 	path = bundle/vim-tags
 	url = gh:szw/vim-tags
+[submodule "bundle/indexed-search"]
+	path = bundle/indexed-search
+	url = gh:henrik/vim-indexed-search
+[submodule "bundle/auto-pairs"]
+	path = bundle/auto-pairs
+	url = gh:jiangmiao/auto-pairs
