@@ -319,10 +319,10 @@ snippet asc "asc"
 #
 
 endsnippet
-snippet bf "bf"
+snippet ba "before_action"
 before_filter :${1:method}
 endsnippet
-snippet bfm "bfm"
+snippet bam "before_action with method"
 before_filter :${1:method}
 
 def ${1/(\w+).*/$1/}
@@ -972,6 +972,9 @@ endsnippet
 snippet	exn "expect() to_not eq()"
 expect($1).to_not ${2:eq($3)}
 endsnippet
-snippet bp "binding.pry" !b
+snippet bp "binding.pry" w
 require 'pry-byebug';binding.pry
+endsnippet
+snippet	fsl "frozen_string_literal"
+# frozen_string_literal: true
 endsnippet

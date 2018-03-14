@@ -1,6 +1,3 @@
-[submodule "bundle/dbext"]
-	path = bundle/dbext
-	url = gh:/bogdan/dbext
 [submodule "bundle/vim-liquid"]
 	path = bundle/vim-liquid
 	url = https://github.com/tpope/vim-liquid.git
@@ -145,3 +142,6 @@
 [submodule "bundle/auto-pairs"]
 	path = bundle/auto-pairs
 	url = gh:jiangmiao/auto-pairs
+[submodule "bundle/dadbod"]
+	path = bundle/dadbod
+	url = gh:tpope/vim-dadbod

@@ -2,7 +2,7 @@ colorscheme inkpot
 if has("gui_macvim")
   macm Tools.List\ Errors key=<nop>
   set macmeta
-  set guifont=Inconsolata:h18
+  set guifont=Inconsolata:h20
   set clipboard=unnamed
 else
   set guifont="Inconsolate Medium 16"

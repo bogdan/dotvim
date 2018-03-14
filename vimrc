@@ -21,6 +21,8 @@ set hlsearch    "hilight searches by default
 " Set ignore case search
 set ic
 
+set diffopt=filler,iwhite,vertical
+
 autocmd Bufread * set wrap
 set wrap
 
@@ -264,10 +266,7 @@ let g:rails_projections = {
     \ "app/services/*.rb": {
     \   "command": "service"
     \ },
-    \ "app/views/public/themes/*": {
-    \   "command": "theme"
-    \ },
-    \ "app/grids/*.rb": {
+    \ "app/grids/*_grid.rb": {
     \   "command": "grid",
     \   "affinity": "model",
     \   "related": 'app/models/%i.rb'
@@ -284,18 +283,9 @@ let g:rails_projections = {
     \   "affinity": "model",
     \   "related": "app/models/%i.rb",
     \ },
-    \ "app/uploaders/*_uploader.rb": {
-    \   "command": "uploader",
-    \   "template":
-    \     "class %SUploader < CarrierWave::Uploader::Base\nend",
-    \   "test": [
-    \     "test/unit/%s_uploader_test.rb",
-    \     "spec/models/%s_uploader_spec.rb"
-    \   ],
-    \   "keywords": "process version"
-    \ },
-    \ "script/support/*.rb": {"command": "support"},
-    \ "features/support/env.rb": {"command": "support"}}
+    \ "app/liquid/*": {"command": "liquid"},
+    \ "support/2018/*.rb": {"command": "support"}}
+    "\ "features/support/env.rb": {"command": "support"}}
 
 
 " Ultisnips
@@ -462,7 +452,6 @@ function! ResetVim()
   if exists('b:rails_root')
     Rrefresh
   endif
-   
 endfunction
 
 map <F11> :call ResetVim()<CR>:source ~/.vimrc<CR>

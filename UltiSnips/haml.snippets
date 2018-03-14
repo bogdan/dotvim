@@ -131,6 +131,11 @@ snippet pc "pre code"
 		:preserve
 			${2}
 endsnippet
+snippet ol "ol li li"
+%ol
+	%li ${1}
+	%li ${2}
+endsnippet
 snippet ul "ul li li"
 %ul
 	%li ${1}
@@ -141,3 +146,6 @@ snippet sec "section"
 	${1}
 endsnippet
 
+snippet a "%a{href: ''}" !b
+%a{href: $1}$2
+endsnippet
