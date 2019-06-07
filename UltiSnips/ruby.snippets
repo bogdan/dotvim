@@ -203,7 +203,7 @@ class ${1:`!v Snippet_RubyClassNameFromFilename()`}${2}
 end
 endsnippet
 snippet k "k" i
-:${1:} => ${2:}
+${1:}: $1${2:}
 endsnippet
 snippet la "la"
 lambda { |${1:id}| ${2}}
@@ -490,7 +490,7 @@ snippet sc "sc"
 scope :${1}, ${2:where()}
 endsnippet
 snippet scp "scp"
-scope :${1}, lambda { |${2}| 
+scope :${1}, ->(${2}) {
   where(${3})
 }
 endsnippet
@@ -652,7 +652,7 @@ require 'spec_helper'
 
 describe ${1:`!v Snippet_RubySpecNameFromFilename()`} do
   
-	subject { FactoryGirl.build(:${2:`!v Snippet_RubyFactoryNameFromFilename()`}) }
+	subject { build(:${2:`!v Snippet_RubyFactoryNameFromFilename()`}) }
 
 	it {should be_valid}
 
@@ -700,29 +700,29 @@ context "after #${1:save!}" do
 end
 endsnippet
 snippet fc "fc"
-FactoryGirl.create(:${1:`!v Snippet_RubyFactoryNameFromFilename()`}, ${2})
+create(:${1:`!v Snippet_RubyFactoryNameFromFilename()`}, ${2})
 endsnippet
 snippet fca "fca"
 association :${1}
 endsnippet
 snippet fcat "fcat"
-FactoryGirl.attributes_for(:${1:`!v Snippet_RubyFactoryNameFromFilename()`})
+attributes_for(:${1:`!v Snippet_RubyFactoryNameFromFilename()`})
 endsnippet
 snippet fcb "fcb"
-FactoryGirl.build(:${1:`!v Snippet_RubyFactoryNameFromFilename()`})
+build(:${1:`!v Snippet_RubyFactoryNameFromFilename()`})
 endsnippet
 snippet fcc "fcc"
-FactoryGirl.create(:${1:`!v Snippet_RubyFactoryNameFromFilename()`})
+create(:${1:`!v Snippet_RubyFactoryNameFromFilename()`})
 endsnippet
 snippet fcd "fcd"
-FactoryGirl.define do
+FactoryBot.define do
   factory :${1} do
     ${2}
   end
 end
 endsnippet
 snippet fcn "fcn"
-FactoryGirl.next(:${1:sequence-name})
+FactoryBot.next(:${1:sequence-name})
 endsnippet
 snippet fcs "fcs"
 f.sequence(:${1}) {|n| "${2}#{n}"}

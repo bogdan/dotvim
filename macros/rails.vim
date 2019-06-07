@@ -17,4 +17,5 @@ command! -nargs=0 RVschema :RVfind db/schema.rb
 
 let g:ctags_command='ctags'
 let g:rake_ctags_arguments='--regex-ruby="/^[ \t]*(trait|attr_accessor|has_many|belongs_to|has_one|metric|scope|alias|alias_method|named_scope|factory|define_method|class_attribute)[ \t(]+:([A-Za-z_]+).*$/\2/f,function/"'
-let g:rails_ctags_arguments='--exclude='.RailsRoot().'/tmp --exclude='.RailsRoot().'/public/system --exclude='.RailsRoot().'/public/uploads --languages=-javascript --langdef=coffee --langmap=coffee:.coffee --regex-coffee="/^class ([A-Za-z.]+)( extends [A-Za-z.]+)?$/\1/c,class/" --regex-coffee="/^[ \t]*@?([A-Za-z.]+):.*[-=]>.*$/\1/f,function/" --regex-coffee="/^[ \t]*([A-Za-z.]+)[ \t]+=.*[-=]>.*$/\1/f,function/" --regex-coffee="/^[ \t]*([A-Za-z.]+)[ \t]+=[^->\n]*$/\1/v,variable/" '.g:rake_ctags_arguments
+let root = rails#app().path()
+let g:rails_ctags_arguments='--exclude='.root.'/tmp --exclude='.root.'/public/system --exclude='.root.'/public/uploads --languages=-javascript --langdef=coffee --langmap=coffee:.coffee --regex-coffee="/^class ([A-Za-z.]+)( extends [A-Za-z.]+)?$/\1/c,class/" --regex-coffee="/^[ \t]*@?([A-Za-z.]+):.*[-=]>.*$/\1/f,function/" --regex-coffee="/^[ \t]*([A-Za-z.]+)[ \t]+=.*[-=]>.*$/\1/f,function/" --regex-coffee="/^[ \t]*([A-Za-z.]+)[ \t]+=[^->\n]*$/\1/v,variable/" '.g:rake_ctags_arguments

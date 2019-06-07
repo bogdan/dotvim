@@ -17,7 +17,6 @@ endif
 
 iab crt create
 iab Tr Traits
-Abolish req{,s} request{,s}
 Abolish er{,s} error{,s}
 Abolish ele{,s} element{,s}
 Abolish aru{,s} argument{,s}

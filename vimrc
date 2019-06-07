@@ -68,9 +68,6 @@ set statusline+=%c,     "cursor column
 set statusline+=%l/%L   "cursor line/total lines
 set statusline+=\ %P    "percent through file
 set laststatus=2
-if has("gui_macvim")
-  set shell=zsh\ -i
-endif
 
 "indent settings
 set shiftwidth=2
@@ -310,7 +307,10 @@ let g:delimitMate_apostrophes = ''
 " Syntatic
 
 let g:syntastic_enable_signs=1
-let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_javascript_checkers = ['lynt']
+let g:syntastic_typescript_checkers = ['lynt']
+let g:syntastic_scilla_checkers = ['scillachecker']
+let g:syntastic_scilla_scillachecker_args = '-libdir '.$HOME.'/makabu/unstoppable/scilla/src/stdlib'
 
 
 
@@ -327,9 +327,14 @@ let g:yankring_manual_clipboard_check = 0
 " Vim tag
 
 let g:vim_tags_auto_generate=0
-let g:vim_tags_ignore_files = ['.gitignore', '.svnignore', '.cvsignore', 'tmp']
-let g:custom_ctag_options =  '--regex-ruby="/^[ \t]*(trait|attr_accessor|has_many|belongs_to|has_one|metric|scope|alias|alias_method|named_scope|factory|define_method|class_attribute)[ \t(]+:([A-Za-z_]+).*$/\2/f,function/"'
-let g:vim_tags_project_tags_command = "{CTAGS} -R ".custom_ctag_options." {OPTIONS} {DIRECTORY} 2>/dev/null"
+let g:vim_tags_ignore_files = ['.gitignore', '.svnignore', '.cvsignore', 'tmp', 'node_modules']
+let ruby_regex=''
+let javascript_regex=''
+let g:custom_ctag_options = join([ ruby_regex, javascript_regex ])
+let g:vim_tags_project_tags_command = "{CTAGS} -R ".custom_ctag_options." {OPTIONS} {DIRECTORY}"
+
+map g[ :call MyGrep('"def .*'.expand('<cword>').'" ')<CR><CR><CR>
+
 
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
@@ -345,14 +350,6 @@ map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 " Bufexplorer
 let g:bufExplorerShowRelativePath=1
-
-" dbext
-let g:dbext_default_history_file = 'tmp/dbext_sql_history.sql'
-let g:dbext_table_names_number = 2
-let g:dbext_table_names_case = 2
-let g:dbext_default_prompt_for_parameters=0
-map <Leader>sc :DBResultsClose<CR>
-map <Leader>sr :DBResultsRefresh<CR>
 
 " hammer
 let g:HammerQuiet = 1
@@ -408,7 +405,7 @@ map <F1> :call NERDComment(0, 'toggle')<CR>
 
 map <Leader>a :Align
 inoremap <C-U> <C-G>u<C-U>
-    
+
 
 map <F2> :wa<CR>
 vmap <F2> <ESC>:wa<CR>gv
@@ -417,7 +414,7 @@ imap <F2> <ESC>:wa<CR>a
 vmap <C-c> "+y<ESC>
 map <C-v> "+gp
 imap <C-v> <ESC>"+gp
-                                                                                              
+
 map <F6> vi)s<CR>gv:s/,/,\r/g<CR>gv=
 
 " git grep and ack

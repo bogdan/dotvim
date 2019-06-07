@@ -145,3 +145,15 @@
 [submodule "bundle/dadbod"]
 	path = bundle/dadbod
 	url = gh:tpope/vim-dadbod
+[submodule "bundle/jsx"]
+	path = bundle/jsx
+	url = https://github.com/mxw/vim-jsx.git
+[submodule "bundle/vim-jsx-typescript"]
+	path = bundle/vim-jsx-typescript
+	url = https://github.com/peitalin/vim-jsx-typescript.git
+[submodule "bundle/typescript-vim"]
+	path = bundle/typescript-vim
+	url = https://github.com/leafgarland/typescript-vim.git
+[submodule "bundle/vim-test"]
+	path = bundle/vim-test
+	url = gh:janko/vim-test
