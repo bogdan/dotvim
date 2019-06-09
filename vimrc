@@ -55,7 +55,7 @@ set statusline+=%*
 "set statusline+=%{StatuslineTrailingSpaceWarning()}
 
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 "display a warning if &paste is set
@@ -99,7 +99,9 @@ set sidescroll=1
 if has('mouse')
     set mouse=a
 endif
-set ttymouse=xterm2
+if !has('nvim')
+  set ttymouse=xterm2
+endif
 
 "tell the term has 256 colors
 "set t_Co=256
@@ -515,5 +517,20 @@ fun! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfun
 
-autocmd FileType c,cpp,java,php,ruby,python autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+autocmd FileType c,cpp,java,php,ruby,python,typescript,javascript,json autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 
+if has("gui_macvim") || has("gui_vimr")
+  colorscheme inkpot
+  set clipboard=unnamed
+endif
+if has("gui_macvim")
+  set shell=zsh\ -i
+  set guifont=Inconsolata:h20
+  set macmeta
+  macm Tools.List\ Errors key=<nop>
+  set guipty
+  set guioptions=egitc
+endif
+
+"let g:loaded_dispatch=1
+"let g:autoloaded_dispatch=1
