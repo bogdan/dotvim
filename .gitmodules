@@ -157,3 +157,6 @@
 [submodule "bundle/vim-test"]
 	path = bundle/vim-test
 	url = gh:janko/vim-test
+[submodule "bundle/ale"]
+	path = bundle/ale
+	url = https://github.com/w0rp/ale
