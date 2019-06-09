@@ -30,8 +30,6 @@ iab prot protected
 iab priv private
 iab publ public
 iab inc include
-iab ts to_s
-
 
 
 " ActiveRecord
