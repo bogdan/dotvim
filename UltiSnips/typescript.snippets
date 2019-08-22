@@ -1,6 +1,15 @@
+snippet _
+_(${1:object}).${2:method}(${3}).value()
+endsnippet
 snippet ex
 expect(${1}).toEqual(${2:'${3}'})
 endsnippet
 snippet a 
 alert(${1})
+endsnippet
+
+snippet aw "async wrapper function"
+(async () => {
+	${1}
+})()
 endsnippet
