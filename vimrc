@@ -93,6 +93,7 @@ set scrolloff=3
 set sidescrolloff=7
 set sidescroll=1
 
+set autoread
 
 
 "some stuff to get the mouse going in term
@@ -232,10 +233,7 @@ set autowrite
 
 set selection=inclusive
 
-
-
-set isk+=!
-set isk+=?
+autocmd FileType ruby,haml,eruby set isk+=?,!
 autocmd BufReadPost * set isk+=-
 autocmd BufReadPost * set isk-=#
 
@@ -289,6 +287,9 @@ let g:rails_projections = {
 
 " Ultisnips
 
+let g:python2_host_prog = '/usr/local/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
+
 source ~/.vim/UltiSnips/support_functions.vim
 "let g:UltiSnipsSnippetDirectories=["snippets"]
 let g:UltiSnipsEditSplit='horizontal'
@@ -297,6 +298,7 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsNoPythonWarning=1
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips'] 
 
 " Gist
 
@@ -314,6 +316,10 @@ let g:syntastic_typescript_checkers = ['lynt']
 let g:syntastic_scilla_checkers = ['scillachecker']
 let g:syntastic_scilla_scillachecker_args = '-libdir '.$HOME.'/makabu/unstoppable/scilla/src/stdlib'
 
+let g:ale_scilla_checker_libdir = '~/makabu/unstoppable/scilla/src/stdlib'
+let g:ale_lint_on_text_changed = 'never'
+"let g:ale_lint_on_insert_leave = 1
+
 
 
 " NERD tree
@@ -323,8 +329,17 @@ imap <F5> <ESC>:NERDTreeToggle<CR>a
 let NERDTreeMinimalUI=1 
 " Yank ring
 
+map <Leader>r V"0p
 let g:yankring_history_dir = '~/.vim/'
 let g:yankring_manual_clipboard_check = 0
+"let g:yankring_enabled = 0
+"
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
+
+" replace currently selected text with default register
+" without yanking it
+vnoremap <leader>p "_dP
 
 " Vim tag
 
@@ -375,14 +390,11 @@ nmap dif ds(hviwd
 
 autocmd FileType ruby vmap <buffer> ss _$<ESC>oend<ESC>gv_$j>gv_^<ESC>O
 autocmd FileType ruby vmap <buffer> sif _$<ESC>oend<ESC>gv_^<ESC>Oif <ESC>gv_$j=gi
-autocmd FileType haml set isk+=?,!
 autocmd FileType javascript vmap <buffer> sif _$<ESC>o}<ESC>gv_^<ESC>Oif () {}<BS><ESC>gv_$j=gi<ESC>2hi
 autocmd FileType haml vmap <buffer> ss >gv_^<ESC>O<BS>- 
 autocmd FileType haml vmap <buffer> sif >gv_^<ESC>O- if
-autocmd FileType haml set isk+=-,?,!
 autocmd FileType eruby vmap <buffer> ss _$<ESC>o<% end %><ESC>gv_^<ESC>O<%  %><ESC>gv_$j=gi<ESC>2hi
 autocmd FileType eruby vmap <buffer> sif _$<ESC>o<% end %><ESC>gv_^<ESC>O<% if  %><ESC>gv_$j=gi<ESC>2hi
-autocmd FileType eruby set isk+=-,?,!
 
 
 " My keys
@@ -394,7 +406,6 @@ nmap <M-w> <C-w>
 
 cmap w!! %!sudo tee > /dev/null %
 
-nmap <silent> <M-l> :set hlsearch<CR>:let @/='\<'.expand('<cword>').'\>'<CR>
 
 " swap words
 vnoremap <M-s> <Esc>`.``gvP``P
@@ -462,6 +473,7 @@ map + mmgg=G:%s#\s*$##<CR>'m:noh<CR>
 map <C-l> :noh<CR>
 imap <C-l> <space><ESC>,b<ESC>i <ESC>lvi,ec<s-ins><esc>bX,els_
 imap <C-k> <space><ESC>,b<ESC>i <ESC>lvi,ec<s-ins><esc>bX,els
+nmap <silent> <M-l> :set hlsearch<CR>:let @/='\<'.expand('<cword>').'\>'<CR>
 
 map <M-w> <Plug>CamelCaseMotion_w
 map <M-b> <Plug>CamelCaseMotion_b
@@ -470,7 +482,8 @@ map ,w <Plug>CamelCaseMotion_w
 map ,b <Plug>CamelCaseMotion_b
 map ,e <Plug>CamelCaseMotion_e
 
-
+" AutoPairs
+let g:AutoPairsMultilineClose = 0
 
 let g:splitjoin_ruby_curly_braces = 0
 nmap <Leader>j :SplitjoinJoin<cr>
@@ -524,10 +537,9 @@ if has("gui_macvim") || has("gui_vimr")
   set clipboard=unnamed
 endif
 if has("gui_macvim")
-  set shell=zsh\ -i
+  "set shell=zsh\ -i
   set guifont=Inconsolata:h20
   set macmeta
-  macm Tools.List\ Errors key=<nop>
   set guipty
   set guioptions=egitc
 endif
