@@ -160,3 +160,6 @@
 [submodule "bundle/vim-scilla"]
 	path = bundle/vim-scilla
 	url = https://github.com/edisonljh/vim-scilla.git
+[submodule "bundle/neoyank"]
+	path = bundle/neoyank
+	url = https://github.com/Shougo/neoyank.vim.git
