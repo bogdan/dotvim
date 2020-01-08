@@ -163,3 +163,9 @@
 [submodule "bundle/neoyank"]
 	path = bundle/neoyank
 	url = https://github.com/Shougo/neoyank.vim.git
+[submodule "bundle/vim-gh-line"]
+	path = bundle/vim-gh-line
+	url = git@github.com:ruanyl/vim-gh-line.git
+[submodule "bundle/solidity"]
+	path = bundle/solidity
+	url = gh:tomlion/vim-solidity

@@ -308,6 +308,26 @@ let g:gist_clip_command = 'pbcopy'
 
 let g:delimitMate_apostrophes = ''
 
+" Dadbod
+
+let g:development_db=0
+function! SwitchDb()
+  if g:development_db == 1
+    let g:current_db="postgresql://postgres:AsyncAwaitingIsMyReligion128@%2Fcloudsql%2Funstoppable-domains%3Aus-west1%3Aunstoppable-website-production/unstoppable_website_production"
+    let g:development_db=0
+  else
+    let g:current_db="postgresql:unstoppable_website_development" 
+    let g:development_db=1
+  endif
+  echo "Using ".g:current_db
+  command! -bang -nargs=? -range=-1 -complete=custom,db#command_complete Db  exe db#execute_command('<mods>', <bang>0, <line1>, <count>, g:current_db . ' ' . substitute(<q-args>,  '^[al]:\w\+\>\ze\s*\%($\|[^[:space:]=]\)', '\=eval(submatch(0))', ''))
+endfunction
+call SwitchDb()
+map <Leader>n :call SwitchDb()<CR>
+nmap <Leader>e V:Db<CR>
+vmap <Leader>e :Db<CR>
+
+
 " Syntatic
 
 let g:syntastic_enable_signs=1
@@ -316,8 +336,12 @@ let g:syntastic_typescript_checkers = ['lynt']
 let g:syntastic_scilla_checkers = ['scillachecker']
 let g:syntastic_scilla_scillachecker_args = '-libdir '.$HOME.'/makabu/unstoppable/scilla/src/stdlib'
 
-let g:ale_scilla_checker_libdir = '~/makabu/unstoppable/scilla/src/stdlib'
+" ALE
+
 let g:ale_lint_on_text_changed = 'never'
+let g:ale_completion_enabled = 1
+let g:ale_completion_delay = 100
+set completeopt=menu
 "let g:ale_lint_on_insert_leave = 1
 
 
@@ -381,7 +405,6 @@ vmap ss s}gvs"a#<ESC>
 let g:surround_{char2nr('-')} = "<% \r %>"
 let g:surround_{char2nr('=')} = "<%= \r %>"
 let g:surround_{char2nr('f')} = "\1function: \r..*\r&\1(\r)"
-let g:surround_{char2nr("y")} = "try(:\r)"
 
 
 nmap csf lF(hciw
