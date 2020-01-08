@@ -1,15 +1,101 @@
 snippet _
 _(${1:object}).${2:method}(${3}).value()
 endsnippet
+snippet ifs
+import * as fs from 'fs';
+endsnippet
+snippet ild
+import * as _ from 'lodash';
+endsnippet
+snippet i
+import ${2:{${3}}} from '${1}';
+endsnippet
 snippet ex
-expect(${1}).toEqual(${2:'${3}'})
+expect(${1}).toEqual(${2:'${3}'});
 endsnippet
 snippet a 
-alert(${1})
+alert(${1});
 endsnippet
 
 snippet aw "async wrapper function"
 (async () => {
 	${1}
-})()
+})();
+endsnippet
+
+snippet P "Promise<>"
+Promise<${1}>
+endsnippet
+
+snippet des "describe"
+describe("${1}", () => {
+	${2}
+});
+endsnippet
+snippet it "it"
+it("${1}", async () => {
+	${2}
+});
+endsnippet
+snippet test "test"
+test("${1}", async () => {
+	${2}
+});
+endsnippet
+snippet	sw "switch"
+switch(${1}) {
+	case(${2}): {
+		${3}
+		break;
+	}
+	case(${4}): {
+		${5}
+		break;
+	}
+	default: {
+		${6}
+  }
+}
+endsnippet
+snippet be "beforeEach"
+beforeEach(async () => {
+  ${1}
+});
+endsnippet
+snippet ae "afterEach"
+afterEach(async () => {
+  ${1}
+});
+endsnippet
+snippet am "async method() {}"
+async ${1:method}(${2}): Promise<${3:string}> {
+	${4}
+}
+endsnippet
+snippet af "async () => {}"
+async ${1:(${2})} => {
+	${3}
+}
+endsnippet
+
+snippet tne "throw new Error()"
+throw new ${1:Error}("${2}")
+endsnippet
+snippet fo "for (const value of values)"
+for (const ${1} of ${2:$1s}) {
+	${3}
+}
+endsnippet
+
+snippet if "if () {}"
+if (${1}) {
+	${2}
+}
+endsnippet
+snippet ife "if () {} else {}"
+if (${1}) {
+	${2}
+} else {
+	${3}
+}
 endsnippet
