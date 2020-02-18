@@ -191,10 +191,34 @@ autocmd BufReadPost *
             \ endif
 
 
-let g:toggle_list_no_mappings=1
-let g:toggle_list_copen_command="bot copen"
-nmap <script> <silent> <F8> :call ToggleQuickfixList()<CR>
-map <silent> <s-F8> :bot copen<CR>
+function! GetBufferList()
+  redir =>buflist
+  silent! ls!
+  redir END
+  return buflist
+endfunction
+
+function! ToggleList(bufname, pfx)
+  let buflist = GetBufferList()
+  for bufnum in map(filter(split(buflist, '\n'), 'v:val =~ "'.a:bufname.'"'), 'str2nr(matchstr(v:val, "\\d\\+"))')
+    if bufwinnr(bufnum) != -1
+      exec(a:pfx.'close')
+      return
+    endif
+  endfor
+  if a:pfx == 'l' && len(getloclist(0)) == 0
+      echohl ErrorMsg
+      echo "Location List is Empty."
+      return
+  endif
+  let winnr = winnr()
+  exec('bot '.a:pfx.'open')
+  if winnr() != winnr
+    wincmd p
+  endif
+endfunction
+
+nmap <script> <silent> <F8> :call ToggleList('Quickfix', 'c')<CR>
 map <F9> :cprevious<CR>
 map <s-F9> :cfirst<CR>
 map <F10> :cnext<CR>
@@ -528,7 +552,6 @@ endfunction
 
 au BufRead,BufNewFile *.hamlc set ft=haml
 
-autocmd FileType cucumber compiler cucumber | setl makeprg=cucumber\ \"%:p\"
 autocmd FileType ruby
       \ if expand('%') =~# '_test\.rb$' |
       \   compiler rubyunit | setl makeprg=testrb\ \"%:p\" |
@@ -537,6 +560,9 @@ autocmd FileType ruby
       \ else |
       \   compiler ruby | setl makeprg=ruby\ -wc\ \"%:p\" |
       \ endif
+
+
+let g:test#javascript#jest#executable = ". /usr/local/opt/nvm/nvm.sh && nvm use 12.12.0 && TEST_BLOCKCHAIN=1 yarn test"
 "autocmd User Bundler
       "\ if &makeprg !~# 'bundle' | setl makeprg^=bundle\ exec\  | endif
 
