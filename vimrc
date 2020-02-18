@@ -308,25 +308,15 @@ let g:gist_clip_command = 'pbcopy'
 
 let g:delimitMate_apostrophes = ''
 
-" Dadbod
 
-let g:development_db=0
-function! SwitchDb()
-  if g:development_db == 1
-    let g:current_db="postgresql://postgres:AsyncAwaitingIsMyReligion128@%2Fcloudsql%2Funstoppable-domains%3Aus-west1%3Aunstoppable-website-production/unstoppable_website_production"
-    let g:development_db=0
-  else
-    let g:current_db="postgresql:unstoppable_website_development" 
-    let g:development_db=1
-  endif
-  echo "Using ".g:current_db
-  command! -bang -nargs=? -range=-1 -complete=custom,db#command_complete Db  exe db#execute_command('<mods>', <bang>0, <line1>, <count>, g:current_db . ' ' . substitute(<q-args>,  '^[al]:\w\+\>\ze\s*\%($\|[^[:space:]=]\)', '\=eval(submatch(0))', ''))
-endfunction
-call SwitchDb()
-map <Leader>n :call SwitchDb()<CR>
-nmap <Leader>e V:Db<CR>
-vmap <Leader>e :Db<CR>
+vmap <Leader>r y:@"<CR>
 
+
+" FZF
+
+set rtp+="/usr/local/bin/fzf"
+map <Leader>f :Files<CR>
+map <Leader>v :vs<CR>:Files<CR>
 
 " Syntatic
 
@@ -341,7 +331,9 @@ let g:syntastic_scilla_scillachecker_args = '-libdir '.$HOME.'/makabu/unstoppabl
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_completion_enabled = 1
 let g:ale_completion_delay = 100
+let g:ale_completion_tsserver_autoimport = 1
 set completeopt=menu
+map <Leader>a :ALEFix<CR>
 "let g:ale_lint_on_insert_leave = 1
 
 
@@ -437,9 +429,11 @@ vnoremap <M-s> <Esc>`.``gvP``P
 " stub default
 map K k
 
+" NERD Commenter
 map <F1> :call NERDComment(0, 'toggle')<CR>
+let g:NERDRemoveExtraSpaces=1
+let g:NERDSpaceDelims=1
 
-map <Leader>a :Align
 inoremap <C-U> <C-G>u<C-U>
 
 
@@ -511,6 +505,7 @@ let g:AutoPairsMultilineClose = 0
 let g:splitjoin_ruby_curly_braces = 0
 nmap <Leader>j :SplitjoinJoin<cr>
 nmap <Leader>s :SplitjoinSplit<cr>
+let g:splitjoin_trailing_comma = 1
 
 map <M-r> :RV<cr>
 map <M-v> :AV<cr>

@@ -11,21 +11,37 @@ snippet lj "lj"
 left join ${1} on ${2}
 endsnippet
 snippet o "o"
-order by ${1}
+order by ${1:created_at DESC}
 endsnippet
-snippet s "s"
-select ${1}
+snippet s "select"
+select ${1};
 endsnippet
 snippet sd "sd"
 select distinct ${1}
 endsnippet
-snippet select "select"
+snippet sel "select"
 select 
 *
 from ${1:}
 where 1=1
-limit 10;
+limit 100;
 endsnippet
 snippet w "w"
 where ${1}
+endsnippet
+snippet c "count"
+count(${1:*})
+endsnippet
+snippet sgc "select group count"
+select
+${1:type}, 
+count(*) c
+from ${2}
+where 1=1
+group by $1
+order by c desc
+limit 100;
+endsnippet
+snippet sid "select by id"
+SELECT * FROM ${1} WHERE id = ${2};
 endsnippet
