@@ -40,9 +40,6 @@
 [submodule "bundle/haml"]
 	path = bundle/haml
 	url = https://github.com/tpope/vim-haml.git
-[submodule "bundle/cucumber"]
-	path = bundle/cucumber
-	url = https://github.com/tpope/vim-cucumber.git
 [submodule "bundle/mustache"]
 	path = bundle/mustache
 	url = https://github.com/juvenn/mustache.vim.git
@@ -82,9 +79,6 @@
 [submodule "bundle/coffee-script"]
 	path = bundle/coffee-script
 	url = https://github.com/kchmck/vim-coffee-script.git
-[submodule "bundle/jade"]
-	path = bundle/jade
-	url = https://github.com/digitaltoad/vim-jade.git
 [submodule "bundle/bundler"]
 	path = bundle/bundler
 	url = https://github.com/tpope/vim-bundler.git

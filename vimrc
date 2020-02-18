@@ -501,6 +501,7 @@ map ,e <Plug>CamelCaseMotion_e
 
 " AutoPairs
 let g:AutoPairsMultilineClose = 0
+let g:AutoPairFlyMode=1
 
 let g:splitjoin_ruby_curly_braces = 0
 nmap <Leader>j :SplitjoinJoin<cr>
