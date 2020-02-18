@@ -169,3 +169,9 @@
 [submodule "bundle/solidity"]
 	path = bundle/solidity
 	url = gh:tomlion/vim-solidity
+[submodule "bundle/fzf"]
+	path = bundle/fzf
+	url = gh:junegunn/fzf
+[submodule "bundle/fzf.vim"]
+	path = bundle/fzf.vim
+	url = gh:junegunn/fzf.vim
