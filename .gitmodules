@@ -160,3 +160,9 @@
 [submodule "bundle/fzf.vim"]
 	path = bundle/fzf.vim
 	url = gh:junegunn/fzf.vim
+[submodule "bundle/rainbow"]
+	path = bundle/rainbow
+	url = git@github.com:luochen1990/rainbow.git
+[submodule "bundle/lightline"]
+	path = bundle/lightline
+	url = git@github.com:itchyny/lightline.vim.git

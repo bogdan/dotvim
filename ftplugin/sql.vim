@@ -19,8 +19,11 @@ silent call SwitchDb()
 map <Leader>n :call SwitchDb()<CR>
 nmap <Leader>e :call SearchSelect()<CR>
 vmap <Leader>e :Db<CR>
+
 function! SearchSelect()
-  let line1 = search('^select\|^update\|^create\|^delete from', 'cnb')
+  let terms = ['select', 'update', 'delete from', 'create index', 'drop index', 'explain', 'create or replace', 'drop view']
+  let pattern = join(map(terms, {_, v -> '^'.v}), '\|')
+  let line1 = search(pattern, 'cnb')
   let line2 = search(';$', 'cn')
   if line1 == 0
     echo "Query start not found"

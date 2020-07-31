@@ -1,5 +1,7 @@
-let b:ale_linters = ['tsserver', 'tslint']
-let b:ale_fixers = ['tslint', 'prettier']
+let b:ale_linters = ['tsserver', 'eslint']
+let b:ale_fixers = ['eslint', 'prettier']
+" let b:ale_linters = ['tsserver']
+" let b:ale_fixers = ['prettier']
 
 map <C-]> :ALEGoToDefinition<CR>
 map <C-'> :ALEFindReferences<CR>
@@ -22,6 +24,7 @@ set path+=node_modules
 
 set iskeyword=@,48-57,_,192-255,-,$
 
+let g:ale_javascript_eslint_options="--parser-options='{project: null}' --rule=\'{'@typescript-eslint/no-floating-promises': 'off', '@typescript-eslint/no-misused-promises': 'off'}\'"
 
 let b:surround_{char2nr("P")} = "Promise<\r>"
 let b:surround_{char2nr("i")} = "if () {\n  \r\n}"
@@ -32,3 +35,5 @@ let g:surround_{char2nr("y")} = "try {\n  \r\n} catch(error) {\n  if (!(error in
 let g:surround_{char2nr("_")} = "_.\1function: \1(\r)"
 vmap sif siwa
 
+map <Leader>a :ALEFix<CR>
+map <Leader>n :ALENextWrap<CR>

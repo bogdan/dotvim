@@ -357,9 +357,21 @@ let g:ale_completion_enabled = 1
 let g:ale_completion_delay = 100
 let g:ale_completion_tsserver_autoimport = 1
 set completeopt=menu
-map <Leader>a :ALEFix<CR>
 "let g:ale_lint_on_insert_leave = 1
 
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'lineinfo' ],
+      \             [ 'readonly', 'relativepath', 'modified'] ],
+      \   'right': [
+      \              [ 'percent' ],
+      \              [ 'fileformat', 'fileencoding', 'filetype'] ]
+      \ },
+      \ }
+
+let g:lightline.inactive = g:lightline.active
 
 
 " NERD tree
@@ -372,14 +384,17 @@ let NERDTreeMinimalUI=1
 map <Leader>r V"0p
 let g:yankring_history_dir = '~/.vim/'
 let g:yankring_manual_clipboard_check = 0
+
+" Paste with yanking in visual
+let g:yankring_paste_v_akey = '<leader>p'
+" Paste without yanking in visual
+xnoremap <silent>p "_dP
+
 "let g:yankring_enabled = 0
-"
+
+" Delete without yanking
 nnoremap <leader>d "_d
 vnoremap <leader>d "_d
-
-" replace currently selected text with default register
-" without yanking it
-vnoremap <leader>p "_dP
 
 " Vim tag
 
@@ -435,9 +450,6 @@ autocmd FileType haml vmap <buffer> sif >gv_^<ESC>O- if
 autocmd FileType eruby vmap <buffer> ss _$<ESC>o<% end %><ESC>gv_^<ESC>O<%  %><ESC>gv_$j=gi<ESC>2hi
 autocmd FileType eruby vmap <buffer> sif _$<ESC>o<% end %><ESC>gv_^<ESC>O<% if  %><ESC>gv_$j=gi<ESC>2hi
 
-
-" My keys
-
 " No Right Controll on mac
 nmap <M-t> <C-t>
 nmap <M-6> <C-6>
@@ -445,6 +457,7 @@ nmap <M-w> <C-w>
 
 cmap w!! %!sudo tee > /dev/null %
 
+let g:rainbow_active=1
 
 " swap words
 vnoremap <M-s> <Esc>`.``gvP``P
