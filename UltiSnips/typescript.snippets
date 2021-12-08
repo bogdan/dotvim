@@ -11,7 +11,10 @@ snippet i
 import ${2:{${3}}} from '${1}';
 endsnippet
 snippet ex
-expect(${1}).toEqual(${2:'${3}'});
+expect(${1}).to.eql(${2:'${3}'});
+endsnippet
+snippet aex
+await expect(${1}).to.eventually.eql(${2:'${3}'});
 endsnippet
 snippet a 
 alert(${1});
@@ -108,4 +111,8 @@ snippet cf "const name = () => {}"
 const ${1} = (${2}) => {
 	${3}
 }
+endsnippet
+
+snippet to "typeof value === ''"
+typeof ${1} === '${2:string}'
 endsnippet

@@ -36,11 +36,11 @@ endsnippet
 snippet sgc "select group count"
 select
 ${1:type}, 
-count(*) c
+count(*) count
 from ${2}
 where 1=1
 group by $1
-order by c desc
+order by count desc
 limit 100;
 endsnippet
 snippet sid "select by id"

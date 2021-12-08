@@ -6,7 +6,7 @@ let b:ale_fixers = ['eslint', 'prettier']
 map <C-]> :ALEGoToDefinition<CR>
 map <C-'> :ALEFindReferences<CR>
 map g] :ALEHover<CR>
-map <C-w>] :ALEGoToDefinitionInSplit<CR>
+map <C-w>] :ALEGoToDefinition -split<CR>
 
 function! TsIncludeExpr(file)
   if (filereadable(a:file))
@@ -18,9 +18,10 @@ function! TsIncludeExpr(file)
 endfunction
 set includeexpr=TsIncludeExpr(v:fname)
 set include=import\_s.\\zs[^'\"]*\\ze
-set suffixesadd=.ts,.js,.json
+set suffixesadd=.ts,.js,.json,.jsx,.tsx
 set isfname+=@-@ " Node modules organization name
 set path+=node_modules
+set path+=../node_modules
 
 set iskeyword=@,48-57,_,192-255,-,$
 
@@ -36,4 +37,5 @@ let g:surround_{char2nr("_")} = "_.\1function: \1(\r)"
 vmap sif siwa
 
 map <Leader>a :ALEFix<CR>
+map <Leader>o :ALEOrganizeImports<CR>
 map <Leader>n :ALENextWrap<CR>

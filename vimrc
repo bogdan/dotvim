@@ -355,7 +355,7 @@ let g:syntastic_scilla_scillachecker_args = '-libdir '.$HOME.'/makabu/unstoppabl
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_completion_enabled = 1
 let g:ale_completion_delay = 100
-let g:ale_completion_tsserver_autoimport = 1
+let g:ale_completion_autoimport = 1
 set completeopt=menu
 "let g:ale_lint_on_insert_leave = 1
 

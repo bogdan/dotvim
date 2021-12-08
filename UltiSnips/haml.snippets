@@ -149,3 +149,20 @@ endsnippet
 snippet a "%a{href: ''}" !b
 %a{href: $1}$2
 endsnippet
+snippet md ":markdown" 
+:markdown
+	${1}
+endsnippet
+
+snippet table "%table"
+%table
+	%tr
+		%th ${1}
+		%th ${2}
+	%tr
+		%td ${3}
+		%td ${4}
+	%tr
+		%td ${5}
+		%td ${6}
+endsnippet
