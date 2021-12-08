@@ -81,7 +81,7 @@
 	url = https://github.com/tpope/vim-bundler.git
 [submodule "bundle/rvm"]
 	path = bundle/rvm
-	url = gh:tpope/vim-rvm
+	url = https://github.com/tpope/vim-rvm
 [submodule "bundle/ansiesc"]
 	path = bundle/ansiesc
 	url = https://github.com/vim-scripts/AnsiEsc.vim.git
@@ -99,13 +99,13 @@
 	url = https://github.com/ecomba/vim-ruby-refactoring.git
 [submodule "bundle/rsi"]
 	path = bundle/rsi
-	url = gh:tpope/vim-rsi
+	url = https://github.com/tpope/vim-rsi
 [submodule "bundle/ultisnips"]
 	path = bundle/ultisnips
 	url = https://github.com/SirVer/ultisnips
 [submodule "bundle/dispatch"]
 	path = bundle/dispatch
-	url = gh:tpope/vim-dispatch
+	url = https://github.com/tpope/vim-dispatch
 [submodule "bundle/file-line"]
 	path = bundle/file-line
 	url = https://github.com/bogado/file-line.git
@@ -117,16 +117,16 @@
 	url = https://github.com/tpope/vim-projectionist.git
 [submodule "bundle/vim-tags"]
 	path = bundle/vim-tags
-	url = gh:szw/vim-tags
+	url = https://github.com/szw/vim-tags
 [submodule "bundle/indexed-search"]
 	path = bundle/indexed-search
-	url = gh:henrik/vim-indexed-search
+	url = https://github.com/henrik/vim-indexed-search
 [submodule "bundle/auto-pairs"]
 	path = bundle/auto-pairs
-	url = gh:jiangmiao/auto-pairs
+	url = https://github.com/jiangmiao/auto-pairs
 [submodule "bundle/dadbod"]
 	path = bundle/dadbod
-	url = gh:tpope/vim-dadbod
+	url = https://github.com/tpope/vim-dadbod
 [submodule "bundle/jsx"]
 	path = bundle/jsx
 	url = https://github.com/mxw/vim-jsx.git
@@ -138,7 +138,7 @@
 	url = https://github.com/leafgarland/typescript-vim.git
 [submodule "bundle/vim-test"]
 	path = bundle/vim-test
-	url = gh:janko/vim-test
+	url = https://github.com/janko/vim-test
 [submodule "bundle/ale"]
 	path = bundle/ale
 	url = https://github.com/w0rp/ale
@@ -153,13 +153,13 @@
 	url = git@github.com:ruanyl/vim-gh-line.git
 [submodule "bundle/solidity"]
 	path = bundle/solidity
-	url = gh:tomlion/vim-solidity
+	url = https://github.com/tomlion/vim-solidity
 [submodule "bundle/fzf"]
 	path = bundle/fzf
-	url = gh:junegunn/fzf
+	url = https://github.com/junegunn/fzf
 [submodule "bundle/fzf.vim"]
 	path = bundle/fzf.vim
-	url = gh:junegunn/fzf.vim
+	url = https://github.com/junegunn/fzf.vim
 [submodule "bundle/rainbow"]
 	path = bundle/rainbow
 	url = git@github.com:luochen1990/rainbow.git
