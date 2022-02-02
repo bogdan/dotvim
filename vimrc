@@ -467,7 +467,7 @@ vnoremap <M-s> <Esc>`.``gvP``P
 map K k
 
 " NERD Commenter
-map <F1> :call NERDComment(0, 'toggle')<CR>
+map <F1> :call nerdcommenter#Comment(0, 'toggle')<CR>
 let g:NERDRemoveExtraSpaces=1
 let g:NERDSpaceDelims=1
 
@@ -493,8 +493,8 @@ else
 endif
 
 function! MyGrep(ending)
-  if exists("b:git_dir")
-    let cmd = ":Ggrep! -w"
+  if !empty(FugitiveGitDir())
+    let cmd = ":Git! grep -q -w"
   else
     let cmd = ":Ack! -w"
   endif
