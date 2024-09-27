@@ -3,10 +3,10 @@ let b:ale_fixers = ['eslint', 'prettier']
 " let b:ale_linters = ['tsserver']
 " let b:ale_fixers = ['prettier']
 
-map <C-]> :ALEGoToDefinition<CR>
-map <C-'> :ALEFindReferences<CR>
-map g] :ALEHover<CR>
-map <C-w>] :ALEGoToDefinition -split<CR>
+map <buffer> <C-]> :ALEGoToDefinition<CR>
+map <buffer> <C-'> :call setqflist([])<CR>:ALEFindReferences -relative -quickfix<CR>:bot copen<CR>
+map <buffer> g] :ALEHover<CR>
+map <buffer> <C-w>] :ALEGoToDefinition -split<CR>
 
 function! TsIncludeExpr(file)
   if (filereadable(a:file))
@@ -34,8 +34,9 @@ let b:surround_{char2nr("a")} = "(async () => {\n  \r\n})()"
 let b:surround_{char2nr("w")} = "(await \r)"
 let g:surround_{char2nr("y")} = "try {\n  \r\n} catch(error) {\n  if (!(error instanceof )) throw error;\n  \n}"
 let g:surround_{char2nr("_")} = "_.\1function: \1(\r)"
-vmap sif siwa
 
-map <Leader>a :ALEFix<CR>
-map <Leader>o :ALEOrganizeImports<CR>
-map <Leader>n :ALENextWrap<CR>
+vnoremap <buffer> sif siwa
+
+noremap <buffer> <Leader>a :ALEFix<CR>
+noremap <buffer> <Leader>o :ALEOrganizeImports<CR>
+noremap <buffer> <Leader>n :ALENextWrap<CR>
