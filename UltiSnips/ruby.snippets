@@ -268,7 +268,7 @@ reject do |${1:element}|
 end
 endsnippet
 snippet req "req"
-require "${1}"
+require '${1}'
 endsnippet
 snippet rw "rw"
 attr_accessor :${1:attr_names}
@@ -306,9 +306,6 @@ snippet pa "params[:id]" w
 params[:${1:id}]
 endsnippet
 
-snippet anaf "accepts_nested_attributes_for"
-accepts_nested_attributes_for :${1:association_name}${2:${3:, allow_destroy: true}${4:, reject_if: proc \{ |obj| ${5:obj.blank?} \}}}
-endsnippet
 snippet asc "asc"
 #
 # Associations
@@ -316,13 +313,20 @@ snippet asc "asc"
 
 endsnippet
 snippet ba "before_action"
-before_filter :${1:method}
+before_action :${1:method}
 endsnippet
 snippet bam "before_action with method"
-before_filter :${1:method}
+before_action :${1:method}
 
 def ${1/(\w+).*/$1/}
   ${3}
+end
+endsnippet
+
+snippet bal "before_action :load_object"
+before_action :load_${1}
+def load_$1
+  @$1 = ${2}.find(params[:id]) if params[:id]
 end
 endsnippet
 snippet bt "bt"
@@ -330,26 +334,42 @@ belongs_to :${1:association}
 endsnippet
 snippet defcreate "defcreate"
 def create
-	@${1:model_class_name} = ${2:ModelClassName}.new(params[:$1])
+	@${1:model_class_name} = ${2:ModelClassName}.new($1_params)
 
 	if @$1.save
-		flash[:notice] = '$2 was successfully created.'
-		redirect_to(@$1) 
+		redirect_to(@$1, notice:  '$2 was successfully created.') 
 	else
-		render action: "new" 
+		render(:new, status: :unprocessable_entity)
 	end
 end
 endsnippet
+snippet defparams "def model_params permit"
+def ${1:mode_name}_params
+	params.require(:$1).permit(
+		${2:name}
+	)
+end
+endsnippet
+
 snippet defdestroy "defdestroy"
 def destroy
 	@${1:model_class_name} = ${2:ModelClassName}.find(params[:id])
 	@$1.destroy
 
-	redirect_to($1s_url) 
+	redirect_to($1s_path, notice: '$2 was successfully deleted.') 
 end${3}
 endsnippet
 snippet defedit "defedit"
 def edit
+end
+endsnippet
+snippet admcont "admin controller"
+class Admin::${1:`!v Snippet_RubyClassNameFromFilename()`} < Admin::BaseController
+	def index
+		@grid = ${2:$1}.new(params[:g]) do |scope|
+			scope.page(params[:page])
+		end
+	end
 end
 endsnippet
 snippet defindex "defindex"
@@ -368,16 +388,12 @@ end
 endsnippet
 snippet defupdate "defupdate"
 def update
-  if @${1:model_instance_name}.update_attributes(params[:$1])
-  	flash[:notice] = '${2} was successfully updated.'
-  	redirect_to(@$1) 
+  if @${1:model_instance_name}.update($1_params)
+  	redirect_to(@$1, notice: '${2} was successfully updated.') 
   else
-  	render action: :edit 
+  	render(:edit, status: :unprocessable_entity) 
   end
 end
-endsnippet
-snippet dso "dso"
-default_scope order: "${1:created_at desc}"
 endsnippet
 snippet fl "fl"
 flash[:${1:notice}] = "${2}"
@@ -389,7 +405,7 @@ snippet habtm "habtm"
 has_and_belongs_to_many :${1:object}, join_table: "${2:table_name}", foreign_key: "${3}_id"${4}
 endsnippet
 snippet hm "hm"
-has_many :${1}, dependent: :destroy$0
+has_many :${1}, dependent: :destroy, inverse_of: :${2:`!v Snippet_RubyFactoryNameFromFilename()`}
 endsnippet
 snippet hmt "hmt"
 has_many :${1:object}, through: :${2:object}
@@ -408,9 +424,6 @@ before_save :${1:method}
 endsnippet
 snippet mcc "mcc"
 change_column :${1:table}, :${2:column}, :${3:type}
-endsnippet
-snippet mccc "mccc"
-t.column :${1:title}, :${2:string}
 endsnippet
 snippet mcht "mcht"
 change_table :${1:table_name} do |t|
@@ -867,14 +880,6 @@ snippet shnbko "shnbko"
 ${1:target}.should_not be_a_kind_of(${2:klass})
 ${3}
 endsnippet
-snippet shnbr "shnbr"
-response.should_not be_redirect
-${1}
-endsnippet
-snippet shnbs "shnbs"
-response.should_not be_success
-${1}
-endsnippet
 snippet shnc "shnc"
 lambda do
 	${1}
@@ -903,10 +908,6 @@ snippet shnre "shnre"
 ${1:target}.should_not raise_error(${2:error})
 ${3}
 endsnippet
-snippet shnredt "shnredt"
-response.should_not redirect_to(${1:url})
-${2}
-endsnippet
 snippet shnrt "shnrt"
 ${1:target}.should_not respond_to(:${2:sym})
 ${3}
@@ -921,10 +922,6 @@ endsnippet
 snippet shre "shre"
 ${1:target}.should raise_error(${2:error})
 ${3}
-endsnippet
-snippet shredt "shredt"
-response.should redirect_to(${1:url})
-${2}
 endsnippet
 snippet shrt "shrt"
 ${1:target}.should respond_to(:${2:sym})
@@ -973,4 +970,50 @@ require 'pry-byebug';binding.pry
 endsnippet
 snippet	fsl "frozen_string_literal"
 # frozen_string_literal: true
+endsnippet
+snippet rd "rubocop:disable"
+# rubocop:disable $1
+# rubocop:enable $1
+endsnippet
+
+snippet sql "<<~SQL"
+<<~SQL.squish
+SQL
+endsnippet
+
+snippet ttr "test transform"
+test "${1:new bug}" do
+	assert_transform(
+		<<~SQL.squish,
+		SQL
+		<<~SQL.squish,
+		SQL
+	)
+end
+endsnippet
+
+snippet tutr "test untransformed"
+test "${1:new bug}" do
+	assert_untransformed(
+		<<~SQL.squish,
+		SQL
+	)
+end
+endsnippet
+snippet mrv "reversible do"
+reversible do |d|
+  d.up do
+    ${1}
+	end
+	d.down do
+
+	end
+end
+endsnippet
+snippet tcl "minitest class"
+require 'test_helper'
+
+class ${1:`!v Snippet_RubyClassNameFromFilename()`} < ActiveSupport::TestCase
+  $2
+end
 endsnippet
