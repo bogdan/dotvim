@@ -88,9 +88,6 @@
 [submodule "bundle/file-line"]
 	path = bundle/file-line
 	url = https://github.com/bogado/file-line.git
-[submodule "bundle/cjsx"]
-	path = bundle/cjsx
-	url = https://github.com/mtscout6/vim-cjsx.git
 [submodule "bundle/projectionist"]
 	path = bundle/projectionist
 	url = https://github.com/tpope/vim-projectionist.git
