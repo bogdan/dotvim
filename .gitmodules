@@ -135,5 +135,5 @@
 	url = git@github.com:itchyny/lightline.vim.git
 [submodule "pack/all/start/vim-inkpot-refilled"]
 	path = pack/all/start/vim-inkpot-refilled
-	url = https://github.com/Chromosore/vim-inkpot-refilled
+	url = git@github.com:bogdan/vim-inkpot-refilled.git
 
