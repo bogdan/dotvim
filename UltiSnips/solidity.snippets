@@ -1,0 +1,41 @@
+snippet con "contract"
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.8.28;
+
+
+contract ${1} {
+	${2}
+}
+endsnippet
+
+snippet mp "mapping" 
+mapping ( ${1} => ${2} ) private ${3}
+endsnippet
+
+snippet mod "modifier"
+modifier ${1}() {
+	${2}
+}
+endsnippet
+
+snippet hh "hello world"
+hello world
+endsnippet
+snippet _fn "function _internal"
+function _${1}(${2}) internal ${3:view returns (${4:bool})} {
+	${5}
+}
+endsnippet
+
+snippet _fnv "function internal virtual"
+function _${1}(${2}) internal virtual ${3:view returns (${4:bool})};
+endsnippet
+
+snippet i "import"
+import {${1}} from "${2:.}/${3:$1}.sol"
+endsnippet
+
+snippet ic "import console"
+import {console} from "hardhat/console.sol";
+endsnippet
+
