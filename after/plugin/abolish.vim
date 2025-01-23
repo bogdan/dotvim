@@ -1,10 +1,3 @@
-
-
-
-iab tt title
-
-
-
 set nocompatible
 
 if filereadable('vimrc')
@@ -15,7 +8,7 @@ endif
 " General
 "
 
-iab crt create
+" iab crt create
 "Abolish er{,s} error{,s}
 "Abolish ele{,s} element{,s}
 "Abolish aru{,s} argument{,s}
@@ -58,12 +51,12 @@ iab inc include
 " ActionController
 
 "Abolish cont{,s} controller{,s}
-iab pgnt paginate
-iab ppp :page => params[:page]
-iab pppp paginate(:page => params[:page])
+" iab pgnt paginate
+" iab ppp :page => params[:page]
+" iab pppp paginate(:page => params[:page])
 
-iab pid params[:id]
-iab fpid find(params[:id])
+" iab pid params[:id]
+" iab fpid find(params[:id])
 
 " ActiveSupport
 
