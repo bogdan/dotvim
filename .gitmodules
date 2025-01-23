@@ -60,7 +60,7 @@
 	url = https://github.com/vim-scripts/bufexplorer.zip.git
 [submodule "bundle/splitjoin"]
 	path = bundle/splitjoin
-	url = git://github.com/AndrewRadev/splitjoin.vim.git
+	url = git@github.com:AndrewRadev/splitjoin.vim.git
 [submodule "bundle/ack"]
 	path = bundle/ack
 	url = https://github.com/mileszs/ack.vim.git
