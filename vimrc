@@ -1,5 +1,4 @@
 set nocompatible
-call pathogen#infect() 
 
 "load ftplugins and indent files
 filetype plugin indent on
