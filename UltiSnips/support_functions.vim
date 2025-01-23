@@ -1,3 +1,26 @@
+function! Snippet_Repo(...) abort
+  " Navigate to the git root directory
+  let l:git_root = system('git rev-parse --show-toplevel')
+  if v:shell_error
+    echo "Not a git repository"
+    return ''
+  endif
+
+  " Get the remote URL
+  let l:remote_url = system('git config --get remote.origin.url')
+  if v:shell_error || empty(l:remote_url)
+    echo "No remote URL found"
+    return ''
+  endif
+
+  " Clean up the URL and convert to GitHub HTTPS format
+  let l:remote_url = substitute(l:remote_url, '\n$', '', '') " Trim newline
+  let l:remote_url = substitute(l:remote_url, 'git@github.com:', 'https://github.com/', '')
+  let l:remote_url = substitute(l:remote_url, '.git$', '', '')
+
+  return l:remote_url
+endfunction
+
 "ruby {{{1
 function! Snippet_RubyClassNameFromFilename(...)
     let name = expand("%:t:r")
