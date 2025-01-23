@@ -133,3 +133,6 @@
 [submodule "bundle/lightline"]
 	path = bundle/lightline
 	url = git@github.com:itchyny/lightline.vim.git
+[submodule "bundle/vim-inkpot-refilled"]
+	path = bundle/vim-inkpot-refilled
+	url = https://github.com/Chromosore/vim-inkpot-refilled
