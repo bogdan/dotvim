@@ -24,8 +24,7 @@ set ic
 set diffopt=filler,iwhite,vertical
 
 autocmd Bufread * set wrap
-set wrap
-
+autocmd BufEnter * Rvm
 
 set virtualedit=all
 
@@ -42,6 +41,7 @@ set statusline=%f       "tail of the filename
 set statusline+=%#warningmsg#
 set statusline+=%{&ff!='unix'?'['.&ff.']':''}
 set statusline+=%*
+set statusline+=\ %P    "percent through file
 
 
 set statusline+=%h      "help file flag
@@ -66,7 +66,6 @@ set statusline+=%*
 set statusline+=%=      "left/right separator
 set statusline+=%c,     "cursor column
 set statusline+=%l/%L   "cursor line/total lines
-set statusline+=\ %P    "percent through file
 set laststatus=2
 
 "indent settings
@@ -241,9 +240,32 @@ vmap <M-<> <gv
 
 "set patchmode=on
 
+" function! OpenFile()
+  " let file=@+
+  " call feedkeys(':e '.file."\<cr>")
+" endfunction
+
 function! OpenFile()
-  call feedkeys(':e '.@+."\<cr>")
+  let file_with_position = substitute(@+, '\n', '', 'g')
+  let file_path = substitute(substitute(file_with_position, ':\d\+$', '', ''), ':\d\+$', '', '')
+
+  if filereadable(file_path)
+    execute 'edit ' . file_with_position
+    return
+  endif
+
+  let test_file_path = 'TrueArtTests/Models/' . file_path
+  if filereadable(test_file_path)
+    execute 'edit ' . substitute(file_with_position, file_path, test_file_path, '')
+    return
+  endif
+
+  echohl ErrorMsg
+  echom "File not found: " . file_path . " or " . test_file_path
+  echohl None
 endfunction
+
+
 map <M-q> :call OpenFile()<cr>
 
 
@@ -280,39 +302,37 @@ map ,t :wa<CR>:call setqflist(['Working...'])<CR>:Rake<CR>:bot cwindow<CR>
 map ,r :wa<CR>:call setqflist(['Working...'])<CR>:Rake -<CR>:bot cwindow<CR>
 map ,T :wa<CR>:call setqflist(['Working...'])<CR>:.Rake<CR>:bot cwindow<CR>
 
-let g:rails_projections = {
-    \ "config/*.yml": {
-    \   "command": "yml"
-    \ },
-    \ "app/services/*.rb": {
-    \   "command": "service"
-    \ },
-    \ "app/grids/*_grid.rb": {
-    \   "command": "grid",
-    \   "affinity": "model",
-    \   "related": 'app/models/%i.rb'
-    \ },
-    \ "app/workers/*.rb": {
-    \   "command": "worker",
-    \   "affinity": "model",
-    \ },
-    \ "spec/features/*_spec.rb": {
-    \   "command": "feature",
-    \ },
-    \ "spec/factories/*.rb": {
-    \   "command": "factory",
-    \   "affinity": "model",
-    \   "related": "app/models/%i.rb",
-    \ },
-    \ "app/liquid/*": {"command": "liquid"},
-    \ "support/2018/*.rb": {"command": "support"}}
-    "\ "features/support/env.rb": {"command": "support"}}
+" let g:rails_projections = {
+    " \ "config/*.yml*": {
+    " \   "command": "yml"
+    " \ },
+    " \ "app/services/*.rb": {
+    " \   "command": "service"
+    " \ },
+    " \ "app/grids/*_grid.rb": {
+    " \   "command": "grid",
+    " \   "affinity": "model",
+    " \   "related": 'app/models/%i.rb'
+    " \ },
+    " \ "app/workers/*.rb": {
+    " \   "command": "worker",
+    " \   "affinity": "model",
+    " \ },
+    " \ "spec/features/*_spec.rb": {
+    " \   "command": "feature",
+    " \ },
+    " \ "spec/factories/*.rb": {
+    " \   "command": "factory",
+    " \   "affinity": "model",
+    " \   "related": "app/models/%i.rb",
+    " \ },
+    " \ "app/liquid/*": {"command": "liquid"},
+    " \ "support/2018/*.rb": {"command": "support"}}
+    " "\ "features/support/env.rb": {"command": "support"}}
 
 
 " Ultisnips
 
-let g:python2_host_prog = '/usr/local/bin/python'
-let g:python3_host_prog = '/usr/local/bin/python3'
 
 source ~/.vim/UltiSnips/support_functions.vim
 "let g:UltiSnipsSnippetDirectories=["snippets"]
@@ -338,7 +358,7 @@ vmap <Leader>r y:@"<CR>
 
 " FZF
 
-set rtp+="/usr/local/bin/fzf"
+set rtp+="/opt/homebrew/bin/fzf"
 map <Leader>f :Files<CR>
 map <Leader>v :vs<CR>:Files<CR>
 
@@ -352,6 +372,7 @@ let g:syntastic_scilla_scillachecker_args = '-libdir '.$HOME.'/makabu/unstoppabl
 
 " ALE
 
+let g:ale_ruby_rubocop_options = '-r ./lib/skip_correctable_rubocop_formatter'
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_completion_enabled = 1
 let g:ale_completion_delay = 100
@@ -363,13 +384,52 @@ let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'lineinfo' ],
-      \             [ 'readonly', 'relativepath', 'modified'] ],
+      \             [ 'lineinfo', 'percent' ],
+      \             [ 'locationlist', 'readonly',  'modified', 'filename'] ],
       \   'right': [
-      \              [ 'percent' ],
-      \              [ 'fileformat', 'fileencoding', 'filetype'] ]
+      \              [ ],
+      \              [ ] 
+      \            ]
+      \ },
+      \ 'component_type': {
+      \   'relativepath': 'expand'
+      \ },  
+      \ 'component_function': {
+      \   'locationlist': 'LightlineLocationList'
+      \ },
+      \ 'mode_map': {
+      \ 'n' : 'NOR',
+      \ 'i' : 'INS',
+      \ 'R' : 'REP',
+      \ 'v' : 'VIS',
+      \ 'V' : 'VIL',
+      \ "\<C-v>": 'VIB',
+      \ 'c' : 'COM',
+      \ 's' : 'S',
+      \ 'S' : 'SL',
+      \ "\<C-s>": 'SB',
+      \ 't': 'T',
       \ },
       \ }
+
+function! LightlineLocationList()
+  " Get the location list for the current window
+  let l:loclist = getloclist(0)
+
+  " If the location list is empty, show nothing
+  if empty(l:loclist)
+    return ''
+  endif
+
+  " Count errors (type 'E') and warnings (type 'W')
+  let l:errors = len(filter(l:loclist, 'v:val.type ==# "E"'))
+  let l:warnings = len(filter(l:loclist, 'v:val.type ==# "W"'))
+
+  " Display the counts, or nothing if both are zero
+  return l:errors > 0 || l:warnings > 0
+        \ ? printf('E:%d W:%d', l:errors, l:warnings)
+        \ : ''
+endfunction
 
 let g:lightline.inactive = g:lightline.active
 
@@ -494,7 +554,7 @@ endif
 
 function! MyGrep(ending)
   if !empty(FugitiveGitDir())
-    let cmd = ":Git! grep -q -w"
+    let cmd = ":Ggrep! -q -w"
   else
     let cmd = ":Ack! -w"
   endif
@@ -574,8 +634,6 @@ autocmd FileType ruby
       \   compiler ruby | setl makeprg=ruby\ -wc\ \"%:p\" |
       \ endif
 
-
-let g:test#javascript#jest#executable = ". /usr/local/opt/nvm/nvm.sh && nvm use 12.12.0 && TEST_BLOCKCHAIN=1 yarn test"
 "autocmd User Bundler
       "\ if &makeprg !~# 'bundle' | setl makeprg^=bundle\ exec\  | endif
 
@@ -590,13 +648,18 @@ endfun
 
 autocmd FileType c,cpp,java,php,ruby,python,typescript,javascript,json autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 
-if has("gui_macvim") || has("gui_vimr")
+if has("gui_macvim") || has("gui_running")
   colorscheme inkpot
   set clipboard=unnamed
 endif
-if has("gui_macvim")
+if has("gui_macvim") || exists("g:neovide")
   "set shell=zsh\ -i
   set guifont=Inconsolata:h20
+  let g:neovide_input_macos_option_key_is_meta = 'both'
+  " let g:neovide_input_macos_alt_is_meta = v:true
+endif
+
+if has("gui_macvim")
   set macmeta
   set guipty
   set guioptions=egitc
