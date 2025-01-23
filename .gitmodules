@@ -1,138 +1,138 @@
 [submodule "bundle/vim-javascript"]
-	path = bundle/vim-javascript
+	path = pack/all/start/vim-javascript
 	url = https://github.com/pangloss/vim-javascript.git
 [submodule "bundle/vim-rails"]
-	path = bundle/vim-rails
+	path = pack/all/start/vim-rails
 	url = https://github.com/tpope/vim-rails.git
 [submodule "bundle/nerdtree"]
-	path = bundle/nerdtree
+	path = pack/all/start/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
 [submodule "bundle/nerdcommenter"]
-	path = bundle/nerdcommenter
+	path = pack/all/start/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
 [submodule "bundle/vim-fugitive"]
-	path = bundle/vim-fugitive
+	path = pack/all/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
 [submodule "bundle/vim-abolish"]
-	path = bundle/vim-abolish
+	path = pack/all/start/vim-abolish
 	url = https://github.com/tpope/vim-abolish.git
 [submodule "bundle/delimitMate"]
 	path = bundle/delimitMate
 	url = https://github.com/Raimondi/delimitMate.git
 [submodule "bundle/endwise"]
-	path = bundle/endwise
+	path = pack/all/start/endwise
 	url = https://github.com/tpope/vim-endwise.git
 [submodule "bundle/surround"]
-	path = bundle/surround
+	path = pack/all/start/surround
 	url = https://github.com/tpope/vim-surround.git
 [submodule "bundle/gist"]
-	path = bundle/gist
+	path = pack/all/start/gist
 	url = https://github.com/mattn/gist-vim.git
 [submodule "bundle/rake"]
-	path = bundle/rake
+	path = pack/all/start/rake
 	url = https://github.com/tpope/vim-rake.git
 [submodule "bundle/ruby"]
-	path = bundle/ruby
+	path = pack/all/start/ruby
 	url = https://github.com/vim-ruby/vim-ruby.git
 [submodule "bundle/haml"]
-	path = bundle/haml
+	path = pack/all/start/haml
 	url = https://github.com/tpope/vim-haml.git
 [submodule "bundle/mustache"]
-	path = bundle/mustache
+	path = pack/all/start/mustache
 	url = https://github.com/juvenn/mustache.vim.git
 [submodule "bundle/markdown"]
-	path = bundle/markdown
+	path = pack/all/start/markdown
 	url = https://github.com/tpope/vim-markdown.git
 [submodule "bundle/repeat"]
-	path = bundle/repeat
+	path = pack/all/start/repeat
 	url = https://github.com/tpope/vim-repeat.git
 [submodule "bundle/git"]
-	path = bundle/git
+	path = pack/all/start/git
 	url = https://github.com/tpope/vim-git.git
 [submodule "bundle/camelcasemotion"]
-	path = bundle/camelcasemotion
+	path = pack/all/start/camelcasemotion
 	url = https://github.com/bkad/CamelCaseMotion.git
 [submodule "bundle/yankring"]
-	path = bundle/yankring
+	path = pack/all/start/yankring
 	url = https://github.com/vim-scripts/YankRing.vim.git
 [submodule "bundle/bufexplorer"]
-	path = bundle/bufexplorer
+	path = pack/all/start/bufexplorer
 	url = https://github.com/vim-scripts/bufexplorer.zip.git
 [submodule "bundle/splitjoin"]
-	path = bundle/splitjoin
+	path = pack/all/start/splitjoin
 	url = git@github.com:AndrewRadev/splitjoin.vim.git
 [submodule "bundle/ack"]
-	path = bundle/ack
+	path = pack/all/start/ack
 	url = https://github.com/mileszs/ack.vim.git
 [submodule "bundle/bundler"]
-	path = bundle/bundler
+	path = pack/all/start/bundler
 	url = https://github.com/tpope/vim-bundler.git
 [submodule "bundle/rvm"]
-	path = bundle/rvm
+	path = pack/all/start/rvm
 	url = https://github.com/tpope/vim-rvm
 [submodule "bundle/inkpot"]
-	path = bundle/inkpot
+	path = pack/all/start/inkpot
 	url = https://github.com/ciaranm/inkpot.git
 [submodule "bundle/webapi"]
-	path = bundle/webapi
+	path = pack/all/start/webapi
 	url = https://github.com/mattn/webapi-vim.git
 [submodule "bundle/rsi"]
 	path = bundle/rsi
 	url = https://github.com/tpope/vim-rsi
 [submodule "bundle/ultisnips"]
-	path = bundle/ultisnips
+	path = pack/all/start/ultisnips
 	url = https://github.com/SirVer/ultisnips
 [submodule "bundle/dispatch"]
 	path = bundle/dispatch
 	url = https://github.com/tpope/vim-dispatch
 [submodule "bundle/file-line"]
-	path = bundle/file-line
+	path = pack/all/start/file-line
 	url = https://github.com/bogado/file-line.git
 [submodule "bundle/projectionist"]
-	path = bundle/projectionist
+	path = pack/all/start/projectionist
 	url = https://github.com/tpope/vim-projectionist.git
 [submodule "bundle/vim-tags"]
-	path = bundle/vim-tags
+	path = pack/all/start/vim-tags
 	url = https://github.com/szw/vim-tags
 [submodule "bundle/indexed-search"]
-	path = bundle/indexed-search
+	path = pack/all/start/indexed-search
 	url = https://github.com/henrik/vim-indexed-search
 [submodule "bundle/auto-pairs"]
-	path = bundle/auto-pairs
+	path = pack/all/start/auto-pairs
 	url = https://github.com/jiangmiao/auto-pairs
 [submodule "bundle/dadbod"]
-	path = bundle/dadbod
+	path = pack/all/start/dadbod
 	url = https://github.com/tpope/vim-dadbod
 [submodule "bundle/jsx"]
-	path = bundle/jsx
+	path = pack/all/start/jsx
 	url = https://github.com/mxw/vim-jsx.git
 [submodule "bundle/vim-jsx-typescript"]
-	path = bundle/vim-jsx-typescript
+	path = pack/all/start/vim-jsx-typescript
 	url = https://github.com/peitalin/vim-jsx-typescript.git
 [submodule "bundle/typescript-vim"]
-	path = bundle/typescript-vim
+	path = pack/all/start/typescript-vim
 	url = https://github.com/leafgarland/typescript-vim.git
 [submodule "bundle/vim-test"]
-	path = bundle/vim-test
+	path = pack/all/start/vim-test
 	url = https://github.com/janko/vim-test
 [submodule "bundle/ale"]
-	path = bundle/ale
+	path = pack/all/start/ale
 	url = https://github.com/w0rp/ale
 [submodule "bundle/neoyank"]
-	path = bundle/neoyank
+	path = pack/all/start/neoyank
 	url = https://github.com/Shougo/neoyank.vim.git
 [submodule "bundle/vim-gh-line"]
-	path = bundle/vim-gh-line
+	path = pack/all/start/vim-gh-line
 	url = git@github.com:ruanyl/vim-gh-line.git
 [submodule "bundle/solidity"]
-	path = bundle/solidity
+	path = pack/all/start/solidity
 	url = https://github.com/tomlion/vim-solidity
 [submodule "bundle/fzf"]
-	path = bundle/fzf
+	path = pack/all/start/fzf
 	url = https://github.com/junegunn/fzf
 [submodule "bundle/fzf.vim"]
-	path = bundle/fzf.vim
+	path = pack/all/start/fzf.vim
 	url = https://github.com/junegunn/fzf.vim
 [submodule "bundle/lightline"]
-	path = bundle/lightline
+	path = pack/all/start/lightline
 	url = git@github.com:itchyny/lightline.vim.git
