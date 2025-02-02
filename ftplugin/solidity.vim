@@ -8,3 +8,4 @@ set expandtab
 noremap <buffer> <Leader>n :ALENextWrap<CR>
 runtime ftplugin/javascript/splitjoin.vim
 let b:splitjoin_trailing_comma = 0
+set isk=@,48-57,_,192-255,!,?,-

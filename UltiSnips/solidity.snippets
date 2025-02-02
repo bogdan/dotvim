@@ -3,7 +3,7 @@ snippet con "contract"
 pragma solidity ^0.8.28;
 
 
-contract ${1} {
+contract ${1:`!v Snippet_RubySpecNameFromFilename()`} {
 	${2}
 }
 endsnippet
@@ -32,7 +32,7 @@ function _${1}(${2}) internal virtual ${3:view returns (${4:bool})};
 endsnippet
 
 snippet i "import"
-import {${1}} from "${2:.}/${3:$1}.sol"
+import {${1}} from "${2:.}/${3:$1}.sol";
 endsnippet
 
 snippet ic "import console"
