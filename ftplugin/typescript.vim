@@ -6,6 +6,10 @@ let b:ale_fixers = ['eslint', 'prettier']
 " let b:ale_linters = ['tsserver']
 " let b:ale_fixers = ['prettier']
 
+
+let g:ale_typescript_tsserver_executable = 'yarn run tsserver'
+let g:ale_typescript_tsserver_options = 'run tsserver'
+
 map <buffer> <C-]> :ALEGoToDefinition<CR>
 map <buffer> <C-'> :call setqflist([])<CR>:ALEFindReferences -relative -quickfix<CR>:bot copen<CR>
 map <buffer> g] :ALEHover<CR>

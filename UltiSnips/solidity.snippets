@@ -39,3 +39,21 @@ snippet ic "import console"
 import {console} from "hardhat/console.sol";
 endsnippet
 
+snippet for "for(uint256 i = 0; i < items.length; i++)"
+for(uint256 ${1:i} = 0; $1 < ${2}.length; $1++) {
+  ${3:$2[$1]};
+}
+endsnippet
+
+snippet fivr "internal view returns ()"
+function(${1}) internal view returns (${2:address}) {
+    return ${3};
+}
+endsnippet
+
+snippet fevr "external view returns ()"
+function(${1}) external view returns (${2:address}) {
+    return ${3};
+}
+endsnippet
+

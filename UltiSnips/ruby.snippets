@@ -298,10 +298,6 @@ endsnippet
 snippet w "w"
 attr_writer :${1:attr_names}
 endsnippet
-snippet bb "byebug" w
-require 'byebug'; byebug
-endsnippet
-
 snippet pa "params[:id]" w
 params[:${1:id}]
 endsnippet
@@ -330,7 +326,7 @@ def load_$1
 end
 endsnippet
 snippet bt "bt"
-belongs_to :${1:association}
+belongs_to :${1:association}, inverse_of: :${2:inverse}
 endsnippet
 snippet defcreate "defcreate"
 def create
@@ -964,9 +960,6 @@ expect($1).to ${2:eq($3)}
 endsnippet
 snippet	exn "expect() to_not eq()"
 expect($1).to_not ${2:eq($3)}
-endsnippet
-snippet bp "binding.pry" w
-require 'pry-byebug';binding.pry
 endsnippet
 snippet	fsl "frozen_string_literal"
 # frozen_string_literal: true

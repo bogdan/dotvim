@@ -28,9 +28,6 @@ snippet conf "conf"
 	${2}
 <% end -%>
 endsnippet
-snippet cs "cs"
-<%= collection_select <+object+>, <+method+>, <+collection+>, <+value_method+>, <+text_method+><+, <+[options]+>, <+[html_options]+>+> %>
-endsnippet
 snippet ct "ct"
 <%= content_tag '${1:div}', ${2:content}${3:,options} -%>
 endsnippet
@@ -171,16 +168,16 @@ snippet rel "rel"
 rel='<%= {${1}}.to_json %>'
 endsnippet
 snippet rf "rf"
-<%= render :file => "${1:file}"${2} %>
+<%= render file: "${1:file}"${2} %>
 endsnippet
 snippet rp "rp"
-<%= render :partial => "${1:file}"${2} %>
+<%= render partial: "${1:file}"${2} %>
 endsnippet
 snippet rpo "rpo"
-<%= render :partial => "${1:}", :object => ${2} %>
+<%= render partial: "${1:}", :object => ${2} %>
 endsnippet
 snippet rt "rt"
-<%= render :template => "${1:file}"${2} %>
+<%= render template: "${1:file}"${2} %>
 endsnippet
 snippet slt "slt"
 <%= stylesheet_link_tag "${1}" %>
@@ -189,9 +186,6 @@ snippet ss "ss"
 <% ${1} do -%>
   ${2}
 <% end -%>
-endsnippet
-snippet st "st"
-<%= submit_tag "<+Save changes+>"<+, :id => "<+submit+>"+><+, :name => "<+submit+>"+><+, :class => "<+form_name+>"+><+, :disabled => <+false+>+><+, :disable_with => "<+Please wait+>"+> %>
 endsnippet
 snippet unless "unless"
 <% unless ${1} %>
@@ -207,7 +201,4 @@ endsnippet
 snippet dbg "debugger"
 <% require 'debug' -%>
 <% debugger -%>
-endsnippet
-snippet	bb "byebug"
-<% require 'byebug'; byebug${1} -%>
 endsnippet
