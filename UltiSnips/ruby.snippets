@@ -326,7 +326,7 @@ def load_$1
 end
 endsnippet
 snippet bt "bt"
-belongs_to :${1:association}, inverse_of: :${2:inverse}
+belongs_to :${1:association}, inverse_of: :${2:`!v Snippet_RubyFactoryNameFromFilename()`}
 endsnippet
 snippet defcreate "defcreate"
 def create
@@ -412,6 +412,9 @@ endsnippet
 snippet mac "mac"
 add_column :${1:table}, :${2:column}, :${3:string}
 endsnippet
+snippet mar "add_reference"
+add_reference :${1:table}, :${2:reference}, foreign_key: true
+endsnippet
 snippet mai "mai"
 add_index :${1:table}, [:${2:column}]${3:, unique: true}
 endsnippet
@@ -426,8 +429,8 @@ change_table :${1:table_name} do |t|
 	${2}
 end
 endsnippet
-snippet mcol "mcol"
-remove_column :${1:table}, :${2:column}
+snippet mrc "mcol"
+remove_column :${1:table}, :${2:column}, ${3:type}
 endsnippet
 snippet mct "mct"
 create_table :${1} do |t|
@@ -1016,4 +1019,7 @@ debugger
 endsnippet
 snippet vp "visibility private"
 # @!visibility private
+endsnippet
+snippet exp "expose"
+expose :${1}, documentation: {type: ${2:String}${3:, x: {nullable: true}}}
 endsnippet
