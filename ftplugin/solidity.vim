@@ -1,7 +1,9 @@
 set path+=node_modules
 set isfname+=@-@ " vendor imports
 let b:ale_linters=['solc']
-let g:ale_solidity_solc_options='--allow-paths=. @openzeppelin=./node_modules/@openzeppelin hardhat=./node_modules/hardhat'
+" let g:ale_solidity_solc_options='--allow-paths=. @openzeppelin=./node_modules/@openzeppelin hardhat=./node_modules/hardhat'
+let g:ale_solidity_solc_options='--base-path . --include-path node_modules'
+  
 set tabstop=4
 set shiftwidth=4
 set expandtab
