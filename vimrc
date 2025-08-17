@@ -297,37 +297,36 @@ command! Re :source ~/.vimrc
 " Rails
 
  
-map ,t :wa<CR>:call setqflist(['Working...'])<CR>:Rake<CR>:bot cwindow<CR>
-map ,r :wa<CR>:call setqflist(['Working...'])<CR>:Rake -<CR>:bot cwindow<CR>
-map ,T :wa<CR>:call setqflist(['Working...'])<CR>:.Rake<CR>:bot cwindow<CR>
+map ,t :wa<CR>:call setqflist(['Working...'])<CR>:Rake<CR>:bot copen<CR>
+map ,r :wa<CR>:call setqflist(['Working...'])<CR>:Rake -<CR>:bot copen<CR>
+map ,T :wa<CR>:call setqflist(['Working...'])<CR>:.Rake<CR>:bot copen<CR>
 
-" let g:rails_projections = {
-    " \ "config/*.yml*": {
-    " \   "command": "yml"
-    " \ },
-    " \ "app/services/*.rb": {
-    " \   "command": "service"
-    " \ },
-    " \ "app/grids/*_grid.rb": {
-    " \   "command": "grid",
-    " \   "affinity": "model",
-    " \   "related": 'app/models/%i.rb'
-    " \ },
-    " \ "app/workers/*.rb": {
-    " \   "command": "worker",
-    " \   "affinity": "model",
-    " \ },
-    " \ "spec/features/*_spec.rb": {
-    " \   "command": "feature",
-    " \ },
-    " \ "spec/factories/*.rb": {
-    " \   "command": "factory",
-    " \   "affinity": "model",
-    " \   "related": "app/models/%i.rb",
-    " \ },
-    " \ "app/liquid/*": {"command": "liquid"},
-    " \ "support/2018/*.rb": {"command": "support"}}
-    " "\ "features/support/env.rb": {"command": "support"}}
+let g:rails_projections = {
+    \ "config/*.yml*": {
+    \   "type": "yml"
+    \ },
+    \ "app/api/*.rb": {
+    \   "type": "api"
+    \ },
+    \ "app/services/*.rb": {
+    \   "type": "service"
+    \ },
+    \ "app/javascript/*.ts": {
+    \   "type": "javascript"
+    \ },
+    \ "app/grids/*_grid.rb": {
+    \   "type": "grid",
+    \   "affinity": "model",
+    \   "template": [
+    \      "class {camelcase|capitalize|colons}Grid < ApplicationGrid",
+    \      "  scope do",
+    \      "    {singular}",
+    \      "  end",
+    \      "end"
+    \   ],
+    \   "related": "app/models/%i.rb"
+    \ }
+\ }
 
 
 " Ultisnips
@@ -391,7 +390,8 @@ let g:lightline = {
       \            ]
       \ },
       \ 'component_type': {
-      \   'relativepath': 'expand'
+      \   'relativepath': 'expand',
+      \   'locationlist': 'error',
       \ },  
       \ 'component_function': {
       \   'locationlist': 'LightlineLocationList'
@@ -648,14 +648,12 @@ endfun
 autocmd FileType c,cpp,java,php,ruby,python,typescript,javascript,json autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 
 if has("gui_macvim") || has("gui_running")
-  colorscheme inkpot
+  " colorscheme inkpot
   set clipboard=unnamed
 endif
 if has("gui_macvim") || exists("g:neovide")
-  "set shell=zsh\ -i
   set guifont=Inconsolata:h20
   let g:neovide_input_macos_option_key_is_meta = 'both'
-  " let g:neovide_input_macos_alt_is_meta = v:true
 endif
 
 if has("gui_macvim")
@@ -663,6 +661,3 @@ if has("gui_macvim")
   set guipty
   set guioptions=egitc
 endif
-
-"let g:loaded_dispatch=1
-"let g:autoloaded_dispatch=1
