@@ -424,6 +424,15 @@ endsnippet
 snippet mcc "mcc"
 change_column :${1:table}, :${2:column}, :${3:type}
 endsnippet
+
+snippet mccn "mccn"
+change_column_null :${1:table}, :${2:column}, ${3:true}
+endsnippet
+
+snippet mccd "change_column_default"
+change_column_default :${1:table}, :${2:column}, from: ${3:nil}, to: ${4:nil}
+endsnippet
+
 snippet mcht "mcht"
 change_table :${1:table_name} do |t|
 	${2}
