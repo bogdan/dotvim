@@ -141,10 +141,9 @@ vmap _^ :call MoveToVisualAreaExtrema(0)<CR>
 vmap _$ :call MoveToVisualAreaExtrema(1)<CR>
 
 
-
 "make <c-l> clear the highlight as well as redraw
-nnoremap <C-L> :nohls<CR><C-L>
-inoremap <C-L> <C-O>:nohls<CR>
+nnoremap <C-l> :nohlsearch<CR>:lua for state in pairs(require("flash.state")._states) do state:hide() end<CR><C-L>
+inoremap <C-l> <C-O>:nohlsearch<CR><C-O>:lua for state in pairs(require("flash.state")._states) do state:hide() end<CR>
 
 "map to bufexplorer
 nnoremap <C-B> :BufExplorerHorizontalSplit<CR>
@@ -245,17 +244,36 @@ vmap <M-<> <gv
 " endfunction
 
 function! OpenFile()
-  let file_with_position = substitute(@+, '\n', '', 'g')
-  let file_path = substitute(substitute(file_with_position, ':\d\+$', '', ''), ':\d\+$', '', '')
+  let raw_entry = substitute(@+, '\n', '', 'g')
+  let raw_entry = trim(raw_entry)
+  let raw_entry = substitute(raw_entry, '^from\s\+', '', '')
+  let raw_entry = substitute(raw_entry, ':\s*in\s.*$', '', '')
+
+  let match = matchlist(raw_entry, '\v^(.+):(\d+)(:(\d+))?(\s+.*)?$')
+  if !empty(match)
+    let file_path = match[1]
+    let line_num = match[2]
+    let col_num = match[4]
+  else
+    let file_path = raw_entry
+    let line_num = ''
+    let col_num = ''
+  endif
 
   if filereadable(file_path)
-    execute 'edit ' . file_with_position
+    execute 'edit ' . (line_num != '' ? '+' . line_num . ' ' : '') . fnameescape(file_path)
+    if col_num != ''
+      call cursor(str2nr(line_num), str2nr(col_num))
+    endif
     return
   endif
 
   let test_file_path = 'TrueArtTests/Models/' . file_path
   if filereadable(test_file_path)
-    execute 'edit ' . substitute(file_with_position, file_path, test_file_path, '')
+    execute 'edit ' . (line_num != '' ? '+' . line_num . ' ' : '') . fnameescape(test_file_path)
+    if col_num != ''
+      call cursor(str2nr(line_num), str2nr(col_num))
+    endif
     return
   endif
 
@@ -269,8 +287,8 @@ map <M-q> :call OpenFile()<cr>
 
 
 
-"set langmap=ÊÃÕËÅÎÇÛİÚÈßÆÙ×ÁĞÒÏÌÄÖÜÑŞÓÍÉÔØÂÀ/êãõëåHçûıúèÿæù÷áğòïìäöüñşóíéôøâà/;qwertyuiop[]asdfghjkl;'zxcvbnm,./QWERTYUIOP[]ASDFGHJKL:'ZXCVBNM,./
-"set langmap=éöóêåíãøùçõúôûâàïğîëäæıÿ÷ñìèòüáş/ÉÖÓÊÅHÃØÙÇÕÚÔÛÂÀÏĞÎËÄÆİß×ÑÌÈÒÜÁŞ/;qwertyuiop[]asdfghjkl;'zxcvbnm,./QWERTYUIOP[]ASDFGHJKL:'ZXCVBNM,./
+"set langmap=ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½ï¿½Hï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½/;qwertyuiop[]asdfghjkl;'zxcvbnm,./QWERTYUIOP[]ASDFGHJKL:'ZXCVBNM,./
+"set langmap=ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½ï¿½Hï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½/;qwertyuiop[]asdfghjkl;'zxcvbnm,./QWERTYUIOP[]ASDFGHJKL:'ZXCVBNM,./
 
 let g:netrw_ftp_cmd           = 'ftp -p'
 
@@ -583,7 +601,8 @@ map <F11> :call ResetVim()<CR>:source ~/.vimrc<CR>
 
 map <C-a> <ESC>ggVG
 map + mmgg=G:%s#\s*$##<CR>'m:noh<CR>
-map <C-l> :noh<CR>
+" map <C-l> :noh<CR>
+nnoremap <C-l> :nohls<CR>:lua for state in pairs(require("flash.state")._states) do state:hide() end<CR><C-L>
 imap <C-l> <space><ESC>,b<ESC>i <ESC>lvi,ec<s-ins><esc>bX,els_
 imap <C-k> <space><ESC>,b<ESC>i <ESC>lvi,ec<s-ins><esc>bX,els
 nmap <silent> <M-l> :set hlsearch<CR>:let @/='\<'.expand('<cword>').'\>'<CR>
@@ -661,3 +680,5 @@ if has("gui_macvim")
   set guipty
   set guioptions=egitc
 endif
+
+let g:vim_svelte_plugin_use_typescript=1
