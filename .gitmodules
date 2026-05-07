@@ -1,9 +1,0 @@
-[submodule "pack/all/start/delimitMate"]
-	path = pack/all/start/delimitMate
-	url = https://github.com/Raimondi/delimitMate.git
-[submodule "pack/all/start/rsi"]
-	path = pack/all/start/rsi
-	url = https://github.com/tpope/vim-rsi
-[submodule "pack/all/start/dispatch"]
-	path = pack/all/start/dispatch
-	url = https://github.com/tpope/vim-dispatch
