@@ -26,7 +26,6 @@ return {
   { "tpope/vim-rvm" },
   { "mattn/webapi-vim" },
   { "tpope/vim-rsi" },
-  { "SirVer/ultisnips" },
   { "tpope/vim-dispatch" },
   { "bogado/file-line" },
   { "tpope/vim-projectionist" },

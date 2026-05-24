@@ -1,5 +1,6 @@
 {
   "CamelCaseMotion": { "branch": "master", "commit": "e69b0024f8f63db10c5d0df26d4920760755d454" },
+  "LuaSnip": { "branch": "master", "commit": "642b0c595e11608b4c18219e93b88d7637af27bc" },
   "YankRing.vim": { "branch": "master", "commit": "28854abef8fa4ebd3cb219aefcf22566997d8f65" },
   "ack.vim": { "branch": "master", "commit": "36e40f9ec91bdbf6f1adf408522a73a6925c3042" },
   "ale": { "branch": "master", "commit": "c59c0d1a573a7b2fe491f78af4f2033bde454753" },
@@ -18,7 +19,6 @@
   "nerdtree": { "branch": "master", "commit": "690d061b591525890f1471c6675bcb5bdc8cdff9" },
   "splitjoin.vim": { "branch": "main", "commit": "8c4c87e72d20d8d5eee8b29c320eb61767578841" },
   "typescript-vim": { "branch": "master", "commit": "4740441db1e070ef8366c888c658000dd032e4cb" },
-  "ultisnips": { "branch": "master", "commit": "b22a86f9dcc5257624bff3c72d8b902eac468aad" },
   "vim-abolish": { "branch": "master", "commit": "dcbfe065297d31823561ba787f51056c147aa682" },
   "vim-bundler": { "branch": "master", "commit": "64a448589e5e238cce0030d08984368ddc3851ac" },
   "vim-dadbod": { "branch": "master", "commit": "6d1d41da4873a445c5605f2005ad2c68c99d8770" },

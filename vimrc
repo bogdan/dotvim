@@ -347,18 +347,7 @@ let g:rails_projections = {
 \ }
 
 
-" Ultisnips
-
-
 source ~/.vim/UltiSnips/support_functions.vim
-"let g:UltiSnipsSnippetDirectories=["snippets"]
-let g:UltiSnipsEditSplit='horizontal'
-
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-let g:UltiSnipsNoPythonWarning=1
-let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips'] 
 
 " Gist
 
