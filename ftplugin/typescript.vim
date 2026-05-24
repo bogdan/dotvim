@@ -10,10 +10,7 @@ let b:ale_fixers = ['eslint', 'prettier']
 let g:ale_typescript_tsserver_executable = 'yarn run tsserver'
 let g:ale_typescript_tsserver_options = 'run tsserver'
 
-map <buffer> <C-]> :ALEGoToDefinition<CR>
-map <buffer> <C-'> :call setqflist([])<CR>:ALEFindReferences -relative -quickfix<CR>:bot copen<CR>
-map <buffer> g] :ALEHover<CR>
-map <buffer> <C-w>] :ALEGoToDefinition -split<CR>
+source <sfile>:h/js_common.vim
 
 function! TsIncludeExpr(file)
   if (filereadable(a:file))
@@ -26,8 +23,6 @@ endfunction
 set includeexpr=TsIncludeExpr(v:fname)
 set include=import\_s.\\zs[^'\"]*\\ze
 set suffixesadd=.ts,.js,.json,.jsx,.tsx
-set isfname+=@-@ " Node modules organization name
-set path+=node_modules
 set path+=../node_modules
 
 set iskeyword=@,48-57,_,192-255,-,$
