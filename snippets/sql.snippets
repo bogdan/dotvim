@@ -1,0 +1,43 @@
+snippet f f
+	from ${1}
+snippet g g
+	group by ${1}
+snippet l l
+	limit ${1:100}
+snippet lj lj
+	left join ${1} on ${2}
+snippet o o
+	order by ${1:created_at DESC}
+snippet s select
+	select ${1};
+snippet sd sd
+	select distinct ${1}
+snippet sel select
+	select 
+	*
+	from ${1:}
+	where 1=1
+	order by created_at desc
+	limit 100;
+snippet w w
+	where ${1}
+snippet c count
+	count(${1:*})
+snippet sgc select group count
+	select
+	${1:type}, 
+	-- max(updated_at),
+	count(*) count
+	from ${2}
+	where 1=1
+	group by $1
+	order by count desc
+	limit 100;
+snippet sid select by id
+	SELECT * FROM ${1} WHERE id = ${2};
+snippet u update
+	UPDATE 
+snippet up update
+	UPDATE ${1} SET ${2} WHERE 1=1 AND ${3}
+snippet inn is not null
+	IS NOT NULL

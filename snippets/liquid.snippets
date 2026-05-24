@@ -1,0 +1,50 @@
+snippet hl hl
+	{% highlight ${1:ruby} %}
+	${2}
+	{% endhighlight %}
+
+snippet a [text](link)
+	[${1:${VISUAL}}](${2:$1})
+
+
+snippet more <!--more--> !b
+	<!--more-->
+
+snippet head post head !b
+	---
+	layout: post
+	title: "$1"
+	#published: false
+	tags: 
+	- ${2:one}
+	- ${3:two}
+	---
+
+snippet ct {% ct '' %} w
+	{% ct '${1:title}' %}
+
+snippet - {% _ %} i
+	{% ${1} %}
+
+snippet = {{  }} i
+	{{ ${1} }}
+
+snippet p p='' w
+	${1:class}="${2}"
+
+snippet f function() {} w
+	function(${1}) {
+		${2}
+	}
+
+snippet if if
+	{% if ${1} %}
+	{% endif %}
+snippet ife if else
+	{% if ${1} %}
+		${2}
+	{% else %}
+		${3}
+	{% endif %}
+snippet el else w
+	{% else %}

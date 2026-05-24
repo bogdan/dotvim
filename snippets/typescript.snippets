@@ -1,0 +1,94 @@
+snippet _
+	_(${1:object}).${2:method}(${3}).value()
+snippet ifs
+	import * as fs from 'fs';
+snippet ild
+	import _ from 'lodash';
+snippet i
+	import ${2:{${3}}} from '${1}';
+snippet ex
+	expect(${1}).to.eql(${2:'${3}'});
+snippet aex
+	await expect(${1}).to.eventually.eql(${2:'${3}'});
+snippet a 
+	alert(${1});
+
+snippet aw async wrapper function
+	(async () => {
+		${1}
+	})();
+
+snippet P Promise<>
+	Promise<${1}>
+
+snippet des describe
+	describe('${1}', () => {
+		${2}
+	});
+snippet it it
+	it('${1}', async () => {
+		${2}
+	});
+snippet test test
+	test('${1}', async () => {
+		${2}
+	});
+snippet sw switch
+	switch(${1}) {
+		case(${2}): {
+			${3}
+			break;
+		}
+		case(${4}): {
+			${5}
+			break;
+		}
+		default: {
+			${6}
+		}
+	}
+snippet be beforeEach
+	beforeEach(async () => {
+	  ${1}
+	});
+snippet ae afterEach
+	afterEach(async () => {
+	  ${1}
+	});
+snippet am async method() {}
+	async ${1:method}(${2}): Promise<${3:string}> {
+		${4}
+	}
+snippet af async () => {}
+	async ${1:(${2})} => {
+		${3}
+	}
+
+snippet tne throw new Error()
+	throw new ${1:Error}("${2}")
+snippet fo for (const value of values)
+	for (const ${1} of ${2:$1s}) {
+		${3}
+	}
+snippet fi for (const value in values)
+	for (const ${1} in ${2:$1s}) {
+		${3}
+	}
+
+snippet if if () {}
+	if (${1}) {
+		${2}
+	}
+snippet ife if () {} else {}
+	if (${1}) {
+		${2}
+	} else {
+		${3}
+	}
+snippet cf const name = () => {}
+	const ${1} = (${2}) => {
+		${3}
+	}
+
+snippet to typeof value === ''
+	typeof ${1} === '${2:string}'

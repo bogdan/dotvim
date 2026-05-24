@@ -1,0 +1,718 @@
+snippet Yd YAML.dump()
+	YAML.dump(${1})
+snippet Yl YAML.load()
+	YAML.load(${1})
+snippet am am
+	alias_method :${1:new_name}, :${2:old_name}
+snippet api api
+	#
+	# API
+	#
+	
+snippet clb callbacks
+	#
+	# Callbacks
+	#
+	
+snippet as as
+	assert ${1:test}, "${2:failure_message}"
+snippet ase ase
+	assert_equal ${1:expected}, ${2:actual}
+snippet asid asid
+	assert_in_delta ${1:expected_float}, ${2:actual_float}, ${3:delta_float}
+snippet asio asio
+	assert_instance_of ${1:ExpectedClass}, ${2:actual_instance}
+snippet asko asko
+	assert_kind_of ${1:ExpectedKind}, ${2:actual_instance}
+snippet asm asm
+	assert_match /${1:expected_pattern}/, ${2:actual_string}
+snippet asn asn
+	assert_nil ${1:instance}
+snippet asne asne
+	assert_not_equal ${1:unexpected}, ${2:actual}
+snippet asnm asnm
+	assert_no_match /${1:unexpected_pattern}/, ${2:actual_string}
+snippet asnn asnn
+	assert_not_nil ${1:instance}
+snippet asns asns
+	assert_not_same ${1:unexpected}, ${2:actual}
+snippet asnt asnt
+	assert_nothing_thrown { ${1} }
+snippet aso aso
+	assert_operator ${1:left}, :${2:operator}, ${3:right}
+snippet asr asr
+	assert_raise(${1:Exception}) { ${2} }
+snippet asrt asrt
+	assert_respond_to ${1:object}, :${2:method}
+snippet ast ast
+	assert_throws(:${1:expected}) { ${2} }
+snippet atr atr
+	#
+	# Attributes
+	#
+	
+snippet bhv bhv
+	#
+	# Behaviors
+	#
+	
+snippet bm bm
+	amount = 1000
+	Benchmark.bmbm do |x|
+	  x.report do
+	    amount.times do
+	      ${1} 
+	    end
+	  end
+	  x.report do
+	    amount.times do
+	  	  ${2}
+	    end
+	  end
+	end
+snippet case case
+	case ${1}
+	when ${2}
+	else
+		${3}
+	end
+snippet clm srv
+	#
+	# Services
+	#
+	
+snippet df df
+	def ${1:name}
+		${2}
+	end
+	
+snippet dfa dfa
+	def ${1:}
+	  raise NotImplementedError, "#{self.class}##{__method__} suppose to be overwritten"
+	end
+snippet dfi dfi
+	def initialize${1}
+	end
+snippet dfmm dfmm
+	def method_missing(meth, *args, &blk)
+		${1}
+	end
+snippet dfs dfs
+	def self.${1:class_method_name}
+	end
+snippet dft dft
+	def test_${1:case_name}
+		${2}
+	end
+snippet dop dop
+	do |${1:param}|
+		${2}
+	end
+snippet dp dp
+	do |${1}|
+snippet ea ea
+	each { |${1:element}| ${2:body} }
+snippet each each
+	each do |${1:element}|
+		${2:body}
+	end
+snippet eado eado
+	each do |${1:element}|
+		${2:body}
+	end
+snippet eawi eawi
+	each_with_index do |${1:element},${2:i}|
+		${3:body}
+	end
+snippet fopen fop
+	File.open(${1:path}, "${2:w}") do |${3:file}| 
+	  ${4} 
+	end
+snippet fread frd
+	File.read(${1})
+snippet i18 i18
+	I18n.t('${1:type.key}')${2}
+snippet imp imp
+	#
+	# Implementation
+	#
+	
+snippet inj inj
+	inject(${1:init}) do |${2:total}, ${3:next}|
+		${4:body}
+	end
+snippet k k i
+	${1:}: $1${2:}
+snippet la la
+	lambda { |${1:id}| ${2}}
+snippet map map
+	map { |${1:element}| ${2:body} }
+snippet mapdo mapdo
+	map do |${1:element}|
+		${2:body}
+	end
+snippet mapo mapo
+	map do |${1:element}|
+		${2:body}
+	end
+snippet mp mp
+	map(&:${1:id})
+snippet mrw mrw
+	mattr_accessor :${1:attr_names}
+snippet nam nam
+	namespace :${1:namespace} do
+		${2}
+	end
+snippet ope ope
+	open(${1:path}, "${2:rwab}") { |${3:io}| ${4} }
+snippet pathhere pathhere
+	File.join(File.dirname(__FILE__), *%w[${1:rel_path_here}])
+snippet r r
+	attr_reader :${1:attr_names}
+snippet rejecto rejecto
+	reject do |${1:element}|
+		${2:body}
+	end
+snippet req req
+	require '${1}'
+snippet rw rw
+	attr_accessor :${1:attr_names}
+snippet s s
+	self.$0
+snippet select select
+	select { |${1:element}| ${2:body} }
+snippet selecto selecto
+	select do |${1:element}|
+		${2:body}
+	end
+snippet sha1 sha1
+	Digest::SHA1.hexdigest(${1:string})
+snippet sinc sinc
+	class << self; self end
+snippet sort sort w
+	sort do |${1:x},${2:y}|
+		${3:body}
+	end
+snippet w w
+	attr_writer :${1:attr_names}
+snippet pa params[:id] w
+	params[:${1:id}]
+
+snippet asc asc
+	#
+	# Associations
+	#
+	
+snippet ba before_action
+	before_action :${1:method}
+snippet bam before_action with method
+	before_action :${1:method}
+	
+	def $1
+	  ${3}
+	end
+
+snippet bal before_action :load_object
+	before_action :load_${1}
+	def load_$1
+	  @$1 = ${2}.find(params[:id]) if params[:id]
+	end
+snippet defcreate defcreate
+	def create
+		@${1:model_class_name} = ${2:ModelClassName}.new($1_params)
+	
+		if @$1.save
+			redirect_to(@$1, notice:  '$2 was successfully created.') 
+		else
+			render(:new, status: :unprocessable_entity)
+		end
+	end
+snippet defparams def model_params permit
+	def ${1:mode_name}_params
+		params.require(:$1).permit(
+			${2:name}
+		)
+	end
+
+snippet defdestroy defdestroy
+	def destroy
+		@${1:model_class_name} = ${2:ModelClassName}.find(params[:id])
+		@$1.destroy
+	
+		redirect_to($1s_path, notice: '$2 was successfully deleted.') 
+	end${3}
+snippet defedit defedit
+	def edit
+	end
+snippet defindex defindex
+	def index
+		@${1:model_class_name} = ${2:ModelClassName}.all
+	end${3}
+snippet defnew defnew
+	def new
+		@${1:model_class_name} = ${2:ModelClassName}.new
+	end${3}
+snippet defshow defshow
+	def show
+	end
+snippet defupdate defupdate
+	def update
+	  if @${1:model_instance_name}.update($1_params)
+	  	redirect_to(@$1, notice: '${2} was successfully updated.') 
+	  else
+	  	render(:edit, status: :unprocessable_entity) 
+	  end
+	end
+snippet fl fl
+	flash[:${1:notice}] = "${2}"
+snippet fpid fpid
+	find(params[:${1}id])
+snippet habtm habtm
+	has_and_belongs_to_many :${1:object}, join_table: "${2:table_name}", foreign_key: "${3}_id"${4}
+snippet hmt hmt
+	has_many :${1:object}, through: :${2:object}
+snippet ho ho
+	has_one :${1:object}, dependent: :destroy$0
+snippet mac mac
+	add_column :${1:table}, :${2:column}, :${3:string}
+snippet mar add_reference
+	add_reference :${1:table}, :${2:reference}, foreign_key: true
+snippet mai mai
+	add_index :${1:table}, [:${2:column}]${3:, unique: true}
+snippet mbs mbs
+	before_save :${1:method}
+snippet mcc mcc
+	change_column :${1:table}, :${2:column}, :${3:type}
+
+snippet mccn mccn
+	change_column_null :${1:table}, :${2:column}, ${3:true}
+
+snippet mccd change_column_default
+	change_column_default :${1:table}, :${2:column}, from: ${3:nil}, to: ${4:nil}
+
+snippet mcht mcht
+	change_table :${1:table_name} do |t|
+		${2}
+	end
+snippet mrc mcol
+	remove_column :${1:table}, :${2:column}, ${3:type}
+snippet mct mct
+	create_table :${1} do |t|
+		t.${2:integer} :${3}
+	end
+snippet mctmm mctmm
+	create_table :${1:}, id: false do |t|
+		t.integer :${2:}_id, null: false
+		t.integer :${3:}_id, null: false
+	end
+	
+	
+	add_index :$1, :$2_id
+	add_index :$1, [:$3_id, :$2_id], unique: true
+	
+	add_foreign_key :$1, :$2_id, references: :$2s, on_delete: :cascade
+	add_foreign_key :$1, :$3_id, references: :$3s, on_delete: :cascade
+snippet mfk mfk
+	add_index :${1:}, :${2:}_id
+	add_foreign_key :$1, :$2_id, references: :${3:$2}s, on_delete: :${4:restrict}
+	
+snippet pid pid
+	params[:${1}id]
+snippet rest rest
+	respond_to do |f|
+		f.html { ${1} }
+		f.json do
+			render json: {${2}}
+		end
+	end
+snippet rjson rjson
+	render json: {${1:}}
+snippet rp rp
+	render partial: "${1:item}"$0
+snippet rpl rpl
+	render partial: "${1:}", locals: { ${2:} }
+snippet rpo rpo
+	render partial: "${1}", object: ${2}
+snippet rt rt
+	render text: "${1:text to render}"
+snippet rts rts
+	render_to_string partial: "${1}"
+snippet sc sc
+	scope :${1}, ${2:where()}
+snippet scp scp
+	scope :${1}, ->(${2}) {
+	  where(${3})
+	}
+snippet scs scs
+	#
+	# Scopes
+	#
+	
+snippet tcb tcb
+	t.boolean :${1:truthly}
+snippet tcd tcd
+	t.decimal :${1:value}, precision: ${2:2}, scale: ${3:10}
+snippet tcda tcda
+	t.date :${1:date}
+snippet tcdt tcdt
+	t.datetime :${1:title}
+snippet tcf tcf
+	t.float :${1:value}
+snippet tch tch
+	t.change :${1}, :${2:string}
+snippet tci tci
+	t.integer :${1:id}
+snippet tcs tcs
+	t.string :${1:title}
+snippet tct tct
+	t.text :${1:body}
+snippet tcti tcti
+	t.time :${1:title}
+	${2}
+snippet tcts tcts
+	t.timestamp :${1:title}
+	${2}
+snippet tctss tctss
+	t.timestamps
+	${1}
+snippet trc trc
+	t.remove :${1:column}
+snippet tre tre
+	t.rename :${1}, :${2}
+snippet tref tref
+	t.references :${1:model}
+snippet va va
+	validates_associated :${1:attribute}
+snippet vao vao
+	validates_acceptance_of :${1:terms}
+snippet vco vco
+	validates_confirmation_of :${1:attribute}
+snippet veo veo
+	validates_exclusion_of :${1:attribute}, in: ${2:%w( mov avi )}
+snippet vfo vfo
+	validates_format_of :${1:attribute}, with: /${2:regex}/
+snippet vio vio
+	validates_inclusion_of :${1:attribute}, in: ${2}
+snippet vlo vlo
+	validates_length_of :${1:attribute}, within: ${2:3}..${3:20}
+snippet vld vld
+	#
+	# Validation
+	#
+	
+snippet vn vno
+	validates_numericality_of :${1:attribute}
+snippet vpo vpo
+	validates_presence_of :${1:attribute}
+snippet vuo vuo
+	validates_uniqueness_of :${1:attribute}${2:, scope: [:${3}]}
+snippet mrmc mrmc
+	remove_column :${1:table}, :${2:column}
+snippet mrnc mrnc
+	rename_column :${1:table}, :${2:old}, :${3:new}
+snippet aft aft
+	after(${1::each}) do
+		${2}
+	end
+snippet anr anr
+	and_return(${1:value})
+snippet anra anra
+	and_raise(${1:exception})
+snippet anrb anrb
+	and_return { ${1} }
+snippet ant ant
+	and_throw(${1:sym})
+snippet any any
+	and_yield(${1:values})
+snippet avf avf
+	it {should accept_values_for(:${1:}, ${2})}
+	it {should_not accept_values_for(:$1, ${3:nil})}
+snippet avfn avfn
+	it {should_not accept_values_for(:${1}, ${2:nil})}
+snippet bef bef
+	before do
+		${1}
+	end
+snippet befa befa
+	before(:all) do
+		${1}
+	end
+snippet des des
+	describe "${1}" do
+		${2}
+	end
+snippet desa desa
+	describe "${1:get} ${2:show}" do
+	  subject { $1 :${3:$2} }
+	
+	  it { should be_${4:success} }
+	
+	end
+snippet desns desns
+	describe ".${1:}" do
+	
+	  subject { described_class.$1${2} }
+	
+		it { should include(${3})}
+	
+		it { should_not include(${4})}
+	
+	
+	end
+snippet dess dess
+	describe "${1:name}" do
+		${2}
+	end
+snippet dest dest
+	describe ${1:Type} do
+		${2}
+	end
+snippet atl atl
+	at_least(${1:n}).times
+snippet atm atm
+	at_most(${1:n}).times
+snippet con con
+	context "${1}" do
+	  ${2}
+	end
+snippet cona cona
+	context "after #${1:save!}" do
+	  before(:each) do
+	    subject.$1
+		end
+		${2}
+	end
+snippet fca fca
+	association :${1}
+snippet fcd fcd
+	FactoryBot.define do
+	  factory :${1} do
+	    ${2}
+	  end
+	end
+snippet fcn fcn
+	FactoryBot.next(:${1:sequence-name})
+snippet fcs fcs
+	f.sequence(:${1}) {|n| "${2}#{n}"}
+snippet is is
+	it { should ${1} }
+snippet isbl isbl
+	it_should_behave_like '${1}'
+snippet isn isn
+	it { should_not ${1} }
+snippet it it
+	it "${1}" do
+		${2}
+	end
+snippet its its
+	it "should ${1:work correctly}" do
+	  ${2}
+	end
+snippet let let
+	let(:${1}) { ${2} }
+snippet letf letf
+	let(:${1:model}) do 
+	  create(:${2:$1${3}})
+	end
+snippet mat mat
+	class ${1:ReverseTo}
+		def initialize(${2:param})
+			@$2 = $2
+		end
+	
+		def matches?(actual)
+			@actual = actual
+			# Satisfy expectation here. Return false or raise an error if it's not met.
+			${3:@actual.reverse.should == @$2}
+			true
+		end
+	
+		def failure_message
+			"expected #{@actual.inspect} to ${4} #{@$2.inspect}, but it didn't"
+		end
+	
+		def negative_failure_message
+			"expected #{@actual.inspect} not to ${5} #{@$2.inspect}, but it did"
+		end
+	end
+	
+	def ${6:reverse_to}(${7:expected})
+		${8}.new($7)
+	end
+snippet seg seg
+	shared_examples_for "${1:}" do
+	  ${2}
+	end
+snippet sh sh
+	${1:target}.should == ${2:value}
+	${3}
+snippet shb shb
+	${1:target}.should be(${2:result})
+	${3}
+snippet shbc shbc
+	${1:target}.should be_close(${2:result}, ${3:tolerance})
+	${4}
+snippet shbio shbio
+	${1:target}.should be_instance_of(${2:class})
+	${3}
+snippet shbko shbko
+	${1:target}.should be_a_kind_of(${2:class})
+	${3}
+snippet shbr shbr
+	response.should be_redirect
+	${1}
+snippet shbs shbs
+	response.should be_success
+	${1}
+snippet exc exc
+	expect(->{
+		${1}
+	}).to change(${2:described_class}, :${3:count}).by(${4:1})
+snippet exr exr
+	expect(->{
+		${1}
+	}).to raise_error(${2:StandardError})
+snippet shdm shdm
+	${1:target}.should match(/${2:regexp}/)
+	${3}
+snippet she she
+	${1:target}.should eql(${2:value})
+	${3}
+snippet sheq sheq
+	${1:target}.should equal(${2:value})
+	${3}
+snippet shh shh
+	${1:target}.should have(${2:num}).${3:things}
+	${4}
+snippet shhal shhal
+	${1:target}.should have_at_least(${2:num}).${3:things}
+	${4}
+snippet shham shham
+	${1:target}.should have_at_most(${2:num}).${3:things}
+	${4}
+snippet shhr shhr
+	${1:target}.should have(${2:n}).records
+	${3}
+snippet shn shn
+	${1:target}.should_not == ${2:value}
+	${3}
+snippet shnb shnb
+	${1:target}.should_not be(${2:result})
+	${3}
+snippet shnbc shnbc
+	${1:target}.should_not be_close(${2:result}, ${3:tolerance})
+	${4}
+snippet shnbio shnbio
+	${1:target}.should_not be_instance_of(${2:klass})
+	${3}
+snippet shnbko shnbko
+	${1:target}.should_not be_a_kind_of(${2:klass})
+	${3}
+snippet shnc shnc
+	lambda do
+		${1}
+	end.should_not change(${2:target}, :${3:method})
+snippet shne shne
+	${1:target}.should_not eql(${2:value})
+	${3}
+snippet shneq shneq
+		${1:target}.should_not equal(${2:value})
+		${3}
+snippet shnm shnm
+	${1:target}.should_not match(/${2:regexp}/)
+	${3}
+snippet shnp shnp
+	${1:target}.should_not be_${2:predicate}
+snippet shnr shnr
+	${1:mock}.should_not_receive(:${2:message})${3}
+	${4}
+snippet shnre shnre
+	${1:target}.should_not raise_error(${2:error})
+	${3}
+snippet shnrt shnrt
+	${1:target}.should_not respond_to(:${2:sym})
+	${3}
+snippet shp shp
+	${1:target}.should be_${2:predicate}
+snippet shr shr
+	${1:mock}.should_receive(:${2:message})${3}
+	${4}
+snippet shre shre
+	${1:target}.should raise_error(${2:error})
+	${3}
+snippet shrt shrt
+	${1:target}.should respond_to(:${2:sym})
+	${3}
+snippet st st
+	stubs(:${1}).returns(${2})
+snippet subj subj
+	subject { ${1:build(${2:described_class.to_s.underscore})} }
+
+snippet ff focused: true w
+	, focused: true
+snippet task task
+	desc "${1:Task description}"
+	task :${2:task_name}${3: => ["${4:dependent}"]} do
+		${5}
+	end
+
+snippet trb find_in_batches transaction i
+	find_in_batches do |batch|
+		ActiveRecord::Base.transaction do
+			batch.each do |${1}|
+				${2}
+			end
+		end
+	end
+
+snippet lhm Lhm.change_table !b
+	Lhm.change_table :${1}, stride: 10_000 do |t|
+		t.${2:add_column}
+	end
+snippet ex expect() to eq()
+	expect($1).to ${2:eq($3)}
+snippet exn expect() to_not eq()
+	expect($1).to_not ${2:eq($3)}
+snippet fsl frozen_string_literal
+	# frozen_string_literal: true
+snippet rd rubocop:disable
+	# rubocop:disable $1
+	# rubocop:enable $1
+
+snippet sql <<~SQL
+	<<~SQL.squish
+	SQL
+
+snippet ttr test transform
+	test "${1:new bug}" do
+		assert_transform(
+			<<~SQL.squish,
+			SQL
+			<<~SQL.squish,
+			SQL
+		)
+	end
+
+snippet tutr test untransformed
+	test "${1:new bug}" do
+		assert_untransformed(
+			<<~SQL.squish,
+			SQL
+		)
+	end
+snippet mrv reversible do
+	reversible do |d|
+	  d.up do
+	    ${1}
+		end
+		d.down do
+	
+		end
+	end
+snippet dbg debugger
+	require 'debug'
+	debugger
+snippet vp visibility private
+	# @!visibility private
+snippet exp expose
+	expose :${1}, documentation: {type: ${2:String}${3:, x: {nullable: true}}}

@@ -6,15 +6,24 @@ return {
     config = function()
       local ls = require("luasnip")
 
-      require("ultisnips_loader").load({
-        paths = { vim.fn.expand("~/.vim/UltiSnips") },
+      require("luasnip.loaders.from_snipmate").load({
+        paths = { vim.fn.expand("~/.vim/snippets") },
+      })
+      require("luasnip.loaders.from_lua").load({
+        paths = { vim.fn.expand("~/.vim/snippets") },
       })
 
-      vim.api.nvim_create_user_command("EditSnippets", function()
-        local ft = vim.bo.filetype
-        local path = vim.fn.expand("~/.vim/UltiSnips/" .. ft .. ".snippets")
-        vim.cmd.edit(path)
-      end, { desc = "Edit UltiSnips file for current filetype" })
+      vim.api.nvim_create_user_command("EditSnips", function(cmd)
+        local ft = cmd.args ~= "" and cmd.args or vim.bo.filetype
+        local path = vim.fn.expand("~/.vim/snippets/" .. ft .. ".snippets")
+        vim.cmd.split(path)
+      end, {
+        nargs = "?",
+        complete = function()
+          local files = vim.fn.glob(vim.fn.expand("~/.vim/snippets/*.snippets"), false, true)
+          return vim.tbl_map(function(f) return vim.fn.fnamemodify(f, ":t:r") end, files)
+        end,
+      })
 
       vim.keymap.set({ "i", "s" }, "<Tab>", function()
         if ls.expand_or_jumpable() then

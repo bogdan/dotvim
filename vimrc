@@ -347,8 +347,6 @@ let g:rails_projections = {
 \ }
 
 
-source ~/.vim/UltiSnips/support_functions.vim
-
 " Gist
 
 let g:gist_clip_command = 'pbcopy'

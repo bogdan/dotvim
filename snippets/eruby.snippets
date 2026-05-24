@@ -1,0 +1,147 @@
+snippet - -
+	<% ${1} -%>
+snippet = = i
+	<%= ${1} %>
+snippet a a
+	<a href="${1:#}"></a>
+snippet b b
+	<% ${1} do -%>
+	  ${2}
+	<% end %>
+snippet bp bp
+	<% ${1} do |${2}| -%>
+	  ${3}
+	<% end %>
+snippet cl cl
+	class='${1}'
+snippet clr clr
+	<div class="clear"></div>
+snippet conf conf
+	<% content_for :${1:yield_label_in_layout} do -%>
+		${2}
+	<% end -%>
+snippet ct ct
+	<%= content_tag '${1:div}', ${2:content}${3:,options} -%>
+snippet dcl dcl
+	<div class="${1:}">${2:}</div>
+snippet did did
+	<div id="${1:}">${2}</div>
+snippet each each
+	<% ${1}.each do |${2:item}| -%>
+	  ${3}
+	<% end -%>
+snippet end end
+	<% end -%>
+snippet ff ff
+	<% form_for ${1:model} do |f| -%>
+		${2}
+	<% end -%>
+snippet ffcb ffcb
+	<%= ${1:f}.check_box :${2:attribute} %>
+snippet ffe ffe
+	<% error_messages_for :${1:model} -%>
+	
+	<% form_for @${2:model} do |f| -%>
+		${3}
+	<% end -%>
+snippet ffff ffff
+	<%= ${1:f}.file_field :${2:attribute} %>
+snippet ffhf ffhf
+	<%= ${1:f}.hidden_field :${2:attribute} %>
+snippet ffl ffl
+	<%= ${1:f}.label :${2:attribute}, '${3:$2}' %>
+snippet ffpf ffpf
+	<%= ${1:f}.password_field :${2:attribute} %>
+snippet ffrb ffrb
+	<%= ${1:f}.radio_button :${2:attribute}, :${3:tag_value} %>
+snippet ffs ffs
+	<%= ${1:f}.submit "${2:submit}" %>
+snippet ffta ffta
+	<%= ${1:f}.text_area :${2:attribute} %>
+snippet fftf fftf
+	<%= ${1:f}.text_field :${2:attribute} %>
+snippet fields fields
+	<% fields_for :${1:model}, @$1 do |${2:f}| -%>
+		${3}
+	<% end -%>
+snippet for for
+	<% for ${2:item} in ${1:list} -%>
+		${3}
+	<% end -%>
+snippet ft ft
+	<% form_tag(${1:}, ${2:}) do -%>
+	  ${3:}
+	<% end -%>
+snippet i18 i18
+	I18n.t('${1:type.key}')${2}
+snippet id id
+	id='${2}'
+snippet if if
+	<% if ${1:condition} %>
+		${2}
+	<% end %>
+snippet ife ife
+	<% if ${1} %>
+		${2}
+	<% else %>
+	<% end %>
+snippet it it
+	<%= image_tag "${1}"${2} %>
+snippet jit jit
+	<%= javascript_include_tag "${1}" %>
+snippet k k
+	:${1} => ${2}
+snippet lia lia
+	<%= link_to "${1:link text}", :action => "${2:index}" %>
+snippet liai liai
+	<%= link_to "<+link text+>", :action => "<+edit+>", :id => <+@<+item+>+> %>
+snippet lic lic
+	<%= link_to "${1:link text}", :controller => "${2:items}" %>
+snippet lica lica
+	<%= link_to "${1:link text}", :controller => "${2:items}", :action => "${3:index}" %>
+snippet licai licai
+	<%= link_to "<+link text+>", :controller => "<+items+>", :action => "<+edit+>", :id => <+@<+item+>+> %>
+snippet lim lim
+	<%= link_to <+model+>.<+name+>, <+<+model+>_path(<+model+>)+> %>
+snippet linp linp
+	<%= link_to <+"<+link text+>"+>, <+<+parent+>_<+child+>_path(<+@+><+parent+>, <+@+><+child+>)+> %>
+snippet linpp linpp
+	<%= link_to <+"<+link text+>"+>, <+<+parent+>_<+child+>_path(<+@+><+parent+>)+> %>
+snippet lip lip
+	<%= link_to <+"<+link text+>"+>, <+<+model+>_path(<+@+><+instance+>)+> %>
+snippet lipp lipp
+	<%= link_to <+"<+link text+>"+>, <+<+model+>s_path+> %>
+snippet lts lts
+	<%= link_to "${1:name}", ${2:dest}_path %>
+snippet ofcfs ofcfs
+	<%= options_from_collection_for_select <+collection+>, <+value_method+>, <+text_method+><+, <+[selected_value]+>+> %>
+snippet p p
+	${1:}='${2:}'
+snippet rel rel
+	rel='<%= {${1}}.to_json %>'
+snippet rf rf
+	<%= render file: "${1:file}"${2} %>
+snippet rp rp
+	<%= render partial: "${1:file}"${2} %>
+snippet rpo rpo
+	<%= render partial: "${1:}", :object => ${2} %>
+snippet rt rt
+	<%= render template: "${1:file}"${2} %>
+snippet slt slt
+	<%= stylesheet_link_tag "${1}" %>
+snippet ss ss
+	<% ${1} do -%>
+	  ${2}
+	<% end -%>
+snippet unless unless
+	<% unless ${1} %>
+		${2}
+	<% end %>
+snippet unlesse unlesse
+	<% if ${1} %>
+		${2}
+	<% else %>
+	<% end %>
+snippet dbg debugger
+	<% require 'debug' -%>
+	<% debugger -%>
