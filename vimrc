@@ -247,7 +247,7 @@ function! OpenFile()
   let raw_entry = substitute(@+, '\n', '', 'g')
   let raw_entry = trim(raw_entry)
   let raw_entry = substitute(raw_entry, '^from\s\+', '', '')
-  let raw_entry = substitute(raw_entry, ':\s*in\s.*$', '', '')
+  let raw_entry = substitute(raw_entry, ':\s*in\(\s.*\)\?$', '', '')
 
   let match = matchlist(raw_entry, '\v^(.+):(\d+)(:(\d+))?(\s+.*)?$')
   if !empty(match)
@@ -268,17 +268,8 @@ function! OpenFile()
     return
   endif
 
-  let test_file_path = 'TrueArtTests/Models/' . file_path
-  if filereadable(test_file_path)
-    execute 'edit ' . (line_num != '' ? '+' . line_num . ' ' : '') . fnameescape(test_file_path)
-    if col_num != ''
-      call cursor(str2nr(line_num), str2nr(col_num))
-    endif
-    return
-  endif
-
   echohl ErrorMsg
-  echom "File not found: " . file_path . " or " . test_file_path
+  echom "File not found: " . file_path
   echohl None
 endfunction
 
