@@ -3,7 +3,7 @@
   "LuaSnip": { "branch": "master", "commit": "642b0c595e11608b4c18219e93b88d7637af27bc" },
   "YankRing.vim": { "branch": "master", "commit": "28854abef8fa4ebd3cb219aefcf22566997d8f65" },
   "ack.vim": { "branch": "master", "commit": "36e40f9ec91bdbf6f1adf408522a73a6925c3042" },
-  "ale": { "branch": "master", "commit": "c59c0d1a573a7b2fe491f78af4f2033bde454753" },
+  "ale": { "branch": "master", "commit": "2a3af30f36e4f5531e82e66db65e0c1d26b35f08" },
   "auto-pairs": { "branch": "master", "commit": "39f06b873a8449af8ff6a3eee716d3da14d63a76" },
   "bufexplorer.zip": { "branch": "master", "commit": "08b0100f5242e1de07bce40dc6376a4996791c33" },
   "delimitMate": { "branch": "master", "commit": "becbd2d353a2366171852387288ebb4b33a02487" },

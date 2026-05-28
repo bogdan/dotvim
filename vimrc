@@ -260,6 +260,7 @@ function! OpenFile()
     let col_num = ''
   endif
 
+  let file_path = expand(file_path)
   if filereadable(file_path)
     execute 'edit ' . (line_num != '' ? '+' . line_num . ' ' : '') . fnameescape(file_path)
     if col_num != ''

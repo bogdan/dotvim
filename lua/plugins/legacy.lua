@@ -37,7 +37,12 @@ return {
   { "peitalin/vim-jsx-typescript" },
   { "leafgarland/typescript-vim" },
   { "janko/vim-test" },
-  { "w0rp/ale" },
+  {
+    "dense-analysis/ale",
+    -- ALE's LSP diagnostic handlers don't guard against nil result (valid per
+    -- LSP spec when server returns null). Patch until fixed upstream.
+    build = "sed -i '' 's/if err == nil then/if err == nil and result ~= nil then/g' lua/ale/lsp.lua",
+  },
   { "Shougo/neoyank.vim" },
   { "ruanyl/vim-gh-line" },
   { "tomlion/vim-solidity" },

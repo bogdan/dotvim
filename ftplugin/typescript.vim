@@ -7,8 +7,7 @@ let b:ale_fixers = ['eslint', 'prettier']
 " let b:ale_fixers = ['prettier']
 
 
-let g:ale_typescript_tsserver_executable = 'yarn run tsserver'
-let g:ale_typescript_tsserver_options = 'run tsserver'
+let g:ale_typescript_tsserver_executable = 'tsserver'
 
 source <sfile>:h/js_common.vim
 
