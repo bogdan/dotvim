@@ -255,9 +255,16 @@ function! OpenFile()
     let line_num = match[2]
     let col_num = match[4]
   else
-    let file_path = raw_entry
-    let line_num = ''
-    let col_num = ''
+    let match = matchlist(raw_entry, '\v^(.+)\((\d+),(\d+)\).*$')
+    if !empty(match)
+      let file_path = match[1]
+      let line_num = match[2]
+      let col_num = match[3]
+    else
+      let file_path = raw_entry
+      let line_num = ''
+      let col_num = ''
+    endif
   endif
 
   let file_path = expand(file_path)
