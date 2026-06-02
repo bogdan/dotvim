@@ -249,11 +249,11 @@ function! OpenFile()
   let raw_entry = substitute(raw_entry, '^from\s\+', '', '')
   let raw_entry = substitute(raw_entry, ':\s*in\(\s.*\)\?$', '', '')
 
-  let match = matchlist(raw_entry, '\v^(.+):(\d+)(:(\d+))?(\s+.*)?$')
+  let match = matchlist(raw_entry, '\v^(.+):(\d+)(-\d+)?(:(\d+))?(\s+.*)?$')
   if !empty(match)
     let file_path = match[1]
     let line_num = match[2]
-    let col_num = match[4]
+    let col_num = match[5]
   else
     let match = matchlist(raw_entry, '\v^(.+)\((\d+),(\d+)\).*$')
     if !empty(match)
