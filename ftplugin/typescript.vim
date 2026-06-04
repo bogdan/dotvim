@@ -1,13 +1,8 @@
 set tabstop=2
 set shiftwidth=2
 set expandtab
-let b:ale_linters = ['tsserver', 'eslint']
+let b:ale_linters = ['eslint']
 let b:ale_fixers = ['eslint', 'prettier']
-" let b:ale_linters = ['tsserver']
-" let b:ale_fixers = ['prettier']
-
-
-let g:ale_typescript_tsserver_executable = 'tsserver'
 
 source <sfile>:h/js_common.vim
 
@@ -38,6 +33,6 @@ let g:surround_{char2nr("_")} = "_.\1function: \1(\r)"
 
 vnoremap <buffer> sif siwa
 
-noremap <buffer> <Leader>a :ALEFix<CR>
-noremap <buffer> <Leader>o :ALEOrganizeImports<CR>
-noremap <buffer> <Leader>n :ALENextWrap<CR>
+
+noremap <buffer> <Leader>o <Cmd>lua vim.lsp.buf.code_action({ context = { only = { "source.organizeImports" } }, apply = true })<CR>
+

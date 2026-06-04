@@ -215,7 +215,7 @@ function! ToggleList(bufname, pfx)
   endif
 endfunction
 
-nmap <script> <silent> <F8> :call ToggleList('Quickfix', 'c')<CR>
+nmap <script> <silent> <F8> <Cmd>lua vim.diagnostic.setqflist({ open = false })<CR>:call ToggleList('Quickfix', 'c')<CR>
 map <F9> :cprevious<CR>
 map <s-F9> :cfirst<CR>
 map <F10> :cnext<CR>
@@ -376,10 +376,7 @@ let g:syntastic_scilla_scillachecker_args = '-libdir '.$HOME.'/makabu/unstoppabl
 
 let g:ale_ruby_rubocop_options = '-r ./lib/skip_correctable_rubocop_formatter'
 let g:ale_lint_on_text_changed = 'never'
-let g:ale_completion_enabled = 1
-let g:ale_completion_delay = 100
-let g:ale_completion_autoimport = 1
-set completeopt=menu
+set completeopt=menu,menuone,noselect
 "let g:ale_lint_on_insert_leave = 1
 
 let g:lightline = {

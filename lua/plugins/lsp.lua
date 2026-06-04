@@ -1,0 +1,39 @@
+return {
+  {
+    "neovim/nvim-lspconfig",
+    config = function()
+      local on_attach = function(client, bufnr)
+        local opts = { buffer = bufnr }
+        vim.keymap.set("n", "<C-]>", vim.lsp.buf.definition, opts)
+        vim.keymap.set("n", "<C-w>]", function()
+          vim.cmd("split")
+          vim.lsp.buf.definition()
+        end, opts)
+        vim.keymap.set("n", "g]", vim.lsp.buf.hover, opts)
+        vim.keymap.set("n", "<C-'>", function()
+          vim.fn.setqflist({})
+          vim.lsp.buf.references()
+        end, opts)
+        vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = true })
+        vim.keymap.set("n", "<Leader>i", function()
+          vim.lsp.buf.code_action({ context = { only = { "source.addMissingImports" } }, apply = true })
+        end, opts)
+      end
+
+      vim.lsp.config("ts_ls", { on_attach = on_attach })
+      vim.lsp.config("svelte", { on_attach = on_attach })
+      vim.lsp.enable({ "ts_ls", "svelte" })
+
+      vim.api.nvim_create_autocmd("DiagnosticChanged", {
+        callback = function()
+          for _, win in ipairs(vim.fn.getwininfo()) do
+            if win.quickfix == 1 then
+              vim.diagnostic.setqflist({ open = false })
+              return
+            end
+          end
+        end,
+      })
+    end,
+  },
+}
