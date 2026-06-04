@@ -15,12 +15,23 @@ return {
           vim.lsp.buf.references()
         end, opts)
         vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = true })
+        vim.keymap.set("n", "<Leader>r", vim.lsp.buf.rename, opts)
         vim.keymap.set("n", "<Leader>i", function()
           vim.lsp.buf.code_action({ context = { only = { "source.addMissingImports" } }, apply = true })
         end, opts)
       end
 
-      vim.lsp.config("ts_ls", { on_attach = on_attach })
+      vim.lsp.config("ts_ls", {
+        on_attach = on_attach,
+        init_options = {
+          plugins = {
+            {
+              name = "typescript-svelte-plugin",
+              location = vim.fn.getcwd() .. "/node_modules/typescript-svelte-plugin",
+            },
+          },
+        },
+      })
       vim.lsp.config("svelte", { on_attach = on_attach })
       vim.lsp.enable({ "ts_ls", "svelte" })
 

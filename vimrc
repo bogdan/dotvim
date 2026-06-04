@@ -441,7 +441,7 @@ imap <F5> <ESC>:NERDTreeToggle<CR>a
 let NERDTreeMinimalUI=1 
 " Yank ring
 
-map <Leader>r V"0p
+
 let g:yankring_history_dir = '~/.vim/'
 let g:yankring_manual_clipboard_check = 0
 

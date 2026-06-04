@@ -1,0 +1,40 @@
+snippet st $state()
+	$state(${1})
+snippet dr $derived()
+	$derived(${1})
+snippet ef $effect()
+	$effect(() => {
+		${1}
+	})
+snippet tif {#if}
+	{#if ${1}}
+		${2}
+	{/if}
+snippet tife {#if}{:else}
+	{#if ${1}}
+		${2}
+	{:else}
+		${3}
+	{/if}
+snippet each {#each}
+	{#each ${1:items} as ${2:item}}
+		${3}
+	{/each}
+snippet await {#await}
+	{#await ${1}}
+		${2}
+	{:then ${3:value}}
+		${4}
+	{/await}
+snippet on on:event
+	on${1:click}={${2}}
+snippet sc component
+	<script lang="ts">
+		${1}
+	</script>
+
+	${2}
+
+	<style>
+		${3}
+	</style>

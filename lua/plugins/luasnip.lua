@@ -9,6 +9,10 @@ return {
       require("luasnip.loaders.from_snipmate").load({
         paths = { vim.fn.expand("~/.vim/snippets") },
       })
+
+      ls.filetype_extend("typescript", { "javascript" })
+      ls.filetype_extend("typescriptreact", { "javascript" })
+      ls.filetype_extend("svelte", { "typescript", "javascript" })
       require("luasnip.loaders.from_lua").load({
         paths = { vim.fn.expand("~/.vim/snippets") },
       })
