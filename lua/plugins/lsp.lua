@@ -2,6 +2,20 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
+      _G.toggle_diagnostic_qf = function()
+        for _, win in ipairs(vim.fn.getwininfo()) do
+          if win.quickfix == 1 then
+            if vim.fn.getqflist({ title = 0 }).title == "Diagnostics" then
+              vim.cmd("cclose")
+            else
+              vim.diagnostic.setqflist({ open = false })
+            end
+            return
+          end
+        end
+        vim.diagnostic.setqflist()
+      end
+
       local on_attach = function(client, bufnr)
         local opts = { buffer = bufnr }
         vim.keymap.set("n", "<C-]>", vim.lsp.buf.definition, opts)
@@ -39,7 +53,9 @@ return {
         callback = function()
           for _, win in ipairs(vim.fn.getwininfo()) do
             if win.quickfix == 1 then
-              vim.diagnostic.setqflist({ open = false })
+              if vim.fn.getqflist({ title = 0 }).title == "Diagnostics" then
+                vim.diagnostic.setqflist({ open = false })
+              end
               return
             end
           end

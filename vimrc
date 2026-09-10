@@ -142,7 +142,7 @@ vmap _$ :call MoveToVisualAreaExtrema(1)<CR>
 
 
 "make <c-l> clear the highlight as well as redraw
-nnoremap <C-l> :nohlsearch<CR>:lua for state in pairs(require("flash.state")._states) do state:hide() end<CR><C-L>
+nnoremap <C-l> :nohlsearch<CR>:lua for state in pairs(require("flash.state")._states) do state:hide() end<CR>:lua for _, win in ipairs(vim.api.nvim_list_wins()) do if vim.api.nvim_win_get_config(win).relative ~= "" then pcall(vim.api.nvim_win_close, win, true) end end<CR><C-L>
 inoremap <C-l> <C-O>:nohlsearch<CR><C-O>:lua for state in pairs(require("flash.state")._states) do state:hide() end<CR>
 
 "map to bufexplorer
@@ -215,7 +215,7 @@ function! ToggleList(bufname, pfx)
   endif
 endfunction
 
-nmap <script> <silent> <F8> <Cmd>lua vim.diagnostic.setqflist({ open = false })<CR>:call ToggleList('Quickfix', 'c')<CR>
+nmap <silent> <F8> <Cmd>lua toggle_diagnostic_qf()<CR>
 map <F9> :cprevious<CR>
 map <s-F9> :cfirst<CR>
 map <F10> :cnext<CR>
@@ -361,8 +361,8 @@ vmap <Leader>r y:@"<CR>
 " FZF
 
 set rtp+="/opt/homebrew/bin/fzf"
-map <Leader>f :Files<CR>
-map <Leader>v :vs<CR>:Files<CR>
+map <Leader>f :GFiles --cached --others --exclude-standard<CR>
+map <Leader>v :vs<CR>:GFiles --cached --others --exclude-standard<CR>
 
 " Syntatic
 
