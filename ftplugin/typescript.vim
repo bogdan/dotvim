@@ -19,7 +19,6 @@ set include=import\_s.\\zs[^'\"]*\\ze
 set suffixesadd=.ts,.js,.json,.jsx,.tsx
 set path+=../node_modules
 
-set iskeyword=@,48-57,_,192-255,-,$
 
 let g:ale_javascript_eslint_options="--parser-options='{project: null}' --rule=\'{'@typescript-eslint/no-floating-promises': 'off', '@typescript-eslint/no-misused-promises': 'off'}\'"
 
