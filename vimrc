@@ -565,6 +565,24 @@ nmap <F3> :call MyGrep('"'.expand('<cword>').'" ')<CR>
 nmap <S-F3> <ESC>viw<ESC>:Ack! -w "<cword>" 
 nmap <F4> :call MyGrep("")<CR>
 nmap <S-F4> <ESC>viw<ESC>:Ack! -wi 
+
+" search the system clipboard's text (first line of it) and jump straight to
+" the first match -- run with "!" (silent, no auto-jump/echo) and jump
+" ourselves via :cfirst, so there's no message to trigger a hit-enter prompt.
+function! MyGrepClipboard()
+  let l:term = escape(substitute(@+, "\n.*", '', ''), '"\%#')
+  if !empty(FugitiveGitDir())
+    silent execute 'Ggrep! -F -w "'.l:term.'"'
+  else
+    silent execute 'Ack! -Q "'.l:term.'"'
+  endif
+  if !empty(getqflist())
+    silent cfirst
+  endif
+  redraw!
+endfunction
+
+nmap <M-F3> :call MyGrepClipboard()<CR>
 "vmap <F3> <ESC>:Ggrep! -w <S-Ins>
 "vmap <S-F3> <ESC>:Ack! -w <S-Ins>
 
